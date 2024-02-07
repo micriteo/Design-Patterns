@@ -6,7 +6,7 @@ Application description
 The student group tries to create a Desktop Application which helps users to keep track of the shows they are watching or wants to watch. Furthermore, the application allows the user to add shows, update and delete the shows they added. A database is going to be used to store the shows. This will be achieved, by using C# WinUI and the database will be MSSQL.
 
 
-</h3>Features</h3>
+<h3>Features</h3>
 - Creating a front-end via WINUI
 - Adding shows
 - Editing shows
@@ -15,7 +15,7 @@ The student group tries to create a Desktop Application which helps users to kee
 - Saving the shows in a database
 
   
-</h3>Technology& Patterns Applied</h3>
+<h3>Technology& Patterns Applied</h3>
 As part of the course and in order to implement some of the features, the project will use a variety of threading techniques. These include the following:
 
 
@@ -27,6 +27,6 @@ As part of the course and in order to implement some of the features, the projec
 </h3>Group</h3>
 This project was made by the following students
 
-Teodor Folea - teodor.folea@student.nhlstenden.com
-Arian Atapour - arian.atapour@student.nhlstenden.com
-Dimitri Vastenhout - dimitri.vastenhout@student.nhlstenden.com
+Teodor Folea - teodor.folea@student.nhlstenden.com<br>
+Arian Atapour - arian.atapour@student.nhlstenden.com<br>
+Dimitri Vastenhout - dimitri.vastenhout@student.nhlstenden.com<br>
