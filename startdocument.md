@@ -29,7 +29,7 @@ The student group tries to create a Desktop Application which helps users to kee
 | Priority    | Task                                        |
 | ----------- | ------------------------------------------- |
 | Must have   | Adding, Editing, Displaying, Deleting Shows |
-| Should have | Episode Count, Categories                   |
+| Should have | Categories                                  |
 | Could have  | Watch Flair, Exporting List                 |
 | Wont have   | User Registration                           |
 
@@ -43,7 +43,11 @@ As part of the course and in order to implement some of the features, the projec
 
 - MVC
 
-- Patterns(To Be Added)
+## Patterns used
+
+- Factory
+- Command
+- Observer
 
   
 
