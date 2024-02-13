@@ -66,13 +66,6 @@ The project is done, when the following requirements are met:
 ### Class Diagram
 
 ![img](https://gyazo.com/e454dc4db4217de6970625411fbf6c03.png)
-https://gyazo.com/e454dc4db4217de6970625411fbf6c03
-
-
-
-
-
-### 
 
 
 
