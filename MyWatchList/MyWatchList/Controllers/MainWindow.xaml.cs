@@ -7,6 +7,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -23,9 +24,28 @@ namespace MyWatchList
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+
+        string connectionstring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\dimit\source\repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\Database1.mdf;Integrated Security=True";
+
         public MainWindow()
         {
             this.InitializeComponent();
+
+            using (SqlConnection connection = new SqlConnection(connectionstring))
+            {
+                connection.Open();
+
+                string query = "INSERT INTO Watchable(name, description, type) Values (@name, @description, @type)";
+
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@name", "aot");
+                command.Parameters.AddWithValue("@description", "big man fight");
+                command.Parameters.AddWithValue("@type", "anime");
+
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
