@@ -24,12 +24,17 @@ namespace MyWatchList
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        string DBFILENAME = "Database1.mdf";
 
-        string connectionstring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\dimit\source\repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\Database1.mdf;Integrated Security=True";
 
         public MainWindow()
         {
             this.InitializeComponent();
+
+            string workingDirectory = Path.GetFullPath(Path.Combine(AppContext.BaseDirectory, "..\\..\\..\\..\\..\\..\\"));
+            string filePath = workingDirectory + DBFILENAME;
+
+            string connectionstring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + filePath + ";Integrated Security=True";
 
             using (SqlConnection connection = new SqlConnection(connectionstring))
             {

@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyWatchList
-build_property.ProjectDir = C:\Users\dimit\source\repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\
+build_property.ProjectDir = E:\Design-Patterns\MyWatchList\MyWatchList\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
