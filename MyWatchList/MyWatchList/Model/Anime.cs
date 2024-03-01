@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyWatchList.Model.Interfaces;
 
 namespace ObserverDesignPatterns.Model
 {
-    internal class Anime : Watchable
+    internal class Anime : Iwatchable
     {
         public Anime(string name, string description, byte image)
         {

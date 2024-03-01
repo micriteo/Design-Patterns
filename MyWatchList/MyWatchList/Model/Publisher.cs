@@ -1,4 +1,4 @@
-﻿using ObserverDesignPatterns.Model;
+﻿using MyWatchList.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -40,7 +40,7 @@ namespace MyWatchList.Model
         }
 
         //Notifies all subscribers about the specific show
-        public bool NotifySubscribers(Watchable watchable)
+        public bool NotifySubscribers(Iwatchable watchable)
         {
             foreach (Subscriber subscriber in subscribers)
             {

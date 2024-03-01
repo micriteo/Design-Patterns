@@ -1,4 +1,4 @@
-﻿using ObserverDesignPatterns.Model;
+﻿using MyWatchList.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ namespace MyWatchList.Model
 {
     internal class AnimeFactory : WatchableFactory
     {
-        public override Watchable createWatchable()
+        public override Iwatchable createWatchable()
         {
             return null;
         }

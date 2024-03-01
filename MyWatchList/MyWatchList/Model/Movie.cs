@@ -4,10 +4,11 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyWatchList.Model.Interfaces;
 
 namespace ObserverDesignPatterns.Model
 {
-    internal class Movie : Watchable
+    internal class Movie : Iwatchable
     {
         public Movie(string name, string description, byte image) {
             this.Name = name;

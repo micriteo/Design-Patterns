@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using MyWatchList.Model.DbCommands;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -35,6 +36,7 @@ namespace MyWatchList
             string filePath = workingDirectory + DBFILENAME;
 
             string connectionstring = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=" + filePath + ";Integrated Security=True";
+            Console.WriteLine(connectionstring);
 
             using (SqlConnection connection = new SqlConnection(connectionstring))
             {
@@ -42,12 +44,9 @@ namespace MyWatchList
 
                 string query = "INSERT INTO Watchable(name, description, type) Values (@name, @description, @type)";
 
-                SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@name", "aot");
-                command.Parameters.AddWithValue("@description", "big man fight");
-                command.Parameters.AddWithValue("@type", "anime");
+               AddShow addshow = new AddShow ("Attack on Titan", "A show about titans", connectionstring);
 
-                command.ExecuteNonQuery();
+                addshow.execute();
 
                 connection.Close();
             }

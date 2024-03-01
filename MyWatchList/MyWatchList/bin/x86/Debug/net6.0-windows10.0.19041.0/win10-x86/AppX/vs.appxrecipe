@@ -29,29 +29,29 @@
     <AppXManifest Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-03-01T11:44:38.155</Modified>
+      <Modified>2024-03-01T12:48:56.085</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-03-01T11:44:37.819</Modified>
+      <Modified>2024-03-01T12:48:55.859</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.runtimeconfig.json">
       <PackagePath>MyWatchList.runtimeconfig.json</PackagePath>
-      <Modified>2024-03-01T10:08:40.190</Modified>
+      <Modified>2024-03-01T12:48:55.817</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
       <PackagePath>MyWatchList.dll</PackagePath>
-      <Modified>2024-03-01T11:44:37.310</Modified>
+      <Modified>2024-03-01T12:48:55.443</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>MyWatchList.exe</PackagePath>
-      <Modified>2024-03-01T11:44:37.323</Modified>
+      <Modified>2024-03-01T12:48:55.446</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
       <PackagePath>MyWatchList.deps.json</PackagePath>
-      <Modified>2024-03-01T11:44:37.645</Modified>
+      <Modified>2024-03-01T12:48:55.802</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\.nuget\packages\microsoft.netcore.app.runtime.win-x86\6.0.27\runtimes\win-x86\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>

@@ -1,4 +1,4 @@
-﻿using ObserverDesignPatterns.Model;
+﻿using MyWatchList.Model.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,6 @@ namespace MyWatchList.Model
 {
     internal abstract class WatchableFactory
     {
-        public abstract Watchable createWatchable();
+        public abstract Iwatchable createWatchable();
     }
 }
