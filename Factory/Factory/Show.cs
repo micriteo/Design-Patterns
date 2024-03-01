@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,35 +8,27 @@ using Windows.UI.Core.AnimationMetrics;
 
 namespace Factory
 {
-    internal class Show : Watchable
+    [FirestoreData(ConverterType = typeof(Converter))]
+    public class Show : Watchable
     {
-        private String _name;
-        private String _description;
-        public Show(string name, string description) { 
-             this.watchable(name, description);
+        //public String _name;
+        //public String _description;
+
+        [FirestoreProperty]
+        public String Name { get; set; }
+        [FirestoreProperty]
+        public String Description { get; set; }
+
+        public Show() { }
+
+        public Show(String name, String description) { 
+             this.watchable(this.Name, this.Description);
         }
-        public void watchable(string name, string description)
+        public void watchable(String name, String description)
         {
-            if (name == null || description == null)
-            {
-                throw new ArgumentException("Can not leave name null !");
-            }
-            else
-            {
-                this._name = name;
-                this._description = description;
-            }
+                this.Name = name;
+                this.Description = description;
             //throw new NotImplementedException();
-        }
-
-        public String getName()
-        {
-            return this._name;
-        }
-
-        public String getDescription()
-        {
-            return this._description;
         }
 
 

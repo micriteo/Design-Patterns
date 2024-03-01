@@ -9,12 +9,6 @@
     mc:Ignorable="d">
 
     <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-        <TextBlock x:Name="label1"  Text="Label1" />
-        <TextBlock x:Name="label2"  Text="Label2" />
-        <TextBlock x:Name="label3"  Text="Label1" />
-        <TextBlock x:Name="label4"  Text="Label2" />
-        <TextBlock x:Name="label5"  Text="Label1" />
-        <TextBlock x:Name="label6"  Text="Label2" />
+        <Button x:Name="myButton" Click="myButton_Click">Test Firestore</Button>
     </StackPanel>
 </Window>

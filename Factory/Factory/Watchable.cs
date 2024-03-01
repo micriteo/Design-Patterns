@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    internal interface Watchable
+    public interface Watchable
     {
         void watchable(String name, String description);
     }

@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Google.Cloud.Firestore;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +8,23 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    internal class Movie:Watchable
+    public class Movie:Watchable
     {
-        private String _name;
-        private String _description;
-        public Movie(string name, string description)
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public Movie()
         {
-            this.watchable(name, description);
+            this.watchable(this.Name, this.Description);
         }
         public void watchable(string name, string description)
         {
-            if (name == null || description == null)
-            {
-                throw new ArgumentException("Can not leave name null !");
-            }
-            else
-            {
-                this._name = name;
-                this._description = description;
-                string connectionString = "Server=DESKTOP-P1UFSEM;Database=test;Integrated Security=true;TrustServerCertificate=True";
-                string insertDataQuery = @"
+                this.Name = name;
+                this.Description = description;
+               
+
+                //string connectionString = "Server=DESKTOP-P1UFSEM;Database=test;Integrated Security=true;TrustServerCertificate=True";
+               /*string insertDataQuery = @"
                 USE test;
                 INSERT INTO [Table] (name, description)
                 VALUES (@_name, @_description);";
@@ -41,20 +39,21 @@ namespace Factory
                         command.ExecuteNonQuery();
                     }
                 }
+               */
 
 
-            }
+            
             //throw new NotImplementedException();
         }
 
         public String getName()
         {
-            return this._name;
+            return this.Name;
         }
 
         public String getDescription()
         {
-            return this._description;
+            return this.Description;
         }
     }
 }
