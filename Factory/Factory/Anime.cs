@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
+    [FirestoreData(ConverterType = typeof(Converter<Movie>))]
     public class Anime:Watchable
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        [FirestoreProperty]
+        public String Name { get; set; }
+        [FirestoreProperty]
+        public String Description { get; set; }
 
         public Anime()
         {

@@ -8,6 +8,8 @@ namespace Factory
 {
     public interface Watchable
     {
+        string Name { get; set; }
+        string Description { get; set; }
         void watchable(String name, String description);
     }
 }
