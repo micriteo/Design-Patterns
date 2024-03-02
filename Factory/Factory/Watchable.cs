@@ -10,6 +10,8 @@ namespace Factory
     {
         string Name { get; set; }
         string Description { get; set; }
-        void watchable(String name, String description);
+        //For the image
+        string ImageUrl { get; set; }
+        void watchable(string name, string description, string imageUrl);
     }
 }

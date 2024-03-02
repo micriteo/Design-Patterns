@@ -1,4 +1,5 @@
-﻿using Google.Cloud.Firestore;
+﻿using Factory.Factory;
+using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,22 +16,23 @@ namespace Factory
         //public String _description;
 
         [FirestoreProperty]
-        public String Name { get; set; }
+        public string Name { get; set; }
         [FirestoreProperty]
-        public String Description { get; set; }
+        public string Description { get; set; }
+        [FirestoreProperty]
+        public string ImageUrl { get; set; }
 
         public Show() { }
 
-        public Show(String name, String description) { 
-             this.watchable(this.Name, this.Description);
+        public Show(string name, string description, string imageUrl) { 
+             this.watchable(this.Name, this.Description, this.ImageUrl);
         }
-        public void watchable(String name, String description)
+        public void watchable(string name, string description, string imageUrl)
         {
                 this.Name = name;
                 this.Description = description;
-            //throw new NotImplementedException();
+                this.ImageUrl = imageUrl;
+                //throw new NotImplementedException();
         }
-
-
     }
 }
