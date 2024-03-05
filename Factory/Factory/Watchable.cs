@@ -8,10 +8,10 @@ namespace Factory
 {
     public interface Watchable
     {
-        string Name { get; set; }
-        string Description { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
         //For the image
-        string ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
         void watchable(string name, string description, string imageUrl);
     }
 }
