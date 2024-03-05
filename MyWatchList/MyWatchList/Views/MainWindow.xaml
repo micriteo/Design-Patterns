@@ -9,8 +9,23 @@
     mc:Ignorable="d">
 
     <Grid Background="#990505">
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="WatchList" FontSize="50" Margin="10" FontFamily="Jockey One"/>
+
+        <Rectangle Grid.Row="0" Width="2000" Height="5" Fill="White" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="AddButton" Content="+"/>
+            <Button x:Name="EditButton" Content="Edit"/>
+            <Button x:Name="DeleteButton" Content="Delete"/>
         </StackPanel>
+
+        <ListView Grid.Column="1" Grid.Row="0" Name="WatchListView" FontFamily="Jockey One">
+        </ListView>
     </Grid>
 </Window>

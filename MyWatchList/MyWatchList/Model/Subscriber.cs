@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObserverDesignPatterns.Controller
+namespace MyWatchList.Model
 {
     internal interface Subscriber
     {
-        bool Remove(Watchable watchable) 
+        bool Remove(Watchable watchable)
         {
             return false;
         }

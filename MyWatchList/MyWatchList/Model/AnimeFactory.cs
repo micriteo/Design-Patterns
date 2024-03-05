@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObserverDesignPatterns.Controller
+namespace MyWatchList.Model
 {
-    internal class MovieFactory : WatchableFactory
+    internal class AnimeFactory : WatchableFactory
     {
         public override Watchable createWatchable()
         {

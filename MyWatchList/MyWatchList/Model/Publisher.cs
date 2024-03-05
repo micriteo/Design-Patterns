@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObserverDesignPatterns.Controller
+namespace MyWatchList.Model
 {
     internal class Publisher
     {
@@ -31,7 +31,8 @@ namespace ObserverDesignPatterns.Controller
             if (subscriber != null)
             {
                 subscribers.Remove(subscriber);
-            } else
+            }
+            else
             {
                 return false;
             }
@@ -41,7 +42,7 @@ namespace ObserverDesignPatterns.Controller
         //Notifies all subscribers about the specific show
         public bool NotifySubscribers(Watchable watchable)
         {
-            foreach(Subscriber subscriber in subscribers)
+            foreach (Subscriber subscriber in subscribers)
             {
                 subscriber.Remove(watchable);
             }
