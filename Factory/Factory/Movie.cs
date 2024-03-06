@@ -19,6 +19,8 @@ namespace Factory
         public string Description { get; set; }
         [FirestoreProperty]
         public string ImageUrl { get; set; }
+        //[FirestoreProperty]
+        //public string Type { get; set; }
 
         public Movie()
         {
@@ -35,6 +37,7 @@ namespace Factory
             this.Name = name;
             this.Description = description;
             this.ImageUrl = imageUrl;
+            //this.Type = "movie";
             //throw new NotImplementedException();
         }
 

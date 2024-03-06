@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    [FirestoreData(ConverterType = typeof(Converter<Movie>))]
+    [FirestoreData(ConverterType = typeof(Converter<Anime>))]
     public class Anime:Watchable
     {
         [FirestoreProperty]
@@ -17,6 +17,8 @@ namespace Factory
         public string Description { get; set; }
         [FirestoreProperty]
         public string ImageUrl { get; set; }
+        //[FirestoreProperty]
+       // public string Type { get; set; }
 
         public Anime()
         {
@@ -33,6 +35,7 @@ namespace Factory
             this.Name = name;
             this.Description = description;
             this.ImageUrl = imageUrl;
+            //this.Type = "anime";
             //throw new NotImplementedException();
         }
     }

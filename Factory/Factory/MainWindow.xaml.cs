@@ -77,15 +77,16 @@ namespace Factory
 
             //string connectionString = "Server=DESKTOP-P1UFSEM;Database=test;Integrated Security=true;TrustServerCertificate=True";
             Show show = new Show { Name = "ShowN", Description = "ShowD", ImageUrl = url };
-            Show show2 = new Show { Name = "ShowN2", Description = "ShowD2", ImageUrl = url };
-            Anime anime = new Anime { Name = "AnimeN", Description = "AnimeD" };
-            Movie movie = new Movie { Name = "MovieN", Description = "MovieD" };
+            Anime anime = new Anime { Name = "AnimeN", Description = "AnimeD", ImageUrl = url };
+            Movie movie = new Movie { Name = "MovieN", Description = "MovieD", ImageUrl = url };
             CollectionReference watchableNode = _db.Collection("watchables");
-            DocumentReference docRef = watchableNode.Document(show.Name);
-            DocumentReference docRef2 = watchableNode.Document(show2.Name);
+            DocumentReference showRef = watchableNode.Document(show.Name);
+            DocumentReference movieRef = watchableNode.Document(movie.Name);
+            DocumentReference animeRef = watchableNode.Document(anime.Name);
 
-            await docRef.SetAsync(show);
-            await docRef2.SetAsync(show2);
+            await showRef.SetAsync(show);
+            await movieRef.SetAsync(movie);
+            await animeRef.SetAsync(anime);
             myButton.Content = "Sent data";
 
         }
@@ -103,19 +104,44 @@ namespace Factory
                         if (document.Exists)
                         {
                             Dictionary<string, object> data = document.ToDictionary();
-                            Show show = new Show()
+                            string type = data["Type"].ToString();
+                            
+                            //We need the type so it knows how to process the data. The type is defined in the Converter class and takes whatever the generic type is
+                            switch (type)
                             {
-                                Name = data["Name"].ToString(),
-                                Description = data["Description"].ToString(),
-                                ImageUrl = data["ImageUrl"].ToString()
-                            };
-                            dataList.Add(show);
+                                case "Show":
+                                    Show show = new Show()
+                                    {
+                                        Name = data["Name"].ToString(),
+                                        Description = data["Description"].ToString(),
+                                        ImageUrl = data["ImageUrl"].ToString()
+                                    };
+                                    dataList.Add(show);
+                                    break;
+                                case "Movie":
+                                    Movie movie = new Movie()
+                                    {
+                                        Name = data["Name"].ToString(),
+                                        Description = data["Description"].ToString(),
+                                        ImageUrl = data["ImageUrl"].ToString()
+                                    };
+                                    dataList.Add(movie);
+                                    break;
+                                case "Anime":
+                                    Anime anime = new Anime()
+                                    {
+                                        Name = data["Name"].ToString(),
+                                        Description = data["Description"].ToString(),
+                                        ImageUrl = data["ImageUrl"].ToString()
+                                    };
+                                    dataList.Add(anime);
+                                    break;
+                            }
                         }
                     }
-                    //To do something with the UI thread (because blabla it does not want to run it on the thread)
                     DispatcherQueue.TryEnqueue(() =>
                     {
-                       lV.ItemsSource = dataList;
+                        lV.ItemsSource = dataList;
                     });
                 });
             }
@@ -125,6 +151,29 @@ namespace Factory
             }
         }
 
+        //Delete test tomorrow
+        /*public async Task DeleteDocumentAsync(DocumentReference docRef)
+        {
+            await docRef.DeleteAsync();
+        }*/
+
+        //Edit test tomorrow
+        /*public async Task UpdateDocumentAsync(DocumentReference docRef, Dictionary<string, object> updates)
+        {
+            await docRef.UpdateAsync(updates);
+            
+            To update most probably it has to look like this the updates, see tomorrow 
+            public object ToFirestore(T value)
+            {
+                return new Dictionary<string, object>
+        {
+            { "Type", typeof(T).Name },
+            { "Name", value.Name },
+            { "Description", value.Description },
+            { "ImageUrl", value.ImageUrl }
+        };
+            }
+        }*/
 
 
     }

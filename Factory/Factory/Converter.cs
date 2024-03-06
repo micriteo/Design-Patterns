@@ -14,15 +14,16 @@ namespace Factory
             public T FromFirestore(object value)
             {
                 Dictionary<string, object> values = (Dictionary<string, object>)value;
-                T show = new T();
-                show.watchable(values["Name"].ToString(), values["Description"].ToString(), values["ImageUrl"].ToString());
-                return show;
+                T watchable = new T();
+                watchable.watchable(values["Name"].ToString(), values["Description"].ToString(), values["ImageUrl"].ToString());
+                return watchable;
             }
 
             public object ToFirestore(T value)
             {
                 return new Dictionary<string, object>
         {
+            { "Type", typeof(T).Name },
             { "Name", value.Name },
             { "Description", value.Description },
             { "ImageUrl", value.ImageUrl }
