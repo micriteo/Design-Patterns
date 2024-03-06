@@ -9,7 +9,7 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ListView x:Name="yourGridView">
+        <ListView x:Name="lV">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Watchable">
                     <StackPanel Orientation="Vertical">

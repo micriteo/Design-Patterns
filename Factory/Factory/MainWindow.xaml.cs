@@ -51,7 +51,7 @@ namespace Factory
             this._storage = StorageClient.Create();
             this._bucketName = "designpatterns-98314.appspot.com"; //remove gs:// prefix
             this._db = FirestoreDb.Create("designpatterns-98314");
-            LoadDataIntoGridView();
+            RetrieveData();
         }
 
 
@@ -77,42 +77,55 @@ namespace Factory
 
             //string connectionString = "Server=DESKTOP-P1UFSEM;Database=test;Integrated Security=true;TrustServerCertificate=True";
             Show show = new Show { Name = "ShowN", Description = "ShowD", ImageUrl = url };
+            Show show2 = new Show { Name = "ShowN2", Description = "ShowD2", ImageUrl = url };
             Anime anime = new Anime { Name = "AnimeN", Description = "AnimeD" };
             Movie movie = new Movie { Name = "MovieN", Description = "MovieD" };
             CollectionReference watchableNode = _db.Collection("watchables");
             DocumentReference docRef = watchableNode.Document(show.Name);
+            DocumentReference docRef2 = watchableNode.Document(show2.Name);
 
             await docRef.SetAsync(show);
+            await docRef2.SetAsync(show2);
             myButton.Content = "Sent data";
 
         }
 
-        public async Task LoadDataIntoGridView()
+        public void RetrieveData()
         {
             try
             {
-       
                 CollectionReference collectionRef = _db.Collection("watchables");
-                QuerySnapshot snapshot = await collectionRef.GetSnapshotAsync();  
-                List<Watchable> dataList = new List<Watchable>();
-                foreach (DocumentSnapshot document in snapshot.Documents)
+                collectionRef.Listen(snapshot =>
                 {
-                    Dictionary<string, object> data = document.ToDictionary();
-                    Show show = new Show()
+                    List<Watchable> dataList = new List<Watchable>();
+                    foreach (DocumentSnapshot document in snapshot.Documents)
                     {
-                        Name = data["Name"].ToString(),
-                        Description = data["Description"].ToString(),
-                        ImageUrl = data["ImageUrl"].ToString()
-                    };
-                    dataList.Add(show);
-                }
-                yourGridView.ItemsSource = dataList;
+                        if (document.Exists)
+                        {
+                            Dictionary<string, object> data = document.ToDictionary();
+                            Show show = new Show()
+                            {
+                                Name = data["Name"].ToString(),
+                                Description = data["Description"].ToString(),
+                                ImageUrl = data["ImageUrl"].ToString()
+                            };
+                            dataList.Add(show);
+                        }
+                    }
+                    //To do something with the UI thread (because blabla it does not want to run it on the thread)
+                    DispatcherQueue.TryEnqueue(() =>
+                    {
+                       lV.ItemsSource = dataList;
+                    });
+                });
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Exception: " + ex.Message);
-            }   
+            }
         }
+
+
 
     }
 }
