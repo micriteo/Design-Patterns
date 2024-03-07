@@ -12,6 +12,8 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using System.Windows;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,6 +28,26 @@ namespace MyWatchList
         public MainWindow()
         {
             this.InitializeComponent();
+
+            var items = new List<ActionItem>
+            {
+                new ActionItem("Assets//Images//aot.jpg")
+            };
+
+            ActionListView.ItemsSource = items;
         }
+
+        public class ActionItem
+        {
+            public ImageSource ImageSource { get; set; }
+            //public string Title { get; set; }
+
+            public ActionItem(string imageSource)
+            {
+                ImageSource = new BitmapImage(new Uri(imageSource));
+                //Title = title;
+            }
+        }
+
     }
 }
