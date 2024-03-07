@@ -9,17 +9,26 @@
     mc:Ignorable="d">
 
     <Grid>
-        <ListView x:Name="lV">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Watchable">
-                    <StackPanel Orientation="Vertical">
-                        <Image Source="{x:Bind ImageUrl}" Height="100" Width="100"/>
-                        <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
-                        <TextBlock Text="{x:Bind Description}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button x:Name="myButton" Content="Load Data" Click="myButton_Click"/>
+        <StackPanel>
+                <ListView x:Name="lV">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:Watchable">
+                        <StackPanel Orientation="Vertical">
+                            <Image Source="{x:Bind ImageUrl}" Height="100" Width="100"/>
+                            <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
+                            <TextBlock Text="{x:Bind Description}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <StackPanel>
+            <Button x:Name="loadB" Content="Load Data" Click="LoadBC"/>
+            <TextBox x:Name="tId" Width="500" Header="Delete Id" PlaceholderText="Edit or Delete ID..."></TextBox>
+            <Button x:Name="deleteB" Content="Delete data" Click="DeleteBC"/>
+            <TextBox x:Name="tEditName" Width="500" Header="Edit Name" PlaceholderText="Edit name"></TextBox>
+            <TextBox x:Name="tEditDescription" Width="500" Header="Edit Description" PlaceholderText="Edit description"></TextBox>
+            <Button x:Name="editB" Content="Edit data" Click="EditBC"/>
+        </StackPanel>
     </Grid>
 </Window>
