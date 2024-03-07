@@ -29,6 +29,7 @@ using Windows.Storage;
 using Windows.UI.Popups;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
+using WinRT.Interop;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -175,64 +176,51 @@ namespace Factory
 
         private async void EditBC(object sender, RoutedEventArgs e)
         {
-            string imgName = await SelectAndSaveImageAsync();
-            string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
-            //string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
-            string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
-            var image = filePath;
-            //Uploading the file to the bucket (afterwards we tie it to the object in the collection)
-            using var fileStream = File.OpenRead(filePath);
-            await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
-            string filePathUrl = Path.Combine(solutionDirectory, "images");
-            //We need the public URL of the uploaded file to tie it to the object in the collection
-            //THIS LINK IS TRANSLATED FROM GS TO ACCESS IT VIA THE CLOUD ! ADD ?alt=media at the END TO CHANGE THE ENCODING TO IMAGE !!!!
-            //var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString("car.jpg")}?alt=media";
-            DocumentReference editRef = _db.Collection("watchables").Document(tId.Text);
-            DocumentSnapshot snapshot = await editRef.GetSnapshotAsync();
-
-            if (snapshot.Exists && !string.IsNullOrEmpty(imgName)) //Ref exists and image is saved
-            {
-                var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
-                Dictionary<string, object> data = snapshot.ToDictionary();
-                data["Name"] = tEditName.Text;
-                data["Description"] = tEditDescription.Text;
-                data["ImageUrl"] = url;
-                await editRef.UpdateAsync(data);
-            }
-            else
-            {
-                editB.Content = "ID NOT FOUND OR IMAGE NOT JPG OR PNG !!!";
-            }
-        }
-
-        private async Task<string> SelectAndSaveImageAsync()
-        {
-            // Create a FileOpenPicker
             var picker = new FileOpenPicker();
+            picker.ViewMode = PickerViewMode.Thumbnail;
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
             picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
             picker.FileTypeFilter.Add(".png");
 
-            StorageFile selectedImage = null;
+            Window currentWindow = Window.Current ?? new Window();
+            nint windowHandle = WindowNative.GetWindowHandle(currentWindow);
+            InitializeWithWindow.Initialize(picker, windowHandle);
 
-            await CoreApplication.MainView.CoreWindow.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+            var file = await picker.PickSingleFileAsync();
+            if (file != null)
             {
-                selectedImage = await picker.PickSingleFileAsync();
-            });
+                string imgName = Path.GetFileName(file.Path);
 
-            if (selectedImage != null)
-            {
-                // Choose your target folder (e.g., "ImagesFolder")
-                StorageFolder targetFolder = ApplicationData.Current.LocalFolder;
-                StorageFile savedImage = await selectedImage.CopyAsync(targetFolder, selectedImage.Name, NameCollisionOption.GenerateUniqueName);
+                // Copy the selected file to the images folder
+                string imagesFolderPath = Path.Combine(Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName, "images");
+                StorageFolder imagesFolder = await StorageFolder.GetFolderFromPathAsync(imagesFolderPath);
+                await file.CopyAsync(imagesFolder, imgName, NameCollisionOption.ReplaceExisting);
 
-                // Get the file name
-                string fileName = savedImage.Name;
-                return fileName;
-            }
-            else
-            {
-                // User canceled image selection
-                return null;
+                string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
+                string filePath = Path.Combine(solutionDirectory, "images/", imgName);
+                var image = filePath;
+
+                using var fileStream = File.OpenRead(filePath);
+                await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+                string filePathUrl = Path.Combine(solutionDirectory, "images");
+
+                DocumentReference editRef = _db.Collection("watchables").Document(tId.Text);
+                DocumentSnapshot snapshot = await editRef.GetSnapshotAsync();
+
+                if (snapshot.Exists && !string.IsNullOrEmpty(imgName))
+                {
+                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
+                    Dictionary<string, object> data = snapshot.ToDictionary();
+                    data["Name"] = tEditName.Text;
+                    data["Description"] = tEditDescription.Text;
+                    data["ImageUrl"] = url;
+                    await editRef.UpdateAsync(data);
+                }
+                else
+                {
+                    editB.Content = "ID NOT FOUND OR IMAGE NOT JPG OR PNG !!!";
+                }
             }
         }
 
