@@ -19,14 +19,11 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="{x:Bind ImageSource}" Width="80" Height="60"/>
+                        <Image Source="{Binding ImageSource}" Width="80" Height="60"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
-
-
 
         <!-- Display the title "WatchList" with custom styling -->
         <TextBlock Text="WatchList" FontSize="50" Margin="10" FontFamily="Assets/Fonts/#Jockey One"/>

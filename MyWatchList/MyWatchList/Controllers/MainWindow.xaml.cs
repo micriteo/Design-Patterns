@@ -31,7 +31,7 @@ namespace MyWatchList
 
             var items = new List<ActionItem>
             {
-                new ActionItem("Assets//Images//aot.jpg")
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg")
             };
 
             ActionListView.ItemsSource = items;
