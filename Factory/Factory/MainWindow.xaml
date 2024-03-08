@@ -17,6 +17,7 @@
                             <Image Source="{x:Bind ImageUrl}" Height="100" Width="100"/>
                             <TextBlock Text="{x:Bind Name}" FontWeight="Bold"/>
                             <TextBlock Text="{x:Bind Description}"/>
+                            <TextBlock Text="{x:Bind Category}"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
@@ -28,6 +29,7 @@
             <Button x:Name="deleteB" Content="Delete data" Click="DeleteBC"/>
             <TextBox x:Name="tEditName" Width="500" Header="Edit Name" PlaceholderText="Edit name"></TextBox>
             <TextBox x:Name="tEditDescription" Width="500" Header="Edit Description" PlaceholderText="Edit description"></TextBox>
+            <TextBox x:Name="tEditCategory" Width="500" Header="Edit Category" PlaceholderText="Edit Category"></TextBox>
             <Button x:Name="editB" Content="Edit data" Click="EditBC"/>
         </StackPanel>
     </Grid>

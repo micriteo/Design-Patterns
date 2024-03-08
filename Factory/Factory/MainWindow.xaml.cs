@@ -52,6 +52,11 @@ namespace Factory
             //string baseDir = AppDomain.CurrentDomain.BaseDirectory;
             string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
             string filePath = Path.Combine(solutionDirectory, "designpatterns-98314-firebase-adminsdk-z4r47-f1741e07bf.json");
+            string imagesPath = Path.Combine(solutionDirectory, "images");
+            if (!Directory.Exists(imagesPath))
+            {
+                Directory.CreateDirectory(imagesPath);
+            }
             System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", filePath);
             //Bucket storage in Firebase
             this._storage = StorageClient.Create();
@@ -86,9 +91,9 @@ namespace Factory
             //https://firebasestorage.googleapis.com/v0/b/{this._bucketname}/o/{image}
 
             //string connectionString = "Server=DESKTOP-P1UFSEM;Database=test;Integrated Security=true;TrustServerCertificate=True";
-            Show show = new Show { Name = "ShowN", Description = "ShowD", ImageUrl = url };
-            Anime anime = new Anime { Name = "AnimeN", Description = "AnimeD", ImageUrl = url };
-            Movie movie = new Movie { Name = "MovieN", Description = "MovieD", ImageUrl = url };
+            Show show = new Show { Name = "ShowN", Description = "ShowD", ImageUrl = url, Category = "Action" };
+            Anime anime = new Anime { Name = "AnimeN", Description = "AnimeD", ImageUrl = url, Category = "Comedy" };
+            Movie movie = new Movie { Name = "MovieN", Description = "MovieD", ImageUrl = url, Category = "Drama" };
             CollectionReference watchableNode = _db.Collection("watchables");
             DocumentReference showRef = watchableNode.Document(show.Name);
             DocumentReference movieRef = watchableNode.Document(movie.Name);
@@ -126,7 +131,8 @@ namespace Factory
                                     {
                                         Name = data["Name"].ToString(),
                                         Description = data["Description"].ToString(),
-                                        ImageUrl = data["ImageUrl"].ToString()
+                                        ImageUrl = data["ImageUrl"].ToString(),
+                                        Category = data["Category"].ToString()
                                     };
                                     dataList.Add(show);
                                     break;
@@ -135,7 +141,8 @@ namespace Factory
                                     {
                                         Name = data["Name"].ToString(),
                                         Description = data["Description"].ToString(),
-                                        ImageUrl = data["ImageUrl"].ToString()
+                                        ImageUrl = data["ImageUrl"].ToString(),
+                                        Category = data["Category"].ToString()
                                     };
                                     dataList.Add(movie);
                                     break;
@@ -144,7 +151,8 @@ namespace Factory
                                     {
                                         Name = data["Name"].ToString(),
                                         Description = data["Description"].ToString(),
-                                        ImageUrl = data["ImageUrl"].ToString()
+                                        ImageUrl = data["ImageUrl"].ToString(),
+                                        Category = data["Category"].ToString()
                                     };
                                     dataList.Add(anime);
                                     break;
@@ -237,6 +245,7 @@ namespace Factory
                         data["Name"] = tEditName.Text;
                         data["Description"] = tEditDescription.Text;
                         data["ImageUrl"] = url;
+                        data["Category"] = tEditCategory.Text;
                         await docRef.UpdateAsync(data);
                         File.Delete(filePath);
                     }
