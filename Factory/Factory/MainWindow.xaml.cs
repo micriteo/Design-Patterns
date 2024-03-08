@@ -73,8 +73,12 @@ namespace Factory
             string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
             var image = filePath;
             //Uploading the file to the bucket (afterwards we tie it to the object in the collection)
-            using var fileStream = File.OpenRead(filePath);
-            await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+            //using var fileStream = File.OpenRead(filePath);
+            using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
+            {
+                await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+    
+            }
             string filePathUrl = Path.Combine(solutionDirectory, "images");
             //We need the public URL of the uploaded file to tie it to the object in the collection
             //THIS LINK IS TRANSLATED FROM GS TO ACCESS IT VIA THE CLOUD ! ADD ?alt=media at the END TO CHANGE THE ENCODING TO IMAGE !!!!
@@ -95,6 +99,7 @@ namespace Factory
             await movieRef.SetAsync(movie);
             await animeRef.SetAsync(anime);
             loadB.Content = "Sent data";
+            File.Delete(filePath);
 
         }
 
@@ -211,8 +216,11 @@ namespace Factory
                 string filePath = Path.Combine(solutionDirectory, "images/", imgName);
                 var image = filePath;
 
-                using var fileStream = File.OpenRead(filePath);
-                await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+                using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
+                {
+                    await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+
+                }
                 string filePathUrl = Path.Combine(solutionDirectory, "images");
 
                 Query query = _db.Collection("watchables").WhereEqualTo("Name", tId.Text);
@@ -224,14 +232,13 @@ namespace Factory
                     {
                         // Get the document reference
                         DocumentReference docRef = documentSnapshot.Reference;
-
-                        // Your existing code to update the document
                         var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
                         Dictionary<string, object> data = documentSnapshot.ToDictionary();
                         data["Name"] = tEditName.Text;
                         data["Description"] = tEditDescription.Text;
                         data["ImageUrl"] = url;
                         await docRef.UpdateAsync(data);
+                        File.Delete(filePath);
                     }
                 }
             }
