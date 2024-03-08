@@ -11,9 +11,9 @@ namespace Factory
         //Put here the FIRESTORE PROPERTY
         public string Name { get; set; }
         public string Description { get; set; }
-        //public string Type { get; set; }
+        public string Category { get; set; }
         //For the image
         public string ImageUrl { get; set; }
-        void watchable(string name, string description, string imageUrl);
+        void watchable(string name, string description, string imageUrl, string category);
     }
 }
