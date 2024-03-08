@@ -73,8 +73,12 @@ namespace Factory
             string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
             var image = filePath;
             //Uploading the file to the bucket (afterwards we tie it to the object in the collection)
-            using var fileStream = File.OpenRead(filePath);
-            await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+            //using var fileStream = File.OpenRead(filePath);
+            using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
+            {
+                await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+    
+            }
             string filePathUrl = Path.Combine(solutionDirectory, "images");
             //We need the public URL of the uploaded file to tie it to the object in the collection
             //THIS LINK IS TRANSLATED FROM GS TO ACCESS IT VIA THE CLOUD ! ADD ?alt=media at the END TO CHANGE THE ENCODING TO IMAGE !!!!
@@ -89,11 +93,13 @@ namespace Factory
             DocumentReference showRef = watchableNode.Document(show.Name);
             DocumentReference movieRef = watchableNode.Document(movie.Name);
             DocumentReference animeRef = watchableNode.Document(anime.Name);
+            //DO THE ID BY THE TIMESTAMPS IN FIRESTORE
 
             await showRef.SetAsync(show);
             await movieRef.SetAsync(movie);
             await animeRef.SetAsync(anime);
             loadB.Content = "Sent data";
+            File.Delete(filePath);
 
         }
 
@@ -111,7 +117,7 @@ namespace Factory
                         {
                             Dictionary<string, object> data = document.ToDictionary();
                             string type = data["Type"].ToString();
-                            
+
                             //We need the type so it knows how to process the data. The type is defined in the Converter class and takes whatever the generic type is
                             switch (type)
                             {
@@ -161,18 +167,27 @@ namespace Factory
 
         private async void DeleteBC(object sender, RoutedEventArgs e)
         {
-            DocumentReference delRef = _db.Collection("watchables").Document(tId.Text);
-            DocumentSnapshot snapshot = await delRef.GetSnapshotAsync();
-            if (snapshot.Exists)
+            Query query = _db.Collection("watchables").WhereEqualTo("Name", tId.Text);
+            QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
+
+            if (querySnapshot.Documents.Count() > 0)
             {
-                await delRef.DeleteAsync();
-                deleteB.Content = "Deleted !";
+                foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
+                {
+                    if (documentSnapshot.Exists)
+                    {
+                        DocumentReference delRef = documentSnapshot.Reference;
+                        await delRef.DeleteAsync();
+                        deleteB.Content = "Deleted !";
+                    }
+                }
             }
             else
             {
                 deleteB.Content = "ID NOT FOUND !!!";
             }
         }
+
 
         private async void EditBC(object sender, RoutedEventArgs e)
         {
@@ -201,28 +216,33 @@ namespace Factory
                 string filePath = Path.Combine(solutionDirectory, "images/", imgName);
                 var image = filePath;
 
-                using var fileStream = File.OpenRead(filePath);
-                await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+                using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
+                {
+                    await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
+
+                }
                 string filePathUrl = Path.Combine(solutionDirectory, "images");
 
-                DocumentReference editRef = _db.Collection("watchables").Document(tId.Text);
-                DocumentSnapshot snapshot = await editRef.GetSnapshotAsync();
+                Query query = _db.Collection("watchables").WhereEqualTo("Name", tId.Text);
+                QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
 
-                if (snapshot.Exists && !string.IsNullOrEmpty(imgName))
+                foreach (DocumentSnapshot documentSnapshot in querySnapshot.Documents)
                 {
-                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
-                    Dictionary<string, object> data = snapshot.ToDictionary();
-                    data["Name"] = tEditName.Text;
-                    data["Description"] = tEditDescription.Text;
-                    data["ImageUrl"] = url;
-                    await editRef.UpdateAsync(data);
-                }
-                else
-                {
-                    editB.Content = "ID NOT FOUND OR IMAGE NOT JPG OR PNG !!!";
+                    if (documentSnapshot.Exists && !string.IsNullOrEmpty(imgName))
+                    {
+                        // Get the document reference
+                        DocumentReference docRef = documentSnapshot.Reference;
+                        var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
+                        Dictionary<string, object> data = documentSnapshot.ToDictionary();
+                        data["Name"] = tEditName.Text;
+                        data["Description"] = tEditDescription.Text;
+                        data["ImageUrl"] = url;
+                        await docRef.UpdateAsync(data);
+                        File.Delete(filePath);
+                    }
                 }
             }
-        }
 
+        }
     }
 }
