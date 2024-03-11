@@ -49,29 +49,84 @@ namespace Factory
         public MainWindow()
         {
             this.InitializeComponent();
-            //string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+            //Get the soluton directory(the actual directory of the project with all the files)
             string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
+            //We need the JSON file to authenticate the app with the Firestore and the bucket
             string filePath = Path.Combine(solutionDirectory, "designpatterns-98314-firebase-adminsdk-z4r47-f1741e07bf.json");
+            //We need the images folder to store the images in the bucket, they are deleted once they are uploaded
             string imagesPath = Path.Combine(solutionDirectory, "images");
+            //If the images folder is created already we don't need to create it again
             if (!Directory.Exists(imagesPath))
             {
                 Directory.CreateDirectory(imagesPath);
             }
+            //The credentials are set to this for the Firestore, filePath variable in this case is tied to our json authentication file
             System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", filePath);
             //Bucket storage in Firebase
             this._storage = StorageClient.Create();
-            this._bucketName = "designpatterns-98314.appspot.com"; //remove gs:// prefix
+            //Firebase bucket name
+            /*
+             * ! IMPORTANT !
+             * Remove gs:// from the link (bucket name) once for the bucket name and twice for the files in the bucket.
+             * Later in the code I will explain why to do so for files. On short gs:// it's the internal Firebase link and it's not accessible from the outside.
+             */
+            this._bucketName = "designpatterns-98314.appspot.com";
+            //Firestore database (Project ID, you find it in the settings of Firebase)
             this._db = FirestoreDb.Create("designpatterns-98314");
+            //Retrieve data from the database (Firestore) method (explained within the method)
             RetrieveData();
         }
 
 
 
-        private async void LoadBC(object sender, RoutedEventArgs e)
+        //BUTTONS UI
+        //Insert data into the database (Firestore) button
+        private void LoadBC(object sender, RoutedEventArgs e)
         {
-            //Image upload; TEST THIS TO BE MOVED TO A DIFFERENT METHOD AND CALLED WITH var imageUrl = await UploadImage("<path-to-your-image-file>");
-            //Google cloud (Firebase bucket) for uploading the image to the bucket and also saving it into the file
+            InsertFS();
 
+        }
+
+        //Delete data from the database (Firestore) button
+        private void DeleteBC(object sender, RoutedEventArgs e)
+        {
+            DeleteFS();
+        }
+
+        //Edit data from the database (Firestore) button
+        private void EditBC(object sender, RoutedEventArgs e)
+        {
+            EditFS();
+        }
+
+        //METHODS
+
+        //INSERT into Firestore method
+        private async void InsertFS()
+        {
+            /*
+              How does this method works ?
+              
+              Great question Dimi ! 
+              Well, first we need to upload the image to the bucket.
+              Why is the image upload hardcoded in this case ? Am I lazy ?
+              No (yes), and that's because I wanted to leave you an easy example of how to upload an image to the bucket.
+              In the EditFS method you can find how to upload an image to the bucket with the FilePicker.
+             
+             Ok now the image is in the bucket.
+             The `var url` is the public URL of the uploaded file. The `alt='media'` tells it to give you the image not the JSON encoding of the image.
+
+             Now to the second step, you create the objects (Name, Description, ImageUrl, Category).
+             The collection reference is the collection name in the Firestore (you know the no duplicates story so no duplicate collection is created if it exists already).
+             Same for objects.
+             Afterwards for each object we set their DOCUMENT REFERENCE (the id in the db) by their name.
+             HOWEVER, this will be changed to the timestamps.
+             SetAsync sends the file to the Firestore.
+             (The File.Delete(filePath) is to delete the file from the images folder after it's uploaded to the bucket)).
+             
+             IMPORTANT ! The objects go through the Converter class which converts them to the Firestore format (dictionary).
+
+            */
             //Image path
             string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
             //string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
@@ -82,7 +137,7 @@ namespace Factory
             using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
             {
                 await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
-    
+
             }
             string filePathUrl = Path.Combine(solutionDirectory, "images");
             //We need the public URL of the uploaded file to tie it to the object in the collection
@@ -105,11 +160,20 @@ namespace Factory
             await animeRef.SetAsync(anime);
             loadB.Content = "Sent data";
             File.Delete(filePath);
-
         }
 
-        public void RetrieveData()
+        //Retrieve data from the database (Firestore) method (attached to no button, connected to the ListView)
+        private void RetrieveData()
         {
+            /*
+                My nemesis, retrieving data into the UI (ListView in this case). Sweat and tears were shed for this method.
+                The method is simple, it listens to the collection "watchables" and for each document in the collection it creates an object of the type of the document (Show, Movie, Anime).
+                The object is then added to the dataList and the ListView is set to the dataList.
+                The method is attached to the ListView in the XAML file (UI file).
+                The method is also attached to the constructor of the MainWindow class so it's called when the window is created.
+                IMPORTANT, why you need each object definded in the foreach loop ?
+                ListView can't take in the interface (Watchable) so it needs the actual object (and it's proprieties) to be able to display it.
+             */
             try
             {
                 CollectionReference collectionRef = _db.Collection("watchables");
@@ -122,8 +186,6 @@ namespace Factory
                         {
                             Dictionary<string, object> data = document.ToDictionary();
                             string type = data["Type"].ToString();
-
-                            //We need the type so it knows how to process the data. The type is defined in the Converter class and takes whatever the generic type is
                             switch (type)
                             {
                                 case "Show":
@@ -171,9 +233,9 @@ namespace Factory
             }
         }
 
-        //Edit and delete buttons
 
-        private async void DeleteBC(object sender, RoutedEventArgs e)
+        //Delete from Firestore document (in a given collection by name field) method
+        public async void DeleteFS()
         {
             Query query = _db.Collection("watchables").WhereEqualTo("Name", tId.Text);
             QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
@@ -196,9 +258,13 @@ namespace Factory
             }
         }
 
-
-        private async void EditBC(object sender, RoutedEventArgs e)
+        //Edit Firestore document (in a given collection by name field) method
+        public async void EditFS()
         {
+
+            /*
+             * Well same as insert and only that we convert the data to object as above and that it uses FileOpenPicker (the image picker window).
+             */
             var picker = new FileOpenPicker();
             picker.ViewMode = PickerViewMode.Thumbnail;
             picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
