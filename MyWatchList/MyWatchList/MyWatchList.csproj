@@ -16,9 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Images\aot.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Remove="Views\CreateCategory.xaml" />
+    <None Remove="Views\CreateCategory.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,10 +49,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Update="Views\CreateCategory.xaml">
+    <Page Update="Views\CreateCategory.xaml">
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
+    </Page>
   </ItemGroup>
 
   <!-- 

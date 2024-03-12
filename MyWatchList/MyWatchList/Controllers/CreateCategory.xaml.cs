@@ -19,9 +19,10 @@ namespace MyWatchList.Controllers
 {
     public sealed partial class CreateCategory : Page
     {
-        //public CreateCategory()
-        //{
-        //    InitializeComponent();
-        //}
+        public CreateCategory()
+        {
+            this.InitializeComponent();
+        }
+     
     }
 }
