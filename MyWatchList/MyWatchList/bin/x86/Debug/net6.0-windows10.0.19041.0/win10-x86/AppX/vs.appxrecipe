@@ -29,21 +29,21 @@
     <AppXManifest Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-03-08T14:29:46.554</Modified>
+      <Modified>2024-03-12T10:03:29.650</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2024-03-08T14:29:46.334</Modified>
+      <Modified>2024-03-12T10:03:29.437</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.runtimeconfig.json">
       <PackagePath>MyWatchList.runtimeconfig.json</PackagePath>
-      <Modified>2024-03-08T13:08:16.073</Modified>
+      <Modified>2024-03-12T09:39:53.808</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
       <PackagePath>MyWatchList.dll</PackagePath>
-      <Modified>2024-03-08T14:29:46.250</Modified>
+      <Modified>2024-03-12T10:03:29.278</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Images\aot.jpg">
       <PackagePath>Assets\Images\aot.jpg</PackagePath>
@@ -51,11 +51,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>MyWatchList.exe</PackagePath>
-      <Modified>2024-03-08T14:29:46.254</Modified>
+      <Modified>2024-03-12T10:03:29.293</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
       <PackagePath>MyWatchList.deps.json</PackagePath>
-      <Modified>2024-03-08T13:08:16.059</Modified>
+      <Modified>2024-03-12T10:03:29.387</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\.nuget\packages\microsoft.netcore.app.runtime.win-x86\6.0.27\runtimes\win-x86\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
