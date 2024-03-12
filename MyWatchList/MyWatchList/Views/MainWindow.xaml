@@ -16,6 +16,7 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
+<<<<<<< HEAD
             <!-- Display the title "WatchList" with custom styling -->
             <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One"/>
 
@@ -36,8 +37,14 @@
                 </Button.Style>
             </Button>
 
+=======
+        <!-- Display the title "WatchList" with custom styling -->
+        <TextBlock Text="WatchList" FontSize="50" Margin="10" FontFamily="Assets/Fonts/#Jockey One"/>
+>>>>>>> parent of 23a3951 (Item Text and Button Added + Create Category Added)
 
+        <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
 
+<<<<<<< HEAD
             <StackPanel Grid.Row="1" Margin="50">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Action" FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left"/>
@@ -82,6 +89,34 @@
                     <!-- "Delete" button -->
                     <Button Content="Delete" Margin="10,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right"/>
                 </StackPanel>
+=======
+        <StackPanel Grid.Row="1" Margin="50">
+            <TextBlock Text="Action" FontSize="30" Margin="100,10,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left"/>
+
+            <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="100,0,0,0"/>
+            <!-- Wrap the ListView in a ScrollViewer -->
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <ListView x:Name="ActionListView" Margin="30,30,0,0">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="50,0,0,0">
+                                <Image Source="{Binding ImageSource}" Width="80" Height="60"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <!-- "Edit" button -->
+                <Button Content="Edit" Margin="10,0,0,0" HorizontalAlignment="Right"/>
+                <!-- "Delete" button -->
+                <Button Content="Delete" Margin="10,0,0,0" HorizontalAlignment="Right"/>
+>>>>>>> parent of 23a3951 (Item Text and Button Added + Create Category Added)
             </StackPanel>
         </Grid>
     </Frame>
