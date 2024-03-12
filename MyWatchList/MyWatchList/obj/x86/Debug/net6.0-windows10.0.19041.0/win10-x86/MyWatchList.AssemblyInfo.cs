@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MyWatchList")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+194ce59894a93c7091fe7cb7c25d42376af2938f")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aba24ce997c79d6c5e983688f8237100e13dce2d")]
->>>>>>> parent of 54b013c (Category page Added)
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b170764e2e82412b3879eda69aa7dd4c05e8b50a")]
 [assembly: System.Reflection.AssemblyProductAttribute("MyWatchList")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MyWatchList")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

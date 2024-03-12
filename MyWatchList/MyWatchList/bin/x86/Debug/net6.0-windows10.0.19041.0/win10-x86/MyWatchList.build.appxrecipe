@@ -10,37 +10,37 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>2e2bb24d-8960-434f-9d04-5850ab4bbe72</PackageIdentityName>
     <PackageIdentityPublisher>CN=User</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath></PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppX</LayoutDir>
+    <LayoutDir>C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppX</LayoutDir>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.runtimeconfig.json">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.runtimeconfig.json">
       <PackagePath>MyWatchList.runtimeconfig.json</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
       <PackagePath>MyWatchList.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Images\aot.jpg">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Images\aot.jpg">
       <PackagePath>Assets\Images\aot.jpg</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>MyWatchList.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
       <PackagePath>MyWatchList.deps.json</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\.nuget\packages\microsoft.netcore.app.runtime.win-x86\6.0.27\runtimes\win-x86\lib\net6.0\Microsoft.CSharp.dll">
@@ -763,25 +763,25 @@
     <AppxPackagedFile Include="C:\Users\PC\.nuget\packages\microsoft.windowsappsdk\1.2.230217.4\runtimes\win10-x86\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>

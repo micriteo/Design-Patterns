@@ -31,18 +31,19 @@ namespace MyWatchList
 
             var items = new List<ActionItem>
             {
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
-                new ActionItem("ms-appx:///Assets/Images/aot.jpg"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
+                new ActionItem("ms-appx:///Assets/Images/aot.jpg","AOT"),
 
 
             };
@@ -53,12 +54,12 @@ namespace MyWatchList
         public class ActionItem
         {
             public ImageSource ImageSource { get; set; }
-            //public string Title { get; set; }
+            public string Title { get; set; }
 
-            public ActionItem(string imageSource)
+            public ActionItem(string imageSource, string title)
             {
                 ImageSource = new BitmapImage(new Uri(imageSource));
-                //Title = title;
+                Title = title;
             }
         }
 

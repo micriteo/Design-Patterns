@@ -10,14 +10,14 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>2e2bb24d-8960-434f-9d04-5850ab4bbe72</PackageIdentityName>
     <PackageIdentityPublisher>CN=User</PackageIdentityPublisher>
-    <IntermediateOutputPath>E:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\</IntermediateOutputPath>
     <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppX</LayoutDir>
+    <LayoutDir>C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppX</LayoutDir>
     <RegisteredManifestChecksum>D5BBBC4EC917E6CD7EAAFE5E7333D79F8C570F6FF66902B6F801BA7A8033C75A</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>2e2bb24d-8960-434f-9d04-5850ab4bbe72_1.0.0.0_x86__4sdaedqydyjdm</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>2e2bb24d-8960-434f-9d04-5850ab4bbe72_4sdaedqydyjdm!App</RegisteredUserModeAppID>
@@ -26,80 +26,36 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <Modified>2024-03-12T10:03:29.650</Modified>
-=======
-      <Modified>2024-03-07T14:47:11.736</Modified>
->>>>>>> parent of 23a3951 (Item Text and Button Added + Create Category Added)
-=======
-      <Modified>2024-03-08T14:29:46.554</Modified>
->>>>>>> parent of 54b013c (Category page Added)
+      <Modified>2024-03-12T12:01:59.164</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <Modified>2024-03-12T10:03:29.437</Modified>
-=======
-      <Modified>2024-03-08T14:29:46.334</Modified>
->>>>>>> parent of 54b013c (Category page Added)
+      <Modified>2024-03-12T12:01:58.939</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.runtimeconfig.json">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.runtimeconfig.json">
       <PackagePath>MyWatchList.runtimeconfig.json</PackagePath>
-      <Modified>2024-03-08T13:08:16.073</Modified>
+      <Modified>2024-03-12T11:48:28.077</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
       <PackagePath>MyWatchList.dll</PackagePath>
-<<<<<<< HEAD
-      <Modified>2024-03-12T10:03:29.278</Modified>
-=======
-      <Modified>2024-03-07T14:47:11.515</Modified>
+      <Modified>2024-03-12T12:01:58.729</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.runtimeconfig.json">
-      <PackagePath>MyWatchList.runtimeconfig.json</PackagePath>
-      <Modified>2024-03-06T10:42:01.798</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
-      <PackagePath>MyWatchList.dll</PackagePath>
-      <Modified>2024-03-07T14:47:11.432</Modified>
->>>>>>> parent of 23a3951 (Item Text and Button Added + Create Category Added)
-=======
-      <Modified>2024-03-08T14:29:46.250</Modified>
->>>>>>> parent of 54b013c (Category page Added)
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Images\aot.jpg">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Images\aot.jpg">
       <PackagePath>Assets\Images\aot.jpg</PackagePath>
-      <Modified>2024-03-07T12:17:45.189</Modified>
+      <Modified>2024-03-12T11:14:17.789</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>MyWatchList.exe</PackagePath>
-<<<<<<< HEAD
-<<<<<<< HEAD
-      <Modified>2024-03-12T10:03:29.293</Modified>
+      <Modified>2024-03-12T12:01:58.733</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
       <PackagePath>MyWatchList.deps.json</PackagePath>
-      <Modified>2024-03-12T10:03:29.387</Modified>
-=======
-      <Modified>2024-03-07T14:47:11.435</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
-      <PackagePath>MyWatchList.deps.json</PackagePath>
-      <Modified>2024-03-07T12:25:39.070</Modified>
->>>>>>> parent of 23a3951 (Item Text and Button Added + Create Category Added)
-=======
-      <Modified>2024-03-08T14:29:46.254</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
-      <PackagePath>MyWatchList.deps.json</PackagePath>
-      <Modified>2024-03-08T13:08:16.059</Modified>
->>>>>>> parent of 54b013c (Category page Added)
+      <Modified>2024-03-12T12:01:58.889</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\PC\.nuget\packages\microsoft.netcore.app.runtime.win-x86\6.0.27\runtimes\win-x86\lib\net6.0\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -1061,33 +1017,33 @@
       <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
       <Modified>2023-02-10T22:55:38.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2024-02-13T12:36:45.872</Modified>
+      <Modified>2024-03-12T11:14:17.789</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
-      <Modified>2024-02-13T12:36:45.872</Modified>
+      <Modified>2024-03-12T11:14:17.790</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
-      <Modified>2024-02-13T12:36:45.872</Modified>
+      <Modified>2024-03-12T11:14:17.790</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
-      <Modified>2024-02-13T12:36:45.872</Modified>
+      <Modified>2024-03-12T11:14:17.790</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
-      <Modified>2024-02-13T12:36:45.872</Modified>
+      <Modified>2024-03-12T11:14:17.790</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
-      <Modified>2024-02-13T12:36:45.872</Modified>
+      <Modified>2024-03-12T11:14:17.791</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="E:\Design-Patterns\MyWatchList\MyWatchList\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
-      <Modified>2024-02-13T12:36:45.872</Modified>
+      <Modified>2024-03-12T11:14:17.791</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
