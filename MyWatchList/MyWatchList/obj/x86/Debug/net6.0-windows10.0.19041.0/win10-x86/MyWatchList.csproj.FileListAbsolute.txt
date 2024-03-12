@@ -291,3 +291,8 @@ C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0
 C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\qualifiers.txt.intermediate
 C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MultipleQualifiersPerDimensionFound.txt
 C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\ProjectArchitectures.txt
+C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\AddShow.xbf
+C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\AddShow.g.i.cs
+C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\AddShow.g.cs
+C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\AddShow.xaml
+C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\AddShow.xbf

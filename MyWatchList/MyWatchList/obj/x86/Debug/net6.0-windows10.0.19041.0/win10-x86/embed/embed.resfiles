@@ -1,2 +1,4 @@
 App.xbf
+Views\AddShow.xbf
+Views\CreateCategory.xbf
 Views\MainWindow.xbf

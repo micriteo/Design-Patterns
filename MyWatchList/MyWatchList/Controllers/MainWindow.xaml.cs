@@ -18,7 +18,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace MyWatchList
+namespace MyWatchList.Controllers
 {
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
@@ -61,6 +61,17 @@ namespace MyWatchList
                 ImageSource = new BitmapImage(new Uri(imageSource));
                 Title = title;
             }
+        }
+
+        private void CreateCategory_Click(object sender, RoutedEventArgs e)
+        {
+            // Use the Frame to navigate to the CreateCategory page
+            MainFrame.Navigate(typeof(CreateCategory));
+        }
+
+        private void AddShow_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(AddShow));
         }
 
     }

@@ -1,8 +1,8 @@
 <Window
-    x:Class="MyWatchList.MainWindow"
+    x:Class="MyWatchList.Controllers.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MyWatchList"
+    xmlns:local="using:MyWatchList.Controllers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
@@ -18,7 +18,19 @@
 
         <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="40,0,0,0"/>
 
-            <Button Content="Create Category" FontFamily="Assets/Fonts/#Jockey One" Margin="10,0,10,0" HorizontalAlignment="Right" FontSize="30">
+            <Button Content="Create Category" Click="CreateCategory_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="10,0,150,0" HorizontalAlignment="Right" FontSize="30">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background">
+                            <Setter.Value>
+                                <SolidColorBrush Color="#990505"/>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Content="Add Show" Click="AddShow_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="50,0,10,0" HorizontalAlignment="Right" FontSize="30">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background">
@@ -33,7 +45,6 @@
             <StackPanel Grid.Row="1" Margin="50">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Action" FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left"/>
-                    <Button Content="+" Margin="0,0,0,0" HorizontalAlignment="Left"/>
                 </StackPanel>
 
                 <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
