@@ -1181,23 +1181,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC\\.nuget\\packages\\": {},
+    "C:\\Users\\Dimi\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "projectUniqueName": "C:\\Users\\Dimi\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
       "projectName": "MyWatchList",
-      "projectPath": "E:\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
-      "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
-      "outputPath": "E:\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
+      "projectPath": "C:\\Users\\Dimi\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "packagesPath": "C:\\Users\\Dimi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Dimi\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Dimi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1219,11 +1219,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1253,47 +1248,47 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-arm64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x86",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -1301,19 +1296,19 @@
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.26, 6.0.26]"
           }
         ],
         "frameworkReferences": {
@@ -1324,7 +1319,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

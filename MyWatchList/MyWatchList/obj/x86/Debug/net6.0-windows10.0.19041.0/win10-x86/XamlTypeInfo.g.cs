@@ -224,21 +224,29 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[6];
+            _typeNameTable = new string[10];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
             _typeNameTable[3] = "Boolean";
             _typeNameTable[4] = "MyWatchList.MainWindow";
             _typeNameTable[5] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[6] = "System.Collections.ObjectModel.ObservableCollection`1<MyWatchList.GroupedItems>";
+            _typeNameTable[7] = "System.Collections.ObjectModel.Collection`1<MyWatchList.GroupedItems>";
+            _typeNameTable[8] = "MyWatchList.GroupedItems";
+            _typeNameTable[9] = "String";
 
-            _typeTable = new global::System.Type[6];
+            _typeTable = new global::System.Type[10];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
             _typeTable[3] = typeof(global::System.Boolean);
             _typeTable[4] = typeof(global::MyWatchList.MainWindow);
             _typeTable[5] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[6] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MyWatchList.GroupedItems>);
+            _typeTable[7] = typeof(global::System.Collections.ObjectModel.Collection<global::MyWatchList.GroupedItems>);
+            _typeTable[8] = typeof(global::MyWatchList.GroupedItems);
+            _typeTable[9] = typeof(global::System.String);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -275,12 +283,26 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
 
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
         private object Activate_4_MainWindow() { return new global::MyWatchList.MainWindow(); }
+        private object Activate_6_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MyWatchList.GroupedItems>(); }
+        private object Activate_7_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MyWatchList.GroupedItems>(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
             var newKey = (global::System.Object)key;
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
+        }
+        private void VectorAdd_6_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::MyWatchList.GroupedItems>)instance;
+            var newItem = (global::MyWatchList.GroupedItems)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_7_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::MyWatchList.GroupedItems>)instance;
+            var newItem = (global::MyWatchList.GroupedItems)item;
+            collection.Add(newItem);
         }
 
         private global::Microsoft.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
@@ -316,11 +338,37 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
             case 4:   //  MyWatchList.MainWindow
                 userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
                 userType.Activator = Activate_4_MainWindow;
+                userType.AddMemberName("GroupedItemsCollection");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
             case 5:   //  Microsoft.UI.Xaml.Window
+                xamlType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 6:   //  System.Collections.ObjectModel.ObservableCollection`1<MyWatchList.GroupedItems>
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<MyWatchList.GroupedItems>"));
+                userType.CollectionAdd = VectorAdd_6_ObservableCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 7:   //  System.Collections.ObjectModel.Collection`1<MyWatchList.GroupedItems>
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_7_Collection;
+                userType.CollectionAdd = VectorAdd_7_Collection;
+                xamlType = userType;
+                break;
+
+            case 8:   //  MyWatchList.GroupedItems
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.AddMemberName("Category");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 9:   //  String
                 xamlType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -392,6 +440,26 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.XamlControlsResources)instance;
             that.UseCompactResources = (global::System.Boolean)Value;
         }
+        private object get_1_MainWindow_GroupedItemsCollection(object instance)
+        {
+            var that = (global::MyWatchList.MainWindow)instance;
+            return that.GroupedItemsCollection;
+        }
+        private void set_1_MainWindow_GroupedItemsCollection(object instance, object Value)
+        {
+            var that = (global::MyWatchList.MainWindow)instance;
+            that.GroupedItemsCollection = (global::System.Collections.ObjectModel.ObservableCollection<global::MyWatchList.GroupedItems>)Value;
+        }
+        private object get_2_GroupedItems_Category(object instance)
+        {
+            var that = (global::MyWatchList.GroupedItems)instance;
+            return that.Category;
+        }
+        private void set_2_GroupedItems_Category(object instance, object Value)
+        {
+            var that = (global::MyWatchList.GroupedItems)instance;
+            that.Category = (global::System.String)Value;
+        }
 
         private global::Microsoft.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -406,6 +474,18 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
                 xamlMember.SetIsDependencyProperty();
                 xamlMember.Getter = get_0_XamlControlsResources_UseCompactResources;
                 xamlMember.Setter = set_0_XamlControlsResources_UseCompactResources;
+                break;
+            case "MyWatchList.MainWindow.GroupedItemsCollection":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.MainWindow");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "GroupedItemsCollection", "System.Collections.ObjectModel.ObservableCollection`1<MyWatchList.GroupedItems>");
+                xamlMember.Getter = get_1_MainWindow_GroupedItemsCollection;
+                xamlMember.Setter = set_1_MainWindow_GroupedItemsCollection;
+                break;
+            case "MyWatchList.GroupedItems.Category":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.GroupedItems");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "Category", "String");
+                xamlMember.Getter = get_2_GroupedItems_Category;
+                xamlMember.Setter = set_2_GroupedItems_Category;
                 break;
             }
             return xamlMember;

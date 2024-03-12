@@ -1,1 +1,1 @@
-E:\Design-Patterns\MyWatchList\MyWatchList\MyWatchList.csproj;x86
+C:\Users\Dimi\Source\Repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\MyWatchList.csproj;x86

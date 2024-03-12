@@ -7,46 +7,71 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="#990505">
-        <Grid.RowDefinitions>
-            <!-- Define the top row to be auto-sized (fits content) -->
-            <RowDefinition Height="Auto"/>
-            <!-- Define the bottom row to take up the remaining space -->
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Frame Name="MainFrame">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid Background="#990505">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
 
-        <!-- Display the title "WatchList" with custom styling -->
-        <TextBlock Text="WatchList" FontSize="50" Margin="10" FontFamily="Assets/Fonts/#Jockey One"/>
+                <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One"/>
 
-        <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+                <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="40,0,0,0"/>
 
-        <StackPanel Grid.Row="1" Margin="50">
-            <TextBlock Text="Action" FontSize="30" Margin="100,10,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left"/>
+                <Button Content="Create Category" FontFamily="Assets/Fonts/#Jockey One" Margin="10,0,10,0" HorizontalAlignment="Right" FontSize="30">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="#990505"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                </Button>
 
-            <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="100,0,0,0"/>
-            <!-- Wrap the ListView in a ScrollViewer -->
-            <ScrollViewer HorizontalScrollBarVisibility="Visible">
-                <ListView x:Name="ActionListView" Margin="30,30,0,0">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <StackPanel Orientation="Horizontal"/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="50,0,0,0">
-                                <Image Source="{Binding ImageSource}" Width="80" Height="60"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollViewer>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <!-- "Edit" button -->
-                <Button Content="Edit" Margin="10,0,0,0" HorizontalAlignment="Right"/>
-                <!-- "Delete" button -->
-                <Button Content="Delete" Margin="10,0,0,0" HorizontalAlignment="Right"/>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+                <!-- DISPLAYS CATEGORIES -->
+                <StackPanel Grid.Row="1" Margin="50">
+                    <ListView x:Name="CategoryListView" ItemsSource="{x:Bind GroupedItemsCollection}" SelectionMode="Single">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:GroupedItems">
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{x:Bind Category}" FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left"/>
+                                        <Button Content="+" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                                    </StackPanel>
+                                    <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+                                    <!-- DISPLAYS ITEM WITHIN CATEGORY-->
+                                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalAlignment="Bottom" Margin="0,20,0,0" Grid.Row="1">
+                                        <ItemsControl ItemsSource="{x:Bind Items}">
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <StackPanel Orientation="Vertical">
+                                                            <!-- Close button -->
+                                                            <Button Content="X"
+                                                                HorizontalAlignment="Right"
+                                                                VerticalAlignment="Top"
+                                                                Width="50"
+                                                                Height="30"
+                                                                Background="Transparent"
+                                                                BorderBrush="Transparent"
+                                                                Margin="0,0,0,0"/>
+                                                            <Image Source="{Binding ImageUrl}" Width="300" Height="260" Stretch="Uniform" Margin="0,0,0,0"/>
+                                                            <TextBlock Text="{Binding Name}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="130,20,0,0"/>
+                                                        </StackPanel>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </ScrollViewer>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+    </Frame>
 </Window>
