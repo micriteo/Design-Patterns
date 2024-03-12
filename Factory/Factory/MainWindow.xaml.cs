@@ -30,6 +30,7 @@ using Windows.UI.Popups;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 using WinRT.Interop;
+using Factory.Factory;
 
 
 // To learn more about WinUI, the WinUI project structure,
@@ -104,35 +105,12 @@ namespace Factory
         //INSERT into Firestore method
         private async void InsertFS()
         {
-            /*
-              How does this method works ?
-              
-              Great question Dimi ! 
-              Well, first we need to upload the image to the bucket.
-              Why is the image upload hardcoded in this case ? Am I lazy ?
-              No (yes), and that's because I wanted to leave you an easy example of how to upload an image to the bucket.
-              In the EditFS method you can find how to upload an image to the bucket with the FilePicker.
-             
-             Ok now the image is in the bucket.
-             The `var url` is the public URL of the uploaded file. The `alt='media'` tells it to give you the image not the JSON encoding of the image.
-
-             Now to the second step, you create the objects (Name, Description, ImageUrl, Category).
-             The collection reference is the collection name in the Firestore (you know the no duplicates story so no duplicate collection is created if it exists already).
-             Same for objects.
-             Afterwards for each object we set their DOCUMENT REFERENCE (the id in the db) by their name.
-             HOWEVER, this will be changed to the timestamps.
-             SetAsync sends the file to the Firestore.
-             (The File.Delete(filePath) is to delete the file from the images folder after it's uploaded to the bucket)).
-             
-             IMPORTANT ! The objects go through the Converter class which converts them to the Firestore format (dictionary).
-
-            */
             //Image path
             string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
             //string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
             string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
             var image = filePath;
-            //Uploading the file to the bucket (afterwards we tie it to the object in the collection)
+            //Uploading the file to the bucket afterwards we tie it to the object in the collection)
             //using var fileStream = File.OpenRead(filePath);
             using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
             {
@@ -149,15 +127,16 @@ namespace Factory
             Show show = new Show { Name = "ShowN", Description = "ShowD", ImageUrl = url, Category = "Action" };
             Anime anime = new Anime { Name = "AnimeN", Description = "AnimeD", ImageUrl = url, Category = "Comedy" };
             Movie movie = new Movie { Name = "MovieN", Description = "MovieD", ImageUrl = url, Category = "Drama" };
+
             CollectionReference watchableNode = _db.Collection("watchables");
             DocumentReference showRef = watchableNode.Document(show.Name);
             DocumentReference movieRef = watchableNode.Document(movie.Name);
             DocumentReference animeRef = watchableNode.Document(anime.Name);
-            //DO THE ID BY THE TIMESTAMPS IN FIRESTORE
 
-            await showRef.SetAsync(show);
-            await movieRef.SetAsync(movie);
-            await animeRef.SetAsync(anime);
+            await showRef.SetAsync(new Converter<Show>().ToFirestore(show));
+            await movieRef.SetAsync(new Converter<Movie>().ToFirestore(movie));
+            await animeRef.SetAsync(new Converter<Anime>().ToFirestore(anime));
+
             loadB.Content = "Sent data";
             File.Delete(filePath);
         }
@@ -186,38 +165,22 @@ namespace Factory
                         {
                             Dictionary<string, object> data = document.ToDictionary();
                             string type = data["Type"].ToString();
+                            Watchable watchable = null;
                             switch (type)
                             {
                                 case "Show":
-                                    Show show = new Show()
-                                    {
-                                        Name = data["Name"].ToString(),
-                                        Description = data["Description"].ToString(),
-                                        ImageUrl = data["ImageUrl"].ToString(),
-                                        Category = data["Category"].ToString()
-                                    };
-                                    dataList.Add(show);
+                                    watchable = new Converter<Show>().FromFirestore(data);
                                     break;
                                 case "Movie":
-                                    Movie movie = new Movie()
-                                    {
-                                        Name = data["Name"].ToString(),
-                                        Description = data["Description"].ToString(),
-                                        ImageUrl = data["ImageUrl"].ToString(),
-                                        Category = data["Category"].ToString()
-                                    };
-                                    dataList.Add(movie);
+                                    watchable = new Converter<Movie>().FromFirestore(data);
                                     break;
                                 case "Anime":
-                                    Anime anime = new Anime()
-                                    {
-                                        Name = data["Name"].ToString(),
-                                        Description = data["Description"].ToString(),
-                                        ImageUrl = data["ImageUrl"].ToString(),
-                                        Category = data["Category"].ToString()
-                                    };
-                                    dataList.Add(anime);
+                                    watchable = new Converter<Anime>().FromFirestore(data);
                                     break;
+                            }
+                            if (watchable != null)
+                            {
+                                dataList.Add(watchable);
                             }
                         }
                     }
