@@ -16,7 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Assets\Images\aot.jpg" />
-    <None Remove="Views\CreateCategory.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,14 +43,12 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Update="Assets\Images\aot.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Update="Views\CreateCategory.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
 
   <!-- 

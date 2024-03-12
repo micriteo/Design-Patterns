@@ -1,0 +1,1 @@
+E:\Design-Patterns\MyWatchList\MyWatchList\MyWatchList.csproj;x86
