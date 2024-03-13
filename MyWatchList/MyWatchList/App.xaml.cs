@@ -1,4 +1,5 @@
 ﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using MyWatchList.Controllers;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -24,11 +25,22 @@ namespace MyWatchList
         /// Invoked when the application is launched.
         /// </summary>
         /// <param name="args">Details about the launch request and process.</param>
+        /// 
+
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();
+
+            Frame rootFrame = new Frame();
+
+            rootFrame.Navigate(typeof(MainPage));
+
+            m_window.Content = rootFrame;
+
             m_window.Activate();
+
         }
+
 
         private Window m_window;
     }

@@ -1,1 +1,1 @@
-C:\Users\PC\Desktop\Design-Patterns\MyWatchList\MyWatchList\MyWatchList.csproj;x86
+C:\Design-Patterns\MyWatchList\MyWatchList\MyWatchList.csproj;x86

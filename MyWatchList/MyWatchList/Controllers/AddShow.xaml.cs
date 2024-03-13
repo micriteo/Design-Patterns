@@ -24,5 +24,11 @@ namespace MyWatchList.Controllers
             this.InitializeComponent();
         }
 
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
+
     }
 }

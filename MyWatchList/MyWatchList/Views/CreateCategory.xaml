@@ -16,30 +16,28 @@
         </Grid.RowDefinitions>
 
         <!-- Display the title "WatchList" with custom styling -->
-        <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One"/>
+        <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One" Foreground="White"/>
 
         <!-- Adding Horizontal Line-->
         <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
 
-        <!--"Add Category Button"-->
-        <Button Content="Create Category" FontFamily="Assets/Fonts/#Jockey One" Margin="10,0,10,0" HorizontalAlignment="Right" FontSize="30">
-            <Button.Style>
-                <Style TargetType="Button">
-                    <Setter Property="Background">
-                        <Setter.Value>
-                            <!-- Define your desired background brush here -->
-                            <SolidColorBrush Color="#990505"/>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button.Style>
-        </Button>
-
         <StackPanel Grid.Row="1" Margin="50">
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Add Category" FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left"/>
+                <TextBlock Text="Add Category" FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
             </StackPanel>
+            
             <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+
+            <StackPanel Orientation="Vertical" Margin="0,200,0,0" HorizontalAlignment="Center">
+                <TextBlock Text="Name" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                <TextBox PlaceholderText="Enter show name" Height="40" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,100,0,0" HorizontalAlignment="Center">
+                <Button Content="Back" Click="backButton_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="40,0,0,0" HorizontalAlignment="Left" Foreground="White"/>
+                <Button Content="Submit" Margin="40,0,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
+            </StackPanel>
+
         </StackPanel>
     </Grid>
 </Page>

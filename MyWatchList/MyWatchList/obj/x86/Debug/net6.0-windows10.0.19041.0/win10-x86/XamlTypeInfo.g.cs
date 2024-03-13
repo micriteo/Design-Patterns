@@ -224,7 +224,7 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[10];
+            _typeNameTable = new string[12];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -233,10 +233,12 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
             _typeNameTable[5] = "Microsoft.UI.Xaml.Controls.Page";
             _typeNameTable[6] = "Microsoft.UI.Xaml.Controls.UserControl";
             _typeNameTable[7] = "MyWatchList.Controllers.CreateCategory";
-            _typeNameTable[8] = "MyWatchList.Controllers.MainWindow";
-            _typeNameTable[9] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[8] = "MyWatchList.Controllers.EditShow";
+            _typeNameTable[9] = "MyWatchList.Controllers.MainPage";
+            _typeNameTable[10] = "MyWatchList.Controllers.MainWindow";
+            _typeNameTable[11] = "Microsoft.UI.Xaml.Window";
 
-            _typeTable = new global::System.Type[10];
+            _typeTable = new global::System.Type[12];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -245,8 +247,10 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
             _typeTable[5] = typeof(global::Microsoft.UI.Xaml.Controls.Page);
             _typeTable[6] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
             _typeTable[7] = typeof(global::MyWatchList.Controllers.CreateCategory);
-            _typeTable[8] = typeof(global::MyWatchList.Controllers.MainWindow);
-            _typeTable[9] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[8] = typeof(global::MyWatchList.Controllers.EditShow);
+            _typeTable[9] = typeof(global::MyWatchList.Controllers.MainPage);
+            _typeTable[10] = typeof(global::MyWatchList.Controllers.MainWindow);
+            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Window);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -284,7 +288,9 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
         private object Activate_0_XamlControlsResources() { return new global::Microsoft.UI.Xaml.Controls.XamlControlsResources(); }
         private object Activate_4_AddShow() { return new global::MyWatchList.Controllers.AddShow(); }
         private object Activate_7_CreateCategory() { return new global::MyWatchList.Controllers.CreateCategory(); }
-        private object Activate_8_MainWindow() { return new global::MyWatchList.Controllers.MainWindow(); }
+        private object Activate_8_EditShow() { return new global::MyWatchList.Controllers.EditShow(); }
+        private object Activate_9_MainPage() { return new global::MyWatchList.Controllers.MainPage(); }
+        private object Activate_10_MainWindow() { return new global::MyWatchList.Controllers.MainWindow(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
@@ -345,14 +351,28 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 8:   //  MyWatchList.Controllers.MainWindow
-                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_8_MainWindow;
+            case 8:   //  MyWatchList.Controllers.EditShow
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_8_EditShow;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 9:   //  Microsoft.UI.Xaml.Window
+            case 9:   //  MyWatchList.Controllers.MainPage
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_9_MainPage;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 10:   //  MyWatchList.Controllers.MainWindow
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
+                userType.Activator = Activate_10_MainWindow;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 11:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
