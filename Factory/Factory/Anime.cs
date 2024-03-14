@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    //[FirestoreData(ConverterType = typeof(Converter<Anime>))]
     public class Anime:Watchable
     {
         [FirestoreProperty]

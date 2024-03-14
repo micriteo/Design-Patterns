@@ -105,20 +105,6 @@ namespace Factory
         //INSERT into Firestore method
         private async void InsertFS()
         {
-            /*//Image path
-            string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
-            //string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
-            string filePath = Path.Combine(solutionDirectory, "images/car.jpg");
-            var image = filePath;
-            //Uploading the file to the bucket afterwards we tie it to the object in the collection)
-            //using var fileStream = File.OpenRead(filePath);
-            using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
-            {
-                await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
-
-            }
-            string filePathUrl = Path.Combine(solutionDirectory, "images");*/
-
             var picker = new FileOpenPicker();
             picker.ViewMode = PickerViewMode.Thumbnail;
             picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
@@ -130,8 +116,8 @@ namespace Factory
             nint windowHandle = WindowNative.GetWindowHandle(currentWindow);
             InitializeWithWindow.Initialize(picker, windowHandle);
 
-            var file = await picker.PickSingleFileAsync();
 
+            var file = await picker.PickSingleFileAsync();
             if (file != null)
             {
                 string imgName = Path.GetFileName(file.Path);
@@ -154,17 +140,12 @@ namespace Factory
 
                 if (!string.IsNullOrEmpty(imgName))
                 {
-                    /*
                     //We need the public URL of the uploaded file to tie it to the object in the collection
                     //THIS LINK IS TRANSLATED FROM GS TO ACCESS IT VIA THE CLOUD ! ADD ?alt=media at the END TO CHANGE THE ENCODING TO IMAGE !!!!
-                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString("car.jpg")}?alt=media";
+                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
                     //https://firebasestorage.googleapis.com/v0/b/{this._bucketname}/o/{image}
-                    */
 
                     //string connectionString = "Server=DESKTOP-P1UFSEM;Database=test;Integrated Security=true;TrustServerCertificate=True";
-
-                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
-
                     Show show = new Show { Name = "ShowN", Description = "ShowD", ImageUrl = url, Category = "Action" };
                     Anime anime = new Anime { Name = "AnimeN", Description = "AnimeD", ImageUrl = url, Category = "Comedy" };
                     Movie movie = new Movie { Name = "MovieN", Description = "MovieD", ImageUrl = url, Category = "Drama" };
@@ -183,7 +164,6 @@ namespace Factory
                 }
             }
         }
-
         //Retrieve data from the database (Firestore) method (attached to no button, connected to the ListView)
         private void RetrieveData()
         {

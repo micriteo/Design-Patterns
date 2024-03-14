@@ -9,9 +9,11 @@ using Windows.UI.Core.AnimationMetrics;
 
 namespace Factory
 {
-    //[FirestoreData(ConverterType = typeof(Converter<Show>))]
     public class Show : Watchable
     {
+        //public String _name;
+        //public String _description;
+
         [FirestoreProperty]
         public string Name { get; set; }
         [FirestoreProperty]
@@ -32,6 +34,8 @@ namespace Factory
                 this.Description = description;
                 this.ImageUrl = imageUrl;
                 this.Category = category;
+                //this.Type = "show";
+            //throw new NotImplementedException();
         }
     }
 }
