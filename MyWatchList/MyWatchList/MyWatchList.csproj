@@ -33,6 +33,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FirebaseStorage.net" Version="1.0.3" />
+    <PackageReference Include="Google.Cloud.Firestore" Version="3.5.1" />
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="4.9.0" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.230217.4" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.755" />
     <Manifest Include="$(ApplicationManifest)" />

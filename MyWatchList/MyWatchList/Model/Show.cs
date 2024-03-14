@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Google.Cloud.Firestore;
+using MyWatchList.Interfaces;
+using MyWatchList.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,16 +10,29 @@ using System.Xml.Linq;
 
 namespace ObserverDesignPatterns.Model
 {
-    internal class Show : Watchable
+    public class Show : IWatchable
     {
-        public Show(string name, string description, byte image) {
+        [FirestoreProperty]
+        public string Name { get; set; }
+        [FirestoreProperty]
+        public string Description { get; set; }
+        [FirestoreProperty]
+        public string ImageUrl { get; set; }
+        [FirestoreProperty]
+        public string Category { get; set; }
+
+        public Show() { }
+
+        public Show(string name, string description, string imageUrl, string category)
+        {
+            this.watchable(this.Name, this.Description, this.ImageUrl, this.Category);
+        }
+        public void watchable(string name, string description, string imageUrl, string category)
+        {
             this.Name = name;
             this.Description = description;
-            this.Image = image;
+            this.ImageUrl = imageUrl;
+            this.Category = category;
         }
-
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public byte Image { get; set; }
     }
 }
