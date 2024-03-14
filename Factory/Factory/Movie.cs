@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Factory
 {
-    [FirestoreData(ConverterType = typeof(Converter<Movie>))]
     public class Movie:Watchable
     {
 

@@ -9,7 +9,6 @@ using Windows.UI.Core.AnimationMetrics;
 
 namespace Factory
 {
-    [FirestoreData(ConverterType = typeof(Converter<Show>))]
     public class Show : Watchable
     {
         //public String _name;
