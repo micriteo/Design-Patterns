@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xolgtzxxICbOb0gXaahTiwkNijCZHhKjAQSNDhLjDNkAG2KRg4Wdp+Zs7vUfZQOTnQyEQrs9ZZHxjqlk+qXkKQ==",
+  "dgSpecHash": "Op7dPxb8RDEycOY5jIMh4tdbWJ2q1EINxrGE2nQKtiDa1U0+vkCizdFcTgMuBx8bbFdSZRmDJUiC1OUu4hyZfQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+  "projectFilePath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\arian\\.nuget\\packages\\firebasestorage.net\\1.0.3\\firebasestorage.net.1.0.3.nupkg.sha512",
     "C:\\Users\\arian\\.nuget\\packages\\google.api.commonprotos\\2.13.0\\google.api.commonprotos.2.13.0.nupkg.sha512",

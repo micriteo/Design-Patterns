@@ -16,15 +16,16 @@ namespace MyWatchList.Model.Commands
 {
     internal class AddShowC : DBCommand
     {
-        private string filePath;
-        private string imageName;
-        private string bucketLink;
+        //private string filePath;
+        //private string imageName;
+        //private string bucketLink;
         /*public AddShowC()
         {
             string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.FullName;
             this.bucketLink = "ms-appx:///Assets/Images/aot.jpg";
         }*/
 
+        /*
         public override async void imgUpload(Action callback)
         {
             var picker = new FileOpenPicker();
@@ -73,7 +74,8 @@ namespace MyWatchList.Model.Commands
                     callback();
                 }
             }
-        }
+        
+        }*/
 
          public override async void execute(string name, string description, string category)
         {
@@ -115,7 +117,7 @@ namespace MyWatchList.Model.Commands
                 */
                 //if (!string.IsNullOrEmpty(imgName))
                 //{
-                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(this.filePath)}%2F{Uri.EscapeDataString(this.imageName)}?alt=media";
+                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(this.filePath)}%2F{Uri.EscapeDataString(this.imageName)}?alt=media"; //from the abstract class
                     //this.bucketLink = url;
 
                     Show show = new Show { Name = name, Description = description, ImageUrl = url, Category = category };
@@ -136,10 +138,10 @@ namespace MyWatchList.Model.Commands
             //}
         }
 
-            public string getBucketLink()
+            /*public string getBucketLink()
             {
                 return this.bucketLink;
-            }
+            }*/
 
     }
 }
