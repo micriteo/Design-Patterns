@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace ObserverDesignPatterns.Model
 {
-    internal interface Watchable
+    public interface Watchable
     {
-        String Name { get; set; }
-        String Description { get; set; }
-        Byte Image {  get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Category { get; set; }
+        public string ImageUrl { get; set; }
+        void watchable(string name, string description, string imageUrl, string category);
     }
 }
