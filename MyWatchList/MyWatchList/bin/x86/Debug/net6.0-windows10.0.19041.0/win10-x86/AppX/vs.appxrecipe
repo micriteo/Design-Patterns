@@ -29,7 +29,7 @@
     <AppXManifest Include="C:\Users\dimit\Source\Repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2024-03-15T11:06:20.490</Modified>
+      <Modified>2024-03-15T11:11:38.069</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
@@ -43,7 +43,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dimit\Source\Repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll">
       <PackagePath>MyWatchList.dll</PackagePath>
-      <Modified>2024-03-15T11:06:19.350</Modified>
+      <Modified>2024-03-15T11:11:37.732</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dimit\Source\Repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\Assets\Images\aot.jpg">
       <PackagePath>Assets\Images\aot.jpg</PackagePath>
@@ -51,7 +51,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dimit\Source\Repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\apphost.exe">
       <PackagePath>MyWatchList.exe</PackagePath>
-      <Modified>2024-03-15T11:06:19.397</Modified>
+      <Modified>2024-03-15T11:11:37.737</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\dimit\Source\Repos\micriteo\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.deps.json">
       <PackagePath>MyWatchList.deps.json</PackagePath>
