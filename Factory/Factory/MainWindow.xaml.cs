@@ -169,9 +169,9 @@ namespace Factory
         {
             /*
                 My nemesis, retrieving data into the UI (ListView in this case). Sweat and tears were shed for this method.
-                The method is simple, it listens to the collection "watchables" and for each document in the collection it creates an object of the type of the document (Show, Movie, Anime).
-                The object is then added to the dataList and the ListView is set to the dataList.
-                The method is attached to the ListView in the XAML file (UI file).
+                    The method is simple, it listens to the collection "watchables" and for each document in the collection it creates an object of the type of the document (Show, Movie, Anime).
+                    The object is then added to the dataList and the ListView is set to the dataList.
+                    The method is attached to the ListView in the XAML file (UI file).
                 The method is also attached to the constructor of the MainWindow class so it's called when the window is created.
                 IMPORTANT, why you need each object definded in the foreach loop ?
                 ListView can't take in the interface (Watchable) so it needs the actual object (and it's proprieties) to be able to display it.
