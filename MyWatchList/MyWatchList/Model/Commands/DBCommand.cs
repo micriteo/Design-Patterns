@@ -26,6 +26,7 @@ namespace MyWatchList.Model.Commands
         protected string description;
         protected string category;
         protected string type;
+        protected string docRef;
         protected Action callback;
 
         public DBCommand()

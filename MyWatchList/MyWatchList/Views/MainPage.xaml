@@ -64,7 +64,9 @@
                                 <Grid>
                                     <StackPanel Orientation="Vertical" Margin="0,0,0,0">
                                         <!-- Close button -->
-                                        <Button Content="X"
+                                        <Button Content="X" 
+                                            Click="DeleteShow_Click"   
+                                            Tag="{Binding Title}"
                                             Foreground ="White"
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Top"
