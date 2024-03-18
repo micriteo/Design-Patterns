@@ -56,14 +56,28 @@ namespace MyWatchList.Controllers
             if (!string.IsNullOrEmpty(_docRef))
             {
                 Debug.WriteLine($"Submitting with docRef: {_docRef}");
+
                 var editCommand = new EditC();
                 editCommand.DocRef = _docRef;
-                editCommand.Name = sName.Text;
-                editCommand.Description = sDescription.Text;
-                editCommand.Category = ((ComboBoxItem)cBCat.SelectedItem).Content.ToString();
-                editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
-                editCommand.FilePath = imageUpload.filePath;
-                editCommand.ImageName = imageUpload.imageName;
+
+                if (!string.IsNullOrEmpty(sName.Text))
+                    editCommand.Name = sName.Text;
+
+                if (!string.IsNullOrEmpty(sDescription.Text))
+                    editCommand.Description = sDescription.Text;
+
+                if (cBCat.SelectedItem != null)
+                    editCommand.Category = ((ComboBoxItem)cBCat.SelectedItem).Content.ToString();
+
+                if (cBType.SelectedItem != null)
+                    editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
+
+                if (!string.IsNullOrEmpty(imageUpload.filePath) && !string.IsNullOrEmpty(imageUpload.imageName))
+                {
+                    editCommand.FilePath = imageUpload.filePath;
+                    editCommand.ImageName = imageUpload.imageName;
+                }
+
                 editCommand.execute();
             }
             else
@@ -71,6 +85,7 @@ namespace MyWatchList.Controllers
                 Debug.WriteLine("No docRef received!");
             }
         }
+
 
         private async void imageBtn(object sender, RoutedEventArgs e)
         {

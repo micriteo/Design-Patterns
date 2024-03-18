@@ -35,14 +35,24 @@ namespace MyWatchList.Model.Commands
             {
                 if (documentSnapshot.Exists)
                 {
-                    // Get the document reference
                     DocumentReference docRef = documentSnapshot.Reference;
-                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(this.FilePath)}%2F{Uri.EscapeDataString(this.ImageName)}?alt=media"; //from the abstract class
-                    Dictionary<string, object> data = documentSnapshot.ToDictionary();
-                    data["Name"] = this.Name; 
-                    data["Description"] = this.Description; 
-                    data["ImageUrl"] = url;
-                    data["Category"] = this.Category;
+                    Dictionary<string, object> data = new Dictionary<string, object>();
+
+                    if (!string.IsNullOrEmpty(this.Name))
+                        data["Name"] = this.Name;
+
+                    if (!string.IsNullOrEmpty(this.Description))
+                        data["Description"] = this.Description;
+
+                    if (!string.IsNullOrEmpty(this.FilePath) && !string.IsNullOrEmpty(this.ImageName))
+                    {
+                        var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(this.FilePath)}%2F{Uri.EscapeDataString(this.ImageName)}?alt=media";
+                        data["ImageUrl"] = url;
+                    }
+
+                    if (!string.IsNullOrEmpty(this.Category))
+                        data["Category"] = this.Category;
+
                     await docRef.UpdateAsync(data);
                 }
             }
