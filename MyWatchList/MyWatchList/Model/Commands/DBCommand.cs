@@ -22,8 +22,6 @@ namespace MyWatchList.Model.Commands
         protected readonly string _bucketName;
         protected string baseDir = AppDomain.CurrentDomain.BaseDirectory;
         protected string bucketLink;
-        protected string filePath;
-        protected string imageName;
         protected string name;
         protected string description;
         protected string category;

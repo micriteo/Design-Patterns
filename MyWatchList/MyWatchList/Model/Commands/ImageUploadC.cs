@@ -13,7 +13,10 @@ namespace MyWatchList.Model.Commands
 {
     internal class ImageUploadC : DBCommand
     {
-        public async void imgUpload()
+        public string filePath;
+        public string imageName;
+
+        public async Task<(string, string)> imgUpload()
         {
             var picker = new FileOpenPicker();
             picker.ViewMode = PickerViewMode.Thumbnail;
@@ -31,6 +34,7 @@ namespace MyWatchList.Model.Commands
             if (file != null)
             {
                 string imgName = Path.GetFileName(file.Path);
+                //this._imageName = imgName;
                 this.imageName = imgName;
 
                 // Copy the selected file to the images folder
@@ -51,9 +55,10 @@ namespace MyWatchList.Model.Commands
 
                 }
                 string filePathUrl = Path.Combine(solutionDirectory, "images");
+                //this._imagePath = filePathUrl;
                 this.filePath = filePathUrl;
 
-                 if (!string.IsNullOrEmpty(imgName))
+                if (!string.IsNullOrEmpty(imgName))
                 {
                     var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
                     this.bucketLink = url;
@@ -61,11 +66,13 @@ namespace MyWatchList.Model.Commands
                     runCallback();
                 }
             }
+
+            return (filePath, imageName);
         }
 
         public override async void execute()
         {
-            imgUpload();
+            (filePath, imageName) = await imgUpload();
         }
 
         public void setCallback(Action callback)

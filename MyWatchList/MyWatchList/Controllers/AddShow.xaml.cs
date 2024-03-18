@@ -1,22 +1,8 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using System.Windows;
-using Microsoft.UI.Xaml.Media.Imaging;
 using MyWatchList.Model.Commands;
-using System.Runtime.CompilerServices;
-using System.Diagnostics;
+using Microsoft.UI.Xaml.Media.Imaging;
 
 namespace MyWatchList.Controllers
 {
@@ -24,25 +10,35 @@ namespace MyWatchList.Controllers
     {
         private AddShowC addShow;
         private ImageUploadC imageUpload;
+        private bool uploaded = false;
+
         public AddShow()
         {
             this.InitializeComponent();
             this.imageUpload = new ImageUploadC();
         }
 
-        private void submitBtn(object sender, RoutedEventArgs e)
+        private async void submitBtn(object sender, RoutedEventArgs e)
         {
-            //AddShowC addShow = new AddShowC(sName.Text, sDescription.Text, cBCat.SelectedItem.ToString());
-            this.addShow = new AddShowC(sName.Text, sDescription.Text, ((ComboBoxItem)cBCat.SelectedItem).Content.ToString());
-            this.addShow.execute();
+            if (!uploaded)
+            {
+                return;
+            }
+
+            var addShowCommand = new AddShowC(sName.Text, sDescription.Text, cBCat.SelectedItem.ToString(), imageUpload.filePath, imageUpload.imageName);
+            addShowCommand.execute();
             submitStatus.Text = "Show added!";
         }
 
-        private void imageBtn(object sender, RoutedEventArgs e)
+        private async void imageBtn(object sender, RoutedEventArgs e)
         {
+            if (uploaded)
+            {
+                uploaded = false;
+            }
             this.imageUpload.setCallback(imgConverter);
-            this.imageUpload.execute();
-
+            await this.imageUpload.imgUpload();
+            uploaded = true;
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
@@ -58,6 +54,5 @@ namespace MyWatchList.Controllers
             CoverImage.Source = bitmapImage;
             CoverImage.UpdateLayout();
         }
-
     }
 }
