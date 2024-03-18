@@ -20,6 +20,7 @@
     <None Remove="EditShow.xaml" />
     <None Remove="Views\AddShow.xaml" />
     <None Remove="Views\CreateCategory.xaml" />
+    <None Remove="Views\InfoPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +54,11 @@
     <Content Update="Assets\Images\aot.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\InfoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="EditShow.xaml">

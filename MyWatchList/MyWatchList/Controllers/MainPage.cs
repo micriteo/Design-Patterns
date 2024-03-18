@@ -2,6 +2,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using MyWatchList.Interfaces;
 using MyWatchList.Model.Commands;
+using MyWatchList.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,6 +40,7 @@ namespace MyWatchList.Controllers
                 actionItems.Add(new ActionItem
                 {
                     Title = watchable.Name,
+                    Description = watchable.Description,
                     ImageSource = watchable.ImageUrl
                 });
             }
@@ -48,6 +50,7 @@ namespace MyWatchList.Controllers
         public class ActionItem
         {
             public string Title { get; set; }
+            public string Description { get; set; }
             public string ImageSource { get; set; }
         }
 
@@ -62,10 +65,10 @@ namespace MyWatchList.Controllers
             MainFrame.Navigate(typeof(AddShow));
         }
 
-        private void EditShow_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        /*private void InfoPage_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(EditShow));
-        }
+            MainFrame.Navigate(typeof(InfoPage));
+        }*/
 
         private async void DeleteShow_Click(object sender, RoutedEventArgs e)
         {
@@ -79,10 +82,13 @@ namespace MyWatchList.Controllers
             }
         }
 
-
-
-
-
+        private void ActionListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is ActionItem actionItem)
+            {
+                MainFrame.Navigate(typeof(InfoPage), actionItem);
+            }
+        }
 
 
     }
