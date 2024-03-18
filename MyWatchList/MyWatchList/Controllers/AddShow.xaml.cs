@@ -25,7 +25,7 @@ namespace MyWatchList.Controllers
                 return;
             }
 
-            var addShowCommand = new AddShowC(sName.Text, sDescription.Text, cBCat.SelectedItem.ToString(), imageUpload.filePath, imageUpload.imageName);
+            var addShowCommand = new AddShowC(sName.Text, sDescription.Text, ((ComboBoxItem)cBCat.SelectedItem).Content.ToString(), ((ComboBoxItem)cBType.SelectedItem).Content.ToString(), imageUpload.filePath, imageUpload.imageName);
             addShowCommand.execute();
             submitStatus.Text = "Show added!";
         }

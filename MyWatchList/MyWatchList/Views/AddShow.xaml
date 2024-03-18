@@ -39,6 +39,16 @@
                     <TextBox x:Name="sDescription" PlaceholderText="Enter show description" Height="100" Width="400" Margin="0,10,0,0" HorizontalAlignment="Left"/>
                 </StackPanel>
 
+                <!-- Add Type -->
+                <StackPanel Orientation="Vertical" Margin="50,30,0,0">
+                    <TextBlock Text="Type" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                    <ComboBox x:Name="cBType" Width="400" Margin="0,10,0,0">
+                        <ComboBoxItem Content="Anime"/>
+                        <ComboBoxItem Content="Show"/>
+                        <ComboBoxItem Content="Movie"/>
+                    </ComboBox>
+                </StackPanel>
+
                 <!-- Add Category -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Add to Category" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
