@@ -43,10 +43,7 @@ namespace MyWatchList.Controllers
             base.OnNavigatedTo(e);
             if (e.Parameter != null && e.Parameter is string docRef)
             {
-                _docRef = docRef; // Retrieve and store the docRef
-                // Now you can use _docRef as needed
-                // For example:
-                Debug.WriteLine($"Received docRef: {_docRef}");
+                _docRef = docRef; 
             }
         }
 
