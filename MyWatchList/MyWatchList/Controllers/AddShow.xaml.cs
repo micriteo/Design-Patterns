@@ -23,25 +23,25 @@ namespace MyWatchList.Controllers
     public sealed partial class AddShow : Page
     {
         private AddShowC addShow;
+        private ImageUploadC imageUpload;
         public AddShow()
         {
             this.InitializeComponent();
-            this.addShow = new AddShowC();
+            this.imageUpload = new ImageUploadC();
         }
 
         private void submitBtn(object sender, RoutedEventArgs e)
         {
             //AddShowC addShow = new AddShowC(sName.Text, sDescription.Text, cBCat.SelectedItem.ToString());
-            this.addShow.execute(sName.Text, sDescription.Text, ((ComboBoxItem)cBCat.SelectedItem).Content.ToString());
+            this.addShow = new AddShowC(sName.Text, sDescription.Text, ((ComboBoxItem)cBCat.SelectedItem).Content.ToString());
+            this.addShow.execute();
             submitStatus.Text = "Show added!";
         }
 
         private void imageBtn(object sender, RoutedEventArgs e)
         {
-           this.addShow.imgUpload(imgConverter);
-            //UpdateLayout();
-            //imgConverter();
-            //CoverImage.Source = new BitmapImage(new Uri(this.addShow.getBucketLink()));
+            this.imageUpload.setCallback(imgConverter);
+            this.imageUpload.execute();
 
         }
 
@@ -52,7 +52,7 @@ namespace MyWatchList.Controllers
 
         private void imgConverter()
         {
-            string imageUrl = this.addShow.getBucketLink();
+            string imageUrl = this.imageUpload.getBucketLink();
             BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.UriSource = new Uri(imageUrl, UriKind.Absolute);
             CoverImage.Source = bitmapImage;

@@ -24,6 +24,10 @@ namespace MyWatchList.Model.Commands
         protected string bucketLink;
         protected string filePath;
         protected string imageName;
+        protected string name;
+        protected string description;
+        protected string category;
+        protected Action callback;
 
         public DBCommand()
         {
@@ -54,59 +58,6 @@ namespace MyWatchList.Model.Commands
             this._db = FirestoreDb.Create("designpatterns-98314");
         }
 
-        public abstract void execute(string name, string description, string category);
-        public async void imgUpload(Action callback)
-        {
-            var picker = new FileOpenPicker();
-            picker.ViewMode = PickerViewMode.Thumbnail;
-            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-            picker.FileTypeFilter.Add(".jpg");
-            picker.FileTypeFilter.Add(".jpeg");
-            picker.FileTypeFilter.Add(".png");
-
-            Window currentWindow = Window.Current ?? new Window();
-            nint windowHandle = WindowNative.GetWindowHandle(currentWindow);
-            InitializeWithWindow.Initialize(picker, windowHandle);
-
-            var file = await picker.PickSingleFileAsync();
-
-            if (file != null)
-            {
-                string imgName = Path.GetFileName(file.Path);
-                this.imageName = imgName;
-
-                // Copy the selected file to the images folder
-                string solutionFolderPath = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
-                string imagesFolderPath = Path.Combine(solutionFolderPath, "images");
-
-
-                StorageFolder imagesFolder = await StorageFolder.GetFolderFromPathAsync(imagesFolderPath);
-                await file.CopyAsync(imagesFolder, imgName, NameCollisionOption.ReplaceExisting);
-
-                string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
-                string filePath = Path.Combine(solutionDirectory, "images/", imgName);
-                var image = filePath;
-
-                using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
-                {
-                    await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
-
-                }
-                string filePathUrl = Path.Combine(solutionDirectory, "images");
-                this.filePath = filePathUrl;
-
-                if (!string.IsNullOrEmpty(imgName))
-                {
-                    var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
-                    this.bucketLink = url;
-                    File.Delete(filePath);
-                    callback();
-                }
-            }
-        }
-        public string getBucketLink()
-        {
-            return this.bucketLink;
-        }
+        public abstract void execute();
     }
 }
