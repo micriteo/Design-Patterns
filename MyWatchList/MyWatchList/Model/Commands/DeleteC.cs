@@ -45,8 +45,6 @@ namespace MyWatchList.Model.Commands
                     }
                 }
             }
-
-            Debug.WriteLine($"Document {_docRef} not found or already deleted.");
         }
 
         public override void execute()

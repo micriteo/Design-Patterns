@@ -13,6 +13,7 @@ namespace MyWatchList.Controllers
     {
         private RetrieveC _retrieveC;
         private DeleteC _deleteC;
+        private EditC _editC;
 
         public MainPage()
         {
@@ -25,6 +26,7 @@ namespace MyWatchList.Controllers
             _retrieveC = new RetrieveC(dataReceived);
             _retrieveC.execute();
             _deleteC = new DeleteC();
+            _editC = new EditC();
         }
 
         private void dataReceived(List<IWatchable> dataList)
@@ -79,6 +81,15 @@ namespace MyWatchList.Controllers
 
                 //Refresh the ListView (thank god)
                 _retrieveC.execute();
+            }
+        }
+
+        private async void EditShow_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is ActionItem actionItem)
+            {
+                //_editC.SetDocRef(actionItem.Title);
+                MainFrame.Navigate(typeof(EditShow), actionItem.Title); // Pass the docRef to EditShow
             }
         }
 
