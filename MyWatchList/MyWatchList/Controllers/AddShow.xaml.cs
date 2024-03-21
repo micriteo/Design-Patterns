@@ -19,19 +19,37 @@ namespace MyWatchList.Controllers
         {
             this.InitializeComponent();
             this.imageUpload = new ImageUploadC();
+            SubscribeToCheckBoxEvents();
         }
 
-        private void cBCat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SubscribeToCheckBoxEvents()
         {
-            selectedCategories.Clear();
             foreach (var item in cBCat.Items)
             {
-                ComboBoxItem comboBoxItem = item as ComboBoxItem;
-                CheckBox checkBox = comboBoxItem.Content as CheckBox;
-                if (checkBox.IsChecked == true)
+                if (item is ComboBoxItem comboBoxItem)
                 {
-                    selectedCategories.Add(checkBox.Tag.ToString());
+                    if (comboBoxItem.Content is CheckBox checkBox)
+                    {
+                        checkBox.Checked += CheckBox_Checked;
+                        checkBox.Unchecked += CheckBox_Unchecked;
+                    }
                 }
+            }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox)
+            {
+                selectedCategories.Add(checkBox.Tag.ToString());
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox)
+            {
+                selectedCategories.Remove(checkBox.Tag.ToString());
             }
         }
 
