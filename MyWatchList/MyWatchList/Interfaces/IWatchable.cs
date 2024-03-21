@@ -10,9 +10,9 @@ namespace MyWatchList.Interfaces
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Category { get; set; }
+        List<string> Category { get; set; }
         //For the image
         public string ImageUrl { get; set; }
-        void watchable(string name, string description, string imageUrl, string category);
+        void watchable(string name, string description, List<string> category, string imageUrl);
     }
 }

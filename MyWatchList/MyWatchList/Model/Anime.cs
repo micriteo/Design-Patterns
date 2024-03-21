@@ -18,20 +18,21 @@ namespace ObserverDesignPatterns.Model
         [FirestoreProperty]
         public string ImageUrl { get; set; }
         [FirestoreProperty]
-        public string Category { get; set; }
+        public List<string> Category { get; set; }
 
         public Anime() { }
 
-        public Anime(string name, string description, string imageUrl, string category)
+        public Anime(string name, string description, List<string> category, string imageUrl)
         {
-            this.watchable(this.Name, this.Description, this.ImageUrl, this.Category);
+            this.watchable(name, description, category, imageUrl);
         }
-        public void watchable(string name, string description, string imageUrl, string category)
+
+        public void watchable(string name, string description, List<string> category, string imageUrl)
         {
             this.Name = name;
             this.Description = description;
-            this.ImageUrl = imageUrl;
             this.Category = category;
+            this.ImageUrl = imageUrl;
         }
     }
 }

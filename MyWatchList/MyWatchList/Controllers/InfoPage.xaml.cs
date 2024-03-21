@@ -16,14 +16,8 @@ using MyWatchList.Controllers;
 using static MyWatchList.Controllers.MainPage;
 using MyWatchList.Interfaces;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace MyWatchList.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class InfoPage : Page
     {
         public InfoPage()
@@ -41,9 +35,11 @@ namespace MyWatchList.Views
             if (e.Parameter is IWatchable watchableItem)
             {
                 Watchable = watchableItem;
+                //Converting the list of categories into a string (yay that's cool) and also splitting them with ,
+                var categoriesString = string.Join(", ", Watchable.Category);
+                WatchableCategoryTextBlock.Text = categoriesString;
             }
         }
-
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {

@@ -8,19 +8,19 @@
     mc:Ignorable="d">
 
     <Frame x:Name="AddFrame" x:FieldModifier="public">
-    <Grid Background="#990505">
-        <Grid.RowDefinitions>
-            <!-- Define the top row to be auto-sized (fits content) -->
-            <RowDefinition Height="Auto"/>
-            <!-- Define the bottom row to take up the remaining space -->
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid Background="#990505">
+            <Grid.RowDefinitions>
+                <!-- Define the top row to be auto-sized (fits content) -->
+                <RowDefinition Height="Auto"/>
+                <!-- Define the bottom row to take up the remaining space -->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <!-- Display the title "WatchList" with custom styling -->
-        <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One" Foreground ="White"/>
+            <!-- Display the title "WatchList" with custom styling -->
+            <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One" Foreground ="White"/>
 
-        <!-- Adding Horizontal Line-->
-        <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+            <!-- Adding Horizontal Line-->
+            <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
 
             <StackPanel Grid.Row="1" Margin="30">
 
@@ -52,10 +52,16 @@
                 <!-- Add Category -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Add to Category" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
-                    <ComboBox x:Name="cBCat" Width="400" Margin="0,10,0,0">
-                        <ComboBoxItem Content="Category 1"/>
-                        <ComboBoxItem Content="Category 2"/>
-                        <ComboBoxItem Content="Category 3"/>
+                    <ComboBox x:Name="cBCat" Width="400" Margin="0,10,0,0" SelectionChanged="cBCat_SelectionChanged">
+                        <ComboBoxItem>
+                            <CheckBox Content="Category 1" Tag="Category1"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox Content="Category 2" Tag="Category2"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox Content="Category 3" Tag="Category3"/>
+                        </ComboBoxItem>
                         <!-- Add more categories as needed -->
                     </ComboBox>
                 </StackPanel>

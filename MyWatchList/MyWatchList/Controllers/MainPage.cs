@@ -41,14 +41,17 @@ namespace MyWatchList.Controllers
 
         public class ActionItem : IWatchable
         {
-            public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-            public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-            public string Category { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-            public string ImageUrl { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+            public string Name { get; set; }
+            public string Description { get; set; }
+            public List<string> Category { get; set; }
+            public string ImageUrl { get; set; }
 
-            public void watchable(string name, string description, string imageUrl, string category)
+            public void watchable(string name, string description, List<string> category, string imageUrl)
             {
-                throw new NotImplementedException();
+                Name = name;
+                Description = description;
+                Category = category;
+                ImageUrl = imageUrl;
             }
         }
 

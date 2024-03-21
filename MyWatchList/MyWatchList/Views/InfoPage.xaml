@@ -31,7 +31,7 @@
 				<Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="40,0,0,0"/>
 
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
-                    <TextBlock Text="{x:Bind Watchable.Category}" FontSize="30" Margin="40,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                    <TextBlock x:Name="WatchableCategoryTextBlock" FontSize="30" Margin="40,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                 </StackPanel>
 
 

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Google.Cloud.Firestore;
 using MyWatchList.Interfaces;
 
@@ -12,22 +10,56 @@ namespace MyWatchList.Model
     {
         public T FromFirestore(object value)
         {
-            Dictionary<string, object> values = (Dictionary<string, object>)value;
+            if (!(value is Dictionary<string, object> values))
+            {
+                throw new ArgumentException($"Invalid value type for Firestore conversion: {value?.GetType()?.Name ?? "null"}");
+            }
+
             T watchable = new T();
-            watchable.watchable(values["Name"].ToString(), values["Description"].ToString(), values["ImageUrl"].ToString(), values["Category"].ToString());
+            watchable.watchable(
+                values["Name"].ToString(),
+                values["Description"].ToString(),
+                ConvertCategory(values["Category"]), 
+                values["ImageUrl"].ToString());
             return watchable;
+        }
+
+        private List<string> ConvertCategory(object categoryObject)
+        {
+            if (categoryObject == null)
+            {
+                return new List<string>();
+            }
+
+            if (categoryObject is List<object> categoryList)
+            {
+                return categoryList.Select(x => x.ToString()).ToList(); 
+            }
+
+            throw new ArgumentException($"Invalid category type for conversion: {categoryObject.GetType().Name}");
         }
 
         public object ToFirestore(T value)
         {
-            return new Dictionary<string, object>
-             {
-            { "Type", typeof(T).Name }, //we need this for retrieval to know the type also which type we edit in the edit functions
-            {"Category", value.Category },
-            { "Name", value.Name },
-            { "Description", value.Description },
-            { "ImageUrl", value.ImageUrl }
-             };
+            if (value == null)
+            {
+                throw new ArgumentNullException(nameof(value));
+            }
+
+            var firestoreData = new Dictionary<string, object>
+            {
+                { "Type", typeof(T).Name },
+                { "Name", value.Name },
+                { "Description", value.Description },
+                { "ImageUrl", value.ImageUrl }
+            };
+
+            if (value.Category != null && value.Category.Count > 0)
+            {
+                firestoreData["Category"] = value.Category.ToArray();
+            }
+
+            return firestoreData;
         }
     }
 }
