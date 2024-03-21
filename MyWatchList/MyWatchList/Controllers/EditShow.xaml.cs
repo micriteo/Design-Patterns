@@ -31,11 +31,13 @@ namespace MyWatchList.Controllers
         private ImageUploadC imageUpload;
         private bool uploaded = false;
         private string _docRef;
+        private List<string> selectedCategories = new List<string>();
 
         public EditShow()
         {
             this.InitializeComponent();
             this.imageUpload = new ImageUploadC();
+            SubscribeToCheckBoxEvents();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -44,6 +46,37 @@ namespace MyWatchList.Controllers
             if (e.Parameter != null && e.Parameter is string docRef)
             {
                 _docRef = docRef; 
+            }
+        }
+
+        private void SubscribeToCheckBoxEvents()
+        {
+            foreach (var item in cBCat.Items)
+            {
+                if (item is ComboBoxItem comboBoxItem)
+                {
+                    if (comboBoxItem.Content is CheckBox checkBox)
+                    {
+                        checkBox.Checked += CheckBox_Checked;
+                        checkBox.Unchecked += CheckBox_Unchecked;
+                    }
+                }
+            }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox)
+            {
+                selectedCategories.Add(checkBox.Tag.ToString());
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (sender is CheckBox checkBox)
+            {
+                selectedCategories.Remove(checkBox.Tag.ToString());
             }
         }
 
@@ -58,16 +91,24 @@ namespace MyWatchList.Controllers
                 editCommand.DocRef = _docRef;
 
                 if (!string.IsNullOrEmpty(sName.Text))
+                {
                     editCommand.Name = sName.Text;
+                }
 
                 if (!string.IsNullOrEmpty(sDescription.Text))
+                {
                     editCommand.Description = sDescription.Text;
+                }
 
                 if (cBCat.SelectedItem != null)
-                    editCommand.Category = ((ComboBoxItem)cBCat.SelectedItem).Content.ToString();
+                {
+                    editCommand.Categories = selectedCategories;
+                }
 
                 if (cBType.SelectedItem != null)
+                {
                     editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
+                }
 
                 if (!string.IsNullOrEmpty(imageUpload.filePath) && !string.IsNullOrEmpty(imageUpload.imageName))
                 {

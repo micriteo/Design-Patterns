@@ -55,9 +55,15 @@
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Add to Category" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                     <ComboBox x:Name="cBCat" Width="400" Margin="0,10,0,0">
-                        <ComboBoxItem Content="Category 1"/>
-                        <ComboBoxItem Content="Category 2"/>
-                        <ComboBoxItem Content="Category 3"/>
+                        <ComboBoxItem>
+                            <CheckBox Content="Category 1" Tag="Category1"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox Content="Category 2" Tag="Category2"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <CheckBox Content="Category 3" Tag="Category3"/>
+                        </ComboBoxItem>
                         <!-- Add more categories as needed -->
                     </ComboBox>
                 </StackPanel>

@@ -15,7 +15,7 @@ namespace MyWatchList.Model.Commands
     {
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Category { get; set; }
+        public List<string> Categories { get; set; }
         public string Type { get; set; }
         public string FilePath { get; set; }
         public string ImageName {get; set; }
@@ -25,6 +25,11 @@ namespace MyWatchList.Model.Commands
         {
             _docRef = docRef;
         }*/
+
+        public EditC()
+        {
+            this.Categories = new List<string>();
+        }
 
         public override async void execute()
         {
@@ -39,10 +44,14 @@ namespace MyWatchList.Model.Commands
                     Dictionary<string, object> data = new Dictionary<string, object>();
 
                     if (!string.IsNullOrEmpty(this.Name))
+                    {
                         data["Name"] = this.Name;
+                    }
 
                     if (!string.IsNullOrEmpty(this.Description))
+                    {
                         data["Description"] = this.Description;
+                    }
 
                     if (!string.IsNullOrEmpty(this.FilePath) && !string.IsNullOrEmpty(this.ImageName))
                     {
@@ -50,8 +59,9 @@ namespace MyWatchList.Model.Commands
                         data["ImageUrl"] = url;
                     }
 
-                    if (!string.IsNullOrEmpty(this.Category))
-                        data["Category"] = this.Category;
+                    if (this.Categories.Count > 0){
+                        data["Category"] = this.Categories;
+                    }
 
                     //ADD NULL CHECK 
 
