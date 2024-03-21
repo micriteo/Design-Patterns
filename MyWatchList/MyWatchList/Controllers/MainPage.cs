@@ -36,24 +36,20 @@ namespace MyWatchList.Controllers
 
         private void populateLv(List<IWatchable> dataList)
         {
-            List<ActionItem> actionItems = new List<ActionItem>();
-            foreach (var watchable in dataList)
-            {
-                actionItems.Add(new ActionItem
-                {
-                    Title = watchable.Name,
-                    Description = watchable.Description,
-                    ImageSource = watchable.ImageUrl
-                });
-            }
-            ActionListView.ItemsSource = actionItems;
+            ActionListView.ItemsSource = dataList;
         }
 
-        public class ActionItem
+        public class ActionItem : IWatchable
         {
-            public string Title { get; set; }
-            public string Description { get; set; }
-            public string ImageSource { get; set; }
+            public string Name { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+            public string Description { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+            public string Category { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+            public string ImageUrl { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+            public void watchable(string name, string description, string imageUrl, string category)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private void CreateCategory_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
@@ -74,9 +70,9 @@ namespace MyWatchList.Controllers
 
         private async void DeleteShow_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.DataContext is ActionItem actionItem)
+            if (sender is Button button && button.DataContext is IWatchable watchable)
             {
-                _deleteC.SetDocRef(actionItem.Title);
+                _deleteC.SetDocRef(watchable.Name);
                 await _deleteC.Delete();
 
                 //Refresh the ListView (thank god)
@@ -86,20 +82,21 @@ namespace MyWatchList.Controllers
 
         private async void EditShow_Click(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button && button.DataContext is ActionItem actionItem)
+            if (sender is Button button && button.DataContext is IWatchable watchable)
             {
                 //_editC.SetDocRef(actionItem.Title);
-                MainFrame.Navigate(typeof(EditShow), actionItem.Title); // Pass the docRef to EditShow
+                MainFrame.Navigate(typeof(EditShow), watchable.Name); // Pass the docRef to EditShow
             }
         }
 
         private void ActionListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (e.ClickedItem is ActionItem actionItem)
+            if (e.ClickedItem is IWatchable watchableItem)
             {
-                MainFrame.Navigate(typeof(InfoPage), actionItem);
+                MainFrame.Navigate(typeof(InfoPage), watchableItem);
             }
         }
+
 
 
     }

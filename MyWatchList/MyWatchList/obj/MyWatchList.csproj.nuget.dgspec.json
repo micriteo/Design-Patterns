@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {}
+    "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {
+    "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+        "projectUniqueName": "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
         "projectName": "MyWatchList",
-        "projectPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+        "projectPath": "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
         "packagesPath": "C:\\Users\\arian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
+        "outputPath": "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -85,27 +85,27 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -113,15 +113,15 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[6.0.28, 6.0.28]"
+              "version": "[6.0.27, 6.0.27]"
             }
           ],
           "frameworkReferences": {
@@ -132,7 +132,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

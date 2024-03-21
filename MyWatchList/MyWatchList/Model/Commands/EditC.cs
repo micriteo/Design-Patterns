@@ -53,6 +53,8 @@ namespace MyWatchList.Model.Commands
                     if (!string.IsNullOrEmpty(this.Category))
                         data["Category"] = this.Category;
 
+                    //ADD NULL CHECK 
+
                     await docRef.UpdateAsync(data);
                 }
             }

@@ -66,7 +66,7 @@
                                         <!-- Close button -->
                                         <Button Content="X" 
                                             Click="DeleteShow_Click"   
-                                            Tag="{Binding Title}"
+                                            Tag="{Binding Name}"
                                             Foreground ="White"
                                             HorizontalAlignment="Right"
                                             VerticalAlignment="Top"
@@ -76,11 +76,11 @@
                                             BorderBrush="Transparent"
                                             Margin="0,0,0,0"/>
                                         <Button Background="Transparent" BorderBrush="Transparent" IsHitTestVisible="False">
-                                            <Image Source="{Binding ImageSource}" Width="300" Height="260" Stretch="Uniform" Margin="0,0,0,0" Grid.Row="0"/>
+                                            <Image Source="{Binding ImageUrl}" Width="300" Height="260" Stretch="Uniform" Margin="0,0,0,0" Grid.Row="0"/>
                                         </Button>
-                                        <TextBlock Text="{Binding Title}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="130,20,0,0" Grid.Row="1" Foreground ="White"/>
-                                        <TextBlock Text="{Binding Description}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="130,20,0,0" Grid.Row="1" Foreground ="White"/>
-                                        <Button Content="Edit" Click="EditShow_Click" Tag="{Binding Title}" Margin="10,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
+                                        <TextBlock Text="{Binding Name}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="130,20,0,0" Grid.Row="1" Foreground ="White"/>
+                                        <!--<TextBlock Text="{Binding Description}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="130,20,0,0" Grid.Row="1" Foreground ="White"/>-->
+                                        <Button Content="Edit" Click="EditShow_Click" Tag="{Binding Name}" Margin="10,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
                                     </StackPanel>
                                 </Grid>
                             </DataTemplate>

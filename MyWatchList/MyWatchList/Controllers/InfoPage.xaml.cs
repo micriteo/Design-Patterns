@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using MyWatchList.Controllers;
 using static MyWatchList.Controllers.MainPage;
+using MyWatchList.Interfaces;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -28,18 +29,21 @@ namespace MyWatchList.Views
         public InfoPage()
         {
             this.InitializeComponent();
+            this.DataContext = Watchable;
         }
+
+        public IWatchable Watchable { get; set; }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter is ActionItem actionItem)
+            if (e.Parameter is IWatchable watchableItem)
             {
-                // Set the DataContext to the selected item's data
-                DataContext = actionItem;
+                Watchable = watchableItem;
             }
         }
+
 
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
