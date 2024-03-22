@@ -1,23 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {}
+    "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {
+    "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+        "projectUniqueName": "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
         "projectName": "MyWatchList",
-        "projectPath": "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
-        "packagesPath": "C:\\Users\\arian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arian\\Desktop\\Repos\\DesignPatterns\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
+        "projectPath": "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+        "packagesPath": "C:\\Users\\dimit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Users\\dimit\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\arian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dimit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dimit\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
