@@ -224,7 +224,7 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[12];
+            _typeNameTable = new string[20];
             _typeNameTable[0] = "Microsoft.UI.Xaml.Controls.XamlControlsResources";
             _typeNameTable[1] = "Microsoft.UI.Xaml.ResourceDictionary";
             _typeNameTable[2] = "Object";
@@ -234,11 +234,19 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
             _typeNameTable[6] = "Microsoft.UI.Xaml.Controls.UserControl";
             _typeNameTable[7] = "MyWatchList.Controllers.CreateCategory";
             _typeNameTable[8] = "MyWatchList.Controllers.EditShow";
-            _typeNameTable[9] = "MyWatchList.Controllers.MainPage";
-            _typeNameTable[10] = "MyWatchList.Controllers.MainWindow";
-            _typeNameTable[11] = "Microsoft.UI.Xaml.Window";
+            _typeNameTable[9] = "MyWatchList.Views.InfoPage";
+            _typeNameTable[10] = "MyWatchList.Interfaces.IWatchable";
+            _typeNameTable[11] = "MyWatchList.Controllers.MainPage";
+            _typeNameTable[12] = "System.Collections.ObjectModel.ObservableCollection`1<MyWatchList.Controllers.GroupedWatchables>";
+            _typeNameTable[13] = "System.Collections.ObjectModel.Collection`1<MyWatchList.Controllers.GroupedWatchables>";
+            _typeNameTable[14] = "MyWatchList.Controllers.GroupedWatchables";
+            _typeNameTable[15] = "String";
+            _typeNameTable[16] = "System.Collections.Generic.List`1<MyWatchList.Interfaces.IWatchable>";
+            _typeNameTable[17] = "System.Collections.Generic.List`1<String>";
+            _typeNameTable[18] = "MyWatchList.Controllers.MainWindow";
+            _typeNameTable[19] = "Microsoft.UI.Xaml.Window";
 
-            _typeTable = new global::System.Type[12];
+            _typeTable = new global::System.Type[20];
             _typeTable[0] = typeof(global::Microsoft.UI.Xaml.Controls.XamlControlsResources);
             _typeTable[1] = typeof(global::Microsoft.UI.Xaml.ResourceDictionary);
             _typeTable[2] = typeof(global::System.Object);
@@ -248,9 +256,17 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
             _typeTable[6] = typeof(global::Microsoft.UI.Xaml.Controls.UserControl);
             _typeTable[7] = typeof(global::MyWatchList.Controllers.CreateCategory);
             _typeTable[8] = typeof(global::MyWatchList.Controllers.EditShow);
-            _typeTable[9] = typeof(global::MyWatchList.Controllers.MainPage);
-            _typeTable[10] = typeof(global::MyWatchList.Controllers.MainWindow);
-            _typeTable[11] = typeof(global::Microsoft.UI.Xaml.Window);
+            _typeTable[9] = typeof(global::MyWatchList.Views.InfoPage);
+            _typeTable[10] = typeof(global::MyWatchList.Interfaces.IWatchable);
+            _typeTable[11] = typeof(global::MyWatchList.Controllers.MainPage);
+            _typeTable[12] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MyWatchList.Controllers.GroupedWatchables>);
+            _typeTable[13] = typeof(global::System.Collections.ObjectModel.Collection<global::MyWatchList.Controllers.GroupedWatchables>);
+            _typeTable[14] = typeof(global::MyWatchList.Controllers.GroupedWatchables);
+            _typeTable[15] = typeof(global::System.String);
+            _typeTable[16] = typeof(global::System.Collections.Generic.List<global::MyWatchList.Interfaces.IWatchable>);
+            _typeTable[17] = typeof(global::System.Collections.Generic.List<global::System.String>);
+            _typeTable[18] = typeof(global::MyWatchList.Controllers.MainWindow);
+            _typeTable[19] = typeof(global::Microsoft.UI.Xaml.Window);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -289,14 +305,43 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
         private object Activate_4_AddShow() { return new global::MyWatchList.Controllers.AddShow(); }
         private object Activate_7_CreateCategory() { return new global::MyWatchList.Controllers.CreateCategory(); }
         private object Activate_8_EditShow() { return new global::MyWatchList.Controllers.EditShow(); }
-        private object Activate_9_MainPage() { return new global::MyWatchList.Controllers.MainPage(); }
-        private object Activate_10_MainWindow() { return new global::MyWatchList.Controllers.MainWindow(); }
+        private object Activate_9_InfoPage() { return new global::MyWatchList.Views.InfoPage(); }
+        private object Activate_11_MainPage() { return new global::MyWatchList.Controllers.MainPage(); }
+        private object Activate_12_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MyWatchList.Controllers.GroupedWatchables>(); }
+        private object Activate_13_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MyWatchList.Controllers.GroupedWatchables>(); }
+        private object Activate_16_List() { return new global::System.Collections.Generic.List<global::MyWatchList.Interfaces.IWatchable>(); }
+        private object Activate_17_List() { return new global::System.Collections.Generic.List<global::System.String>(); }
+        private object Activate_18_MainWindow() { return new global::MyWatchList.Controllers.MainWindow(); }
         private void MapAdd_0_XamlControlsResources(object instance, object key, object item)
         {
             var collection = (global::System.Collections.Generic.IDictionary<global::System.Object, global::System.Object>)instance;
             var newKey = (global::System.Object)key;
             var newItem = (global::System.Object)item;
             collection.Add(newKey, newItem);
+        }
+        private void VectorAdd_12_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::MyWatchList.Controllers.GroupedWatchables>)instance;
+            var newItem = (global::MyWatchList.Controllers.GroupedWatchables)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_13_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::MyWatchList.Controllers.GroupedWatchables>)instance;
+            var newItem = (global::MyWatchList.Controllers.GroupedWatchables)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_16_List(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::MyWatchList.Interfaces.IWatchable>)instance;
+            var newItem = (global::MyWatchList.Interfaces.IWatchable)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_17_List(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::System.String>)instance;
+            var newItem = (global::System.String)item;
+            collection.Add(newItem);
         }
 
         private global::Microsoft.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
@@ -358,21 +403,80 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 9:   //  MyWatchList.Controllers.MainPage
+            case 9:   //  MyWatchList.Views.InfoPage
                 userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_9_MainPage;
+                userType.Activator = Activate_9_InfoPage;
+                userType.AddMemberName("Watchable");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 10:   //  MyWatchList.Controllers.MainWindow
+            case 10:   //  MyWatchList.Interfaces.IWatchable
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, null);
+                userType.AddMemberName("Name");
+                userType.AddMemberName("Description");
+                userType.AddMemberName("Category");
+                userType.AddMemberName("ImageUrl");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 11:   //  MyWatchList.Controllers.MainPage
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Controls.Page"));
+                userType.Activator = Activate_11_MainPage;
+                userType.AddMemberName("GroupedItemsCollection");
+                userType.AddMemberName("Watchables");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 12:   //  System.Collections.ObjectModel.ObservableCollection`1<MyWatchList.Controllers.GroupedWatchables>
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<MyWatchList.Controllers.GroupedWatchables>"));
+                userType.CollectionAdd = VectorAdd_12_ObservableCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 13:   //  System.Collections.ObjectModel.Collection`1<MyWatchList.Controllers.GroupedWatchables>
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_13_Collection;
+                userType.CollectionAdd = VectorAdd_13_Collection;
+                xamlType = userType;
+                break;
+
+            case 14:   //  MyWatchList.Controllers.GroupedWatchables
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.AddMemberName("Category");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 15:   //  String
+                xamlType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 16:   //  System.Collections.Generic.List`1<MyWatchList.Interfaces.IWatchable>
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.CollectionAdd = VectorAdd_16_List;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 17:   //  System.Collections.Generic.List`1<String>
+                userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.CollectionAdd = VectorAdd_17_List;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 18:   //  MyWatchList.Controllers.MainWindow
                 userType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Microsoft.UI.Xaml.Window"));
-                userType.Activator = Activate_10_MainWindow;
+                userType.Activator = Activate_18_MainWindow;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 11:   //  Microsoft.UI.Xaml.Window
+            case 19:   //  Microsoft.UI.Xaml.Window
                 xamlType = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
             }
@@ -444,6 +548,86 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
             var that = (global::Microsoft.UI.Xaml.Controls.XamlControlsResources)instance;
             that.UseCompactResources = (global::System.Boolean)Value;
         }
+        private object get_1_InfoPage_Watchable(object instance)
+        {
+            var that = (global::MyWatchList.Views.InfoPage)instance;
+            return that.Watchable;
+        }
+        private void set_1_InfoPage_Watchable(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Views.InfoPage)instance;
+            that.Watchable = (global::MyWatchList.Interfaces.IWatchable)Value;
+        }
+        private object get_2_MainPage_GroupedItemsCollection(object instance)
+        {
+            var that = (global::MyWatchList.Controllers.MainPage)instance;
+            return that.GroupedItemsCollection;
+        }
+        private void set_2_MainPage_GroupedItemsCollection(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Controllers.MainPage)instance;
+            that.GroupedItemsCollection = (global::System.Collections.ObjectModel.ObservableCollection<global::MyWatchList.Controllers.GroupedWatchables>)Value;
+        }
+        private object get_3_GroupedWatchables_Category(object instance)
+        {
+            var that = (global::MyWatchList.Controllers.GroupedWatchables)instance;
+            return that.Category;
+        }
+        private void set_3_GroupedWatchables_Category(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Controllers.GroupedWatchables)instance;
+            that.Category = (global::System.String)Value;
+        }
+        private object get_4_MainPage_Watchables(object instance)
+        {
+            var that = (global::MyWatchList.Controllers.MainPage)instance;
+            return that.Watchables;
+        }
+        private void set_4_MainPage_Watchables(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Controllers.MainPage)instance;
+            that.Watchables = (global::System.Collections.Generic.List<global::MyWatchList.Interfaces.IWatchable>)Value;
+        }
+        private object get_5_IWatchable_Name(object instance)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            return that.Name;
+        }
+        private void set_5_IWatchable_Name(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            that.Name = (global::System.String)Value;
+        }
+        private object get_6_IWatchable_Description(object instance)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            return that.Description;
+        }
+        private void set_6_IWatchable_Description(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            that.Description = (global::System.String)Value;
+        }
+        private object get_7_IWatchable_Category(object instance)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            return that.Category;
+        }
+        private void set_7_IWatchable_Category(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            that.Category = (global::System.Collections.Generic.List<global::System.String>)Value;
+        }
+        private object get_8_IWatchable_ImageUrl(object instance)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            return that.ImageUrl;
+        }
+        private void set_8_IWatchable_ImageUrl(object instance, object Value)
+        {
+            var that = (global::MyWatchList.Interfaces.IWatchable)instance;
+            that.ImageUrl = (global::System.String)Value;
+        }
 
         private global::Microsoft.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
@@ -458,6 +642,54 @@ namespace MyWatchList.MyWatchList_XamlTypeInfo
                 xamlMember.SetIsDependencyProperty();
                 xamlMember.Getter = get_0_XamlControlsResources_UseCompactResources;
                 xamlMember.Setter = set_0_XamlControlsResources_UseCompactResources;
+                break;
+            case "MyWatchList.Views.InfoPage.Watchable":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Views.InfoPage");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "Watchable", "MyWatchList.Interfaces.IWatchable");
+                xamlMember.Getter = get_1_InfoPage_Watchable;
+                xamlMember.Setter = set_1_InfoPage_Watchable;
+                break;
+            case "MyWatchList.Controllers.MainPage.GroupedItemsCollection":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Controllers.MainPage");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "GroupedItemsCollection", "System.Collections.ObjectModel.ObservableCollection`1<MyWatchList.Controllers.GroupedWatchables>");
+                xamlMember.Getter = get_2_MainPage_GroupedItemsCollection;
+                xamlMember.Setter = set_2_MainPage_GroupedItemsCollection;
+                break;
+            case "MyWatchList.Controllers.GroupedWatchables.Category":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Controllers.GroupedWatchables");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "Category", "String");
+                xamlMember.Getter = get_3_GroupedWatchables_Category;
+                xamlMember.Setter = set_3_GroupedWatchables_Category;
+                break;
+            case "MyWatchList.Controllers.MainPage.Watchables":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Controllers.MainPage");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "Watchables", "System.Collections.Generic.List`1<MyWatchList.Interfaces.IWatchable>");
+                xamlMember.Getter = get_4_MainPage_Watchables;
+                xamlMember.Setter = set_4_MainPage_Watchables;
+                break;
+            case "MyWatchList.Interfaces.IWatchable.Name":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Interfaces.IWatchable");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "Name", "String");
+                xamlMember.Getter = get_5_IWatchable_Name;
+                xamlMember.Setter = set_5_IWatchable_Name;
+                break;
+            case "MyWatchList.Interfaces.IWatchable.Description":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Interfaces.IWatchable");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "Description", "String");
+                xamlMember.Getter = get_6_IWatchable_Description;
+                xamlMember.Setter = set_6_IWatchable_Description;
+                break;
+            case "MyWatchList.Interfaces.IWatchable.Category":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Interfaces.IWatchable");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "Category", "System.Collections.Generic.List`1<String>");
+                xamlMember.Getter = get_7_IWatchable_Category;
+                xamlMember.Setter = set_7_IWatchable_Category;
+                break;
+            case "MyWatchList.Interfaces.IWatchable.ImageUrl":
+                userType = (global::MyWatchList.MyWatchList_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MyWatchList.Interfaces.IWatchable");
+                xamlMember = new global::MyWatchList.MyWatchList_XamlTypeInfo.XamlMember(this, "ImageUrl", "String");
+                xamlMember.Getter = get_8_IWatchable_ImageUrl;
+                xamlMember.Setter = set_8_IWatchable_ImageUrl;
                 break;
             }
             return xamlMember;

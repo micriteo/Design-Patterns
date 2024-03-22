@@ -2,5 +2,6 @@ App.xbf
 Views\AddShow.xbf
 Views\CreateCategory.xbf
 Views\EditShow.xbf
+Views\InfoPage.xbf
 Views\MainPage.xbf
 Views\MainWindow.xbf

@@ -13896,23 +13896,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\arian\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "projectUniqueName": "C:\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
       "projectName": "MyWatchList",
-      "projectPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
-      "packagesPath": "C:\\Users\\arian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
+      "projectPath": "C:\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Users\\User\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\arian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -13934,11 +13937,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -13980,43 +13978,43 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
-            "version": "[10.0.19041.31, 10.0.19041.31]"
+            "version": "[10.0.19041.28, 10.0.19041.28]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[6.0.28, 6.0.28]"
+            "version": "[6.0.16, 6.0.16]"
           }
         ],
         "frameworkReferences": {
@@ -14027,7 +14025,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {
