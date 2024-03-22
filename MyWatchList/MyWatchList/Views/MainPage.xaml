@@ -51,56 +51,56 @@
 
                     <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
 
-                    <!-- DISPLAYS CATEGORIES -->
+                    <!-- Stackpanel for categories that wraps the items -->
                     <StackPanel Grid.Row="1" Margin="50">
-                        <ListView x:Name="CategoryListView" ItemClick="ActionListView_ItemClick" Margin="50,0,0,30" IsItemClickEnabled="True">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="local:GroupedWatchables">
-                                    <StackPanel>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock Text="{x:Bind Category}"  FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
-                                        </StackPanel>
-                                        <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
-                                        <!-- DISPLAYS ITEM WITHIN CATEGORY-->
-                                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalAlignment="Bottom" Margin="0,20,0,0" Grid.Row="1">
-                                            <ItemsControl Margin="50,0,0,30" ItemsSource="{x:Bind Watchables}">
-                                                <ItemsControl.ItemsPanel>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                            <ListView x:Name="CategoryListView" Margin="50,0,0,30">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="local:GroupedWatchables">
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{x:Bind Category}"  FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                                            </StackPanel>
+                                            <Rectangle Width="2000" Height="4" Fill="White"/>
+                                            <!-- Watchable items -->
+                                            <ListView ItemsSource="{x:Bind Watchables}" Margin="50,0,0,30" IsItemClickEnabled="True" ItemClick="ActionItem_Click">
+                                                <ListView.ItemsPanel>
                                                     <ItemsPanelTemplate>
-                                                        <!-- Use a horizontal StackPanel -->
-                                                        <StackPanel Orientation="Horizontal" Margin="-10,0,0,0"/>
+                                                        <StackPanel Orientation="Horizontal"/>
                                                     </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                                <ItemsControl.ItemTemplate>
+                                                </ListView.ItemsPanel>
+                                                <ListView.ItemTemplate>
                                                     <DataTemplate>
                                                         <Grid Margin="5">
                                                             <StackPanel Orientation="Vertical">
                                                                 <!-- Close button -->
                                                                 <Button Content="X"
-                                                                    Click="DeleteShow_Click"   
-                                                                    Tag="{Binding Name}"
-                                                                    Foreground ="White"
-                                                                    HorizontalAlignment="Right"
-                                                                    VerticalAlignment="Top"
-                                                                    Width="50"
-                                                                    Height="30"
-                                                                    Background="Transparent"
-                                                                    BorderBrush="Transparent"
-                                                                    Margin="0,0,0,0"/>
+                                                                Click="DeleteShow_Click"   
+                                                                Tag="{Binding Name}"
+                                                                Foreground ="White"
+                                                                HorizontalAlignment="Right"
+                                                                VerticalAlignment="Top"
+                                                                Width="50"
+                                                                Height="30"
+                                                                Background="Transparent"
+                                                                BorderBrush="Transparent"
+                                                                Margin="0,0,0,0"/>
                                                                 <Button Background="Transparent" BorderBrush="Transparent" IsHitTestVisible="False">
-                                                                    <Image Source="{Binding ImageUrl}" Width="300" Height="260" Stretch="Uniform" Margin="0,0,0,0" Grid.Row="0"/>
+                                                                    <Image Source="{Binding ImageUrl}" Width="300" Height="260" Stretch="Uniform" Margin="0,0,0,0"/>
                                                                 </Button>
-                                                                <TextBlock Text="{Binding Name}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="130,20,0,0" Grid.Row="1" Foreground ="White"/>
+                                                                <TextBlock Text="{Binding Name}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="10,0,0,0" Foreground ="White"/>
                                                                 <Button Content="Edit" Click="EditShow_Click" Tag="{Binding Name}" Margin="10,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
                                                             </StackPanel>
                                                         </Grid>
                                                     </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </ScrollViewer>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                                                </ListView.ItemTemplate>
+                                            </ListView>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </ScrollViewer>
+
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">

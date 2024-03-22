@@ -131,7 +131,7 @@ namespace MyWatchList.Controllers
             }
         }
 
-        private void ActionListView_ItemClick(object sender, ItemClickEventArgs e)
+        private void ActionItem_Click(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedItem is IWatchable watchableItem)
             {
