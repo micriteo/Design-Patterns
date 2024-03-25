@@ -29,13 +29,14 @@
             <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
 
             <StackPanel Orientation="Vertical" Margin="0,200,0,0" HorizontalAlignment="Center">
-                <TextBlock Text="Name" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
-                <TextBox PlaceholderText="Enter show name" Height="40" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                <TextBlock Text="Category Name" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                <TextBox x:Name="CategoryName" PlaceholderText="Enter category name" Height="40" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0,100,0,0" HorizontalAlignment="Center">
                 <Button Content="Back" Click="backButton_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="40,0,0,0" HorizontalAlignment="Left" Foreground="White"/>
-                <Button Content="Submit" Margin="40,0,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
+                <Button Click="submitBtn"  Content="Submit" Margin="40,0,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
+                <TextBlock x:Name="Status" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
             </StackPanel>
 
         </StackPanel>

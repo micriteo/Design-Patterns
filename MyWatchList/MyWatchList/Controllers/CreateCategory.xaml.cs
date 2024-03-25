@@ -14,6 +14,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using System.Windows;
 using Microsoft.UI.Xaml.Media.Imaging;
+using MyWatchList.Model.Commands;
 
 namespace MyWatchList.Controllers
 {
@@ -22,6 +23,14 @@ namespace MyWatchList.Controllers
         public CreateCategory()
         {
             this.InitializeComponent();
+        }
+
+        private async void submitBtn(object sender, RoutedEventArgs e)
+        {
+            var addCategoryCommand = new AddCategoryC(CategoryName.Text);
+            //addCategoryCommand.Name = CategoryName.Text;
+            addCategoryCommand.execute();
+            Status.Text = "Category Added !";
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)

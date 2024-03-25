@@ -21,11 +21,6 @@ namespace MyWatchList.Model.Commands
         public string ImageName {get; set; }
         public string DocRef { get; set; }
 
-        /*public void SetDocRef(string docRef)
-        {
-            _docRef = docRef;
-        }*/
-
         public EditC()
         {
             this.Categories = new List<string>();
