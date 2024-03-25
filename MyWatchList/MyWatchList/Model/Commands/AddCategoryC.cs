@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyWatchList.Model.Commands
 {
-    //Keeps updating the Categories document in the watchables collection (it's already created). Technically it's an update.
+    //Change of plans. New categories collection with an updateed file of categories inside.
     internal class AddCategoryC : DBCommand
     {
         public string _name; //in this case the category name
@@ -24,7 +24,7 @@ namespace MyWatchList.Model.Commands
 
         public override async void execute()
         {
-            DocumentReference docRef = _db.Collection("watchables").Document("Categories");
+            DocumentReference docRef = _db.Collection("categories").Document("Categories");
             DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
 
             if (snapshot.Exists)

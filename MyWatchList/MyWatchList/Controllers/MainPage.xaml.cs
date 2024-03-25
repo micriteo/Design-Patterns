@@ -56,7 +56,7 @@ namespace MyWatchList.Controllers
 
     public sealed partial class MainPage : Page
     {
-        private RetrieveC _retrieveC;
+        private RetrieveShowC _retrieveC;
         private DeleteC _deleteC;
         private EditC _editC;
 
@@ -72,7 +72,7 @@ namespace MyWatchList.Controllers
 
         private void InitializeFirestore()
         {
-            _retrieveC = new RetrieveC(dataReceived);
+            _retrieveC = new RetrieveShowC(dataReceived);
             _retrieveC.execute();
             _deleteC = new DeleteC();
             _editC = new EditC();

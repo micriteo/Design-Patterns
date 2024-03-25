@@ -10,7 +10,7 @@ namespace MyWatchList.Controllers
 {
     public sealed partial class AddShow : Page
     {
-        private AddShowC addShow;
+        private RetrieveCategoryC retrieveCategoryC;
         private ImageUploadC imageUpload;
         private bool uploaded = false;
         private List<string> selectedCategories = new List<string>();
@@ -19,7 +19,9 @@ namespace MyWatchList.Controllers
         {
             this.InitializeComponent();
             this.imageUpload = new ImageUploadC();
+            this.retrieveCategoryC = new RetrieveCategoryC();
             SubscribeToCheckBoxEvents();
+            PopulateCategoriesComboBox();
         }
 
         private void SubscribeToCheckBoxEvents()
@@ -36,6 +38,24 @@ namespace MyWatchList.Controllers
                 }
             }
         }
+
+        private async void PopulateCategoriesComboBox()
+        {
+            List<string> categories = await retrieveCategoryC.GetCategories();
+
+            // Clear existing items in ComboBox
+            cBCat.Items.Clear();
+
+            // Add categories to the ComboBox with checkboxes
+            foreach (var category in categories)
+            {
+                var checkBox = new CheckBox { Content = category, Tag = category };
+                checkBox.Checked += CheckBox_Checked;
+                checkBox.Unchecked += CheckBox_Unchecked;
+                cBCat.Items.Add(checkBox);
+            }
+        }
+
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {

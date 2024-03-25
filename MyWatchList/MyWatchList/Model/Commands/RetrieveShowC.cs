@@ -11,15 +11,16 @@ using System.Threading.Tasks;
 
 namespace MyWatchList.Model.Commands
 {
-    internal class RetrieveC : DBCommand
+    internal class RetrieveShowC : DBCommand
     {
         private Action<List<IWatchable>> _watchablesReceived;
 
-        public RetrieveC(Action<List<IWatchable>> onDataReceived)
+        public RetrieveShowC(Action<List<IWatchable>> onDataReceived)
         {
             _watchablesReceived = onDataReceived;
         }
 
+        //Retrieve Shows
         public async Task<List<IWatchable>> RetrieveWatchables()
         {
             List<IWatchable> dataList = new List<IWatchable>();
