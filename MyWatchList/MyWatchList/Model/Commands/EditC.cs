@@ -54,12 +54,13 @@ namespace MyWatchList.Model.Commands
                         data["ImageUrl"] = url;
                     }
 
-                    if (this.Categories.Count > 0){
+                    
+                    
+                        // Updating it within the document
                         data["Category"] = this.Categories;
-                    }
-
-                    //ADD NULL CHECK 
-
+                    
+                    
+                    //ADD NULL CHECK
                     await docRef.UpdateAsync(data);
                 }
             }

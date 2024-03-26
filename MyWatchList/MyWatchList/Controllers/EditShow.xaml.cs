@@ -1,43 +1,30 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Navigation;
-using MyWatchList.Model.Commands;
 using System;
+using MyWatchList.Model.Commands;
+using Microsoft.UI.Xaml.Media.Imaging;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Xml.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using System.Diagnostics;
+using Microsoft.UI.Xaml.Navigation;
 
 namespace MyWatchList.Controllers
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class EditShow : Page
     {
-        //private EditC editShow;
+        private RetrieveCategoryC retrieveCategoryC;
         private ImageUploadC imageUpload;
         private bool uploaded = false;
-        private string _docRef;
         private List<string> selectedCategories = new List<string>();
+        private string _docRef;
 
         public EditShow()
         {
             this.InitializeComponent();
             this.imageUpload = new ImageUploadC();
+            this.retrieveCategoryC = new RetrieveCategoryC();
             SubscribeToCheckBoxEvents();
+            PopulateCategoriesComboBox();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -45,7 +32,7 @@ namespace MyWatchList.Controllers
             base.OnNavigatedTo(e);
             if (e.Parameter != null && e.Parameter is string docRef)
             {
-                _docRef = docRef; 
+                _docRef = docRef;
             }
         }
 
@@ -64,6 +51,24 @@ namespace MyWatchList.Controllers
             }
         }
 
+        private async void PopulateCategoriesComboBox()
+        {
+            List<string> categories = await retrieveCategoryC.GetCategories();
+
+            // Clear existing items in ComboBox
+            cBCat.Items.Clear();
+
+            // Add categories to the ComboBox with checkboxes
+            foreach (var category in categories)
+            {
+                var checkBox = new CheckBox { Content = category, Tag = category };
+                checkBox.Checked += CheckBox_Checked;
+                checkBox.Unchecked += CheckBox_Unchecked;
+                cBCat.Items.Add(checkBox);
+            }
+        }
+
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is CheckBox checkBox)
@@ -80,50 +85,50 @@ namespace MyWatchList.Controllers
             }
         }
 
-        private async void submitBtn(object sender, RoutedEventArgs e)
-        {
-            // Use _docRef as needed
-            if (!string.IsNullOrEmpty(_docRef))
+            private async void submitBtn(object sender, RoutedEventArgs e)
             {
-                Debug.WriteLine($"Submitting with docRef: {_docRef}");
-
-                var editCommand = new EditC();
-                editCommand.DocRef = _docRef;
-
-                if (!string.IsNullOrEmpty(sName.Text))
+                // Use _docRef as needed
+                if (!string.IsNullOrEmpty(_docRef))
                 {
-                    editCommand.Name = sName.Text;
-                }
+                    Debug.WriteLine($"Submitting with docRef: {_docRef}");
 
-                if (!string.IsNullOrEmpty(sDescription.Text))
+                    var editCommand = new EditC();
+                    editCommand.DocRef = _docRef;
+
+                    if (!string.IsNullOrEmpty(sName.Text))
+                    {
+                        editCommand.Name = sName.Text;
+                    }
+
+                    if (!string.IsNullOrEmpty(sDescription.Text))
+                    {
+                        editCommand.Description = sDescription.Text;
+                    }
+
+                    if (this.selectedCategories.Count > 0)
+                    {
+                        editCommand.Categories.AddRange(selectedCategories);
+                    }
+
+                    if (cBType.SelectedItem != null)
+                    {
+                        editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
+                    }
+
+                    if (!string.IsNullOrEmpty(imageUpload.filePath) && !string.IsNullOrEmpty(imageUpload.imageName))
+                    {
+                        editCommand.FilePath = imageUpload.filePath;
+                        editCommand.ImageName = imageUpload.imageName;
+                    }
+
+                    editCommand.execute();
+                }
+                else
                 {
-                    editCommand.Description = sDescription.Text;
+                    Debug.WriteLine("No docRef received!");
                 }
-
-                if (cBCat.SelectedItem != null)
-                {
-                    editCommand.Categories = selectedCategories;
-                }
-
-                if (cBType.SelectedItem != null)
-                {
-                    editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
-                }
-
-                if (!string.IsNullOrEmpty(imageUpload.filePath) && !string.IsNullOrEmpty(imageUpload.imageName))
-                {
-                    editCommand.FilePath = imageUpload.filePath;
-                    editCommand.ImageName = imageUpload.imageName;
-                }
-
-                editCommand.execute();
             }
-            else
-            {
-                Debug.WriteLine("No docRef received!");
-            }
-        }
-
+            
 
         private async void imageBtn(object sender, RoutedEventArgs e)
         {
@@ -151,3 +156,4 @@ namespace MyWatchList.Controllers
         }
     }
 }
+

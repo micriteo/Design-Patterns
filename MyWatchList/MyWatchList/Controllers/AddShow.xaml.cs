@@ -93,7 +93,7 @@ namespace MyWatchList.Controllers
             }
             this.imageUpload.setCallback(imgConverter);
             await this.imageUpload.imgUpload();
-            uploaded = true;
+            uploaded = true; 
         }
 
         private void backButton_Click(object sender, RoutedEventArgs e)
