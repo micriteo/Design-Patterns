@@ -88,26 +88,22 @@
                                                                 <Button Background="Transparent" BorderBrush="Transparent" IsHitTestVisible="False">
                                                                     <Image Source="{Binding ImageUrl}" Width="300" Height="260" Stretch="Uniform" Margin="0,0,0,0"/>
                                                                 </Button>
-                                                                <TextBlock Text="{Binding Name}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" Margin="10,0,0,0" Foreground ="White"/>
+                                                                <TextBlock Text="{Binding Name}" FontFamily="Assets/Fonts/#Jockey One" FontSize="25" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0" Foreground ="White"/>
                                                                 <Button Content="Edit" Click="EditShow_Click" Tag="{Binding Name}" Margin="10,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
                                                             </StackPanel>
                                                         </Grid>
                                                     </DataTemplate>
                                                 </ListView.ItemTemplate>
                                             </ListView>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                                <!-- "Delete" button -->
+                                                <Button Content="Delete" Click="DeleteCategory" Margin="10,0,0,15" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
+                                            </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </ScrollViewer>
-
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <!-- "Edit" button -->
-                        <Button Content="Edit Category" Margin="10,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
-                        <!-- "Delete" button -->
-                        <Button Content="Delete" Margin="10,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>

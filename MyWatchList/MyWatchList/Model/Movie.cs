@@ -35,6 +35,16 @@ namespace ObserverDesignPatterns.Model
             this.Category = category;
             this.ImageUrl = imageUrl;
         }
+
+        public bool removeCategory(string name)
+        {
+            if(name != null)
+            {
+                Category.Remove(name);
+                return true;
+            }
+            return false;
+        }
     }
 }
 

@@ -1,6 +1,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using MyWatchList.Interfaces;
+using MyWatchList.Model;
 using MyWatchList.Model.Commands;
 using MyWatchList.Views;
 using System;
@@ -10,27 +11,6 @@ using System.Diagnostics;
 
 namespace MyWatchList.Controllers
 {
-
-    //Mimics values from the firebase for testing
-    public class Item
-    {
-        //fields
-        public List<string> Category { get; set; }
-        public string Description { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string ImageUrl { get; set; }
-
-        //constructor
-        public Item(List<string> category, string description, string name, string type, string imageUrl)
-        {
-            this.Category = category;
-            this.Description = description;
-            this.Name = name;
-            this.Type = type;
-            this.ImageUrl = imageUrl;
-        }
-    }
 
     //will be the data structure used to display everything properly
     public class GroupedWatchables
@@ -63,11 +43,14 @@ namespace MyWatchList.Controllers
         //declared outside MainWindow so it can be used as a binding
         public ObservableCollection<GroupedWatchables> GroupedItemsCollection { get; set; }
         public List<IWatchable> Watchables { get; set; }
+        public Publisher publisher { get; set; }
 
         public MainPage()
         {
             this.InitializeComponent();
             InitializeFirestore();
+
+            publisher = new Publisher();
         }
 
         private void InitializeFirestore()
@@ -100,6 +83,21 @@ namespace MyWatchList.Controllers
             MainFrame.Navigate(typeof(CreateCategory));
         }
 
+        private async void DeleteCategory(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            if (sender is Button button && button.DataContext is GroupedWatchables grpWatchable)
+            {
+                //notify the watchables about the sacking of the category
+                publisher.NotifySubscribers(grpWatchable.Category);
+
+                //remove the category from the category list
+                GroupedItemsCollection.Remove(grpWatchable);
+
+                _deleteC.SetDocRef(grpWatchable.Category);
+                await _deleteC.Delete();
+            }
+        }
+
         private void AddShow_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(AddShow));
@@ -114,6 +112,9 @@ namespace MyWatchList.Controllers
         {
             if (sender is Button button && button.DataContext is IWatchable watchable)
             {
+                //get the watchable out of the list as it is removed and we dont need it in the list anymore
+                publisher.Unsubscribe(watchable);
+
                 _deleteC.SetDocRef(watchable.Name);
                 await _deleteC.Delete();
 
@@ -191,6 +192,7 @@ namespace MyWatchList.Controllers
                         if (itemCategory == category)
                         {
                             groupedItem.addWatchable(watchables);
+                            publisher.Subscribe(watchables);
                             continue;
                         }
                     }

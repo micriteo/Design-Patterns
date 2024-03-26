@@ -47,6 +47,8 @@ namespace MyWatchList.Model.Commands
             }
         }
 
+
+
         public override void execute()
         {
             //Some async magic so it won't say NULL REFERENCE BRUH 

@@ -14,5 +14,7 @@ namespace MyWatchList.Interfaces
         //For the image
         public string ImageUrl { get; set; }
         void watchable(string name, string description, List<string> category, string imageUrl);
+
+        public bool removeCategory(string name);
     }
 }
