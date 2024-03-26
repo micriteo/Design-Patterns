@@ -97,7 +97,7 @@
                                             </ListView>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                 <!-- "Delete" button -->
-                                                <Button Content="Delete" Click="DeleteCategory" Margin="10,0,0,15" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
+                                                <Button Content="Delete Category" Click="DeleteCategory" Margin="10,0,0,15" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>

@@ -59,6 +59,7 @@ namespace MyWatchList.Controllers
             _retrieveC = new RetrieveShowC(dataReceived);
             _retrieveC.execute();
             _deleteC = new DeleteC();
+            _deleteCategoryC = new DeleteCategoryC();
             _editC = new EditC();
         }
 
@@ -94,7 +95,7 @@ namespace MyWatchList.Controllers
                 //remove the category from the category list
                 GroupedItemsCollection.Remove(grpWatchable);
 
-                _deleteCategoryC = new DeleteCategoryC(grpWatchable.Category);
+                _deleteCategoryC.setName(grpWatchable.Category);
                 _deleteCategoryC.execute();
             }
         }

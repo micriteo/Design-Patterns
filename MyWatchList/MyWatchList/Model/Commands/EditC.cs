@@ -54,8 +54,6 @@ namespace MyWatchList.Model.Commands
                         data["ImageUrl"] = url;
                     }
 
-
-
                     List<string> arrayEntries;
 
                     // Retrieve  current categories

@@ -27,7 +27,7 @@
             <StackPanel Grid.Row="1" Margin="30">
 
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Add Show" FontSize="30" Margin="40,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                    <TextBlock Text="Edit Show" FontSize="30" Margin="40,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                 </StackPanel>
                 <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="40,0,0,0"/>
 
