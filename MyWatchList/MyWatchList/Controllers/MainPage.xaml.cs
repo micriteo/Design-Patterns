@@ -38,6 +38,7 @@ namespace MyWatchList.Controllers
     {
         private RetrieveShowC _retrieveC;
         private DeleteC _deleteC;
+        private DeleteCategoryC _deleteCategoryC;
         private EditC _editC;
 
         //declared outside MainWindow so it can be used as a binding
@@ -93,8 +94,8 @@ namespace MyWatchList.Controllers
                 //remove the category from the category list
                 GroupedItemsCollection.Remove(grpWatchable);
 
-                _deleteC.SetDocRef(grpWatchable.Category);
-                await _deleteC.Delete();
+                _deleteCategoryC = new DeleteCategoryC(grpWatchable.Category);
+                _deleteCategoryC.execute();
             }
         }
 
