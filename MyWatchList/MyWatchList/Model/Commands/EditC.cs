@@ -54,12 +54,20 @@ namespace MyWatchList.Model.Commands
                         data["ImageUrl"] = url;
                     }
 
-                    
-                    
-                        // Updating it within the document
-                        data["Category"] = this.Categories;
-                    
-                    
+
+
+                    List<string> arrayEntries;
+
+                    // Retrieve  current categories
+                    arrayEntries = ((List<object>)documentSnapshot.GetValue<List<object>>("Category")).Select(x => x.ToString()).ToList();
+
+                    // Add the new categories to th elist
+                    arrayEntries.AddRange(this.Categories);
+
+                    // Update the category field
+                    data["Category"] = arrayEntries;
+
+
                     //ADD NULL CHECK
                     await docRef.UpdateAsync(data);
                 }
