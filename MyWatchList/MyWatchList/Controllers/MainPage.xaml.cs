@@ -40,7 +40,6 @@ namespace MyWatchList.Controllers
         private RetrieveShowC _retrieveC;
         private DeleteC _deleteC;
         private DeleteCategoryC _deleteCategoryC;
-        private EditC _editC;
 
         //Fields
         //declared outside MainWindow so it can be used as a binding
@@ -56,7 +55,6 @@ namespace MyWatchList.Controllers
             this._retrieveC.execute();
             this._deleteC = new DeleteC();
             this._deleteCategoryC = new DeleteCategoryC();
-            this._editC = new EditC();
             publisher = new Publisher();
         }
 
