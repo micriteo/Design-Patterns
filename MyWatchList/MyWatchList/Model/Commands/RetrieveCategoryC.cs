@@ -1,6 +1,7 @@
 ﻿using Google.Cloud.Firestore;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace MyWatchList.Model.Commands
 {
     internal class RetrieveCategoryC : DBCommand
     {
+        //GetCategories method
         public async Task<List<string>> GetCategories()
         {
             List<string> categories = new List<string>();
@@ -29,12 +31,13 @@ namespace MyWatchList.Model.Commands
             }
             catch (Exception ex)
             {
-               //For testing
+                Debug.WriteLine(ex);
             }
 
             return categories;
         }
 
+        //Execute method inherited from DBCommand
         public override void execute()
         {
             GetCategories();

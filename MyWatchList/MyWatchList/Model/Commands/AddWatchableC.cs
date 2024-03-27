@@ -14,42 +14,50 @@ using WinRT.Interop;
 
 namespace MyWatchList.Model.Commands
 {
-    internal class AddShowC : DBCommand
+    internal class AddWatchable : DBCommand
     {
+        //Fields
         private string filePath;
         private string imageName;
         private List<string> categories;
 
-        public AddShowC(string name, string description, List<string> categories, string type, string filePath, string imageName)
+        //Constructor
+        public AddWatchable(string name, string description, List<string> categories, string type, string filePath, string imageName)
         {
-            this.name = name;
-            this.description = description;
+            this._name = name;
+            this._description = description;
             this.categories = categories;
-            this.type = type;
+            this._type = type;
             this.filePath = filePath;
             this.imageName = imageName;
         }
 
+        //Execute method inherited from DBCommand
         public override async void execute()
         {
             CollectionReference watchableNode = _db.Collection("watchables");
+            /*
+             * The url is made in this way to access the file once in the bucket. 
+             * This is the public url.
+             * ?alt=media tells it to give us the image
+             */
             var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(this.filePath)}%2F{Uri.EscapeDataString(this.imageName)}?alt=media";
 
-            if (this.type == "Show")
+            if (this._type == "Show")
             {
-                Show show = new Show { Name = this.name, Description = this.description, ImageUrl = url, Category = this.categories };
+                Show show = new Show { Name = this._name, Description = this._description, ImageUrl = url, Category = this.categories };
                 DocumentReference showRef = watchableNode.Document(show.Name);
                 await showRef.SetAsync(new Converter<Show>().ToFirestore(show));
             }
-            else if (this.type == "Anime")
+            else if (this._type == "Anime")
             {
-                Anime anime = new Anime { Name = this.name, Description = this.description, ImageUrl = url, Category = this.categories };
+                Anime anime = new Anime { Name = this._name, Description = this._description, ImageUrl = url, Category = this.categories };
                 DocumentReference animeRef = watchableNode.Document(anime.Name);
                 await animeRef.SetAsync(new Converter<Anime>().ToFirestore(anime));
             }
-            else if (this.type == "Movie")
+            else if (this._type == "Movie")
             {
-                Movie movie = new Movie { Name = this.name, Description = this.description, ImageUrl = url, Category = this.categories };
+                Movie movie = new Movie { Name = this._name, Description = this._description, ImageUrl = url, Category = this.categories };
                 DocumentReference movieRef = watchableNode.Document(movie.Name);
                 await movieRef.SetAsync(new Converter<Movie>().ToFirestore(movie));
             }

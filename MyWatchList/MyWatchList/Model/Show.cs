@@ -6,6 +6,7 @@ namespace ObserverDesignPatterns.Model
 {
     public class Show : IWatchable
     {
+        //Fields (gotta mentione FirestoreProperty to let it know what is a firestore property)
         [FirestoreProperty]
         public string Name { get; set; }
         [FirestoreProperty]
@@ -15,14 +16,17 @@ namespace ObserverDesignPatterns.Model
         [FirestoreProperty]
         public List<string> Category { get; set; }
 
+        //Empty constructor to let Firestore build
         public Show() { }
 
-        public Show(string name, string description, List<string> category, string imageUrl) 
+        //Constructor
+        public Show(string name, string description, List<string> category, string imageUrl)
         {
             this.watchable(name, description, category, imageUrl);
         }
 
-        public void watchable(string name, string description, List<string> category, string imageUrl) 
+        //Watchable method inherited from IWatchable
+        public void watchable(string name, string description, List<string> category, string imageUrl)
         {
             this.Name = name;
             this.Description = description;
@@ -30,6 +34,7 @@ namespace ObserverDesignPatterns.Model
             this.ImageUrl = imageUrl;
         }
 
+        //Remove the category inherited from IWatchable
         public bool removeCategory(string name)
         {
             if (name != null)

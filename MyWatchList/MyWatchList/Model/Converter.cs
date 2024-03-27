@@ -8,22 +8,24 @@ namespace MyWatchList.Model
 {
     internal class Converter<T> : IFirestoreConverter<T> where T : IWatchable, new()
     {
+        //Method to ge tthe watchables from Firestore
         public T FromFirestore(object value)
         {
             if (!(value is Dictionary<string, object> values))
             {
-                throw new ArgumentException($"Invalid value type for Firestore conversion: {value?.GetType()?.Name ?? "null"}");
+                throw new ArgumentException($"Invalid value _type for Firestore conversion: {value?.GetType()?.Name ?? "null"}");
             }
 
             T watchable = new T();
             watchable.watchable(
                 values["Name"].ToString(),
                 values["Description"].ToString(),
-                ConvertCategory(values["Category"]), 
+                ConvertCategory(values["Category"]),
                 values["ImageUrl"].ToString());
             return watchable;
         }
 
+        //Convert the category objects to string
         private List<string> ConvertCategory(object categoryObject)
         {
             if (categoryObject == null)
@@ -33,12 +35,13 @@ namespace MyWatchList.Model
 
             if (categoryObject is List<object> categoryList)
             {
-                return categoryList.Select(x => x.ToString()).ToList(); 
+                return categoryList.Select(x => x.ToString()).ToList();
             }
 
-            throw new ArgumentException($"Invalid category type for conversion: {categoryObject.GetType().Name}");
+            throw new ArgumentException($"Invalid _category _type for conversion: {categoryObject.GetType().Name}");
         }
 
+        //Send the watchable to the Firestore 
         public object ToFirestore(T value)
         {
             if (value == null)

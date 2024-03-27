@@ -30,7 +30,7 @@ namespace MyWatchList.Controllers
         }
 
         /* 
-         * This is to grab the docRef from the MainPage when you press on the watchable.
+         * This is to grab the _docRef from the MainPage when you press on the watchable edit button.
          * We need the document reference (an ID) to know which watchable we want to edit.
          */
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -103,7 +103,7 @@ namespace MyWatchList.Controllers
             if (string.IsNullOrEmpty(this._docRef))
             {
                 submitStatus.Text = "ERROR The document reference is missing !";
-            } 
+            }
             else
             {
                 if (!string.IsNullOrEmpty(this._docRef))
@@ -131,16 +131,16 @@ namespace MyWatchList.Controllers
                         editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
                     }
 
-                    if (!string.IsNullOrEmpty(_imageUpload.filePath) && !string.IsNullOrEmpty(_imageUpload.imageName))
+                    if (!string.IsNullOrEmpty(_imageUpload._filePath) && !string.IsNullOrEmpty(_imageUpload._imageName))
                     {
-                        editCommand.FilePath = _imageUpload.filePath;
-                        editCommand.ImageName = _imageUpload.imageName;
+                        editCommand.FilePath = _imageUpload._filePath;
+                        editCommand.ImageName = _imageUpload._imageName;
                     }
                     else
                     {
                         submitStatus.Text = "ERROR Image picker canceled selection ! Select the image again !";
                     }
-                    
+
 
                     editCommand.execute();
                 }

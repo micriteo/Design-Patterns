@@ -11,7 +11,7 @@ namespace MyWatchList.Interfaces
 {
     internal interface ICommand
     {
-        //We need the JSON file to authenticate the app with the Firestore and the bucket
-       void execute();
+        //Execute method 
+        void execute();
     }
 }

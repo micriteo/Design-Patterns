@@ -13,19 +13,22 @@ namespace MyWatchList.Model.Commands
 
     internal class DeleteC : DBCommand
     {
+        //Fields
         private string _docRef;
 
+        //_docRef Setter
         public void SetDocRef(string docRef)
         {
             _docRef = docRef;
         }
 
+        //Delete method
         public async Task Delete()
         {
             if (string.IsNullOrEmpty(_docRef))
             {
                 Debug.WriteLine("Document reference is null or empty.");
-                return; 
+                return;
             }
 
             Query query = _db.Collection("watchables").WhereEqualTo("Name", _docRef);
@@ -40,18 +43,17 @@ namespace MyWatchList.Model.Commands
                         DocumentReference delRef = documentSnapshot.Reference;
                         await delRef.DeleteAsync();
                         Debug.WriteLine($"Document {_docRef} deleted successfully.");
-                        //You found the docRef great exit the loop
-                        return; 
+                        //You found the _docRef great exit the loop
+                        return;
                     }
                 }
             }
         }
 
 
-
+        //Execute method inherited from DBCommand
         public override void execute()
         {
-            //Some async magic so it won't say NULL REFERENCE BRUH 
             Task.Run(async () => await Delete()).Wait();
         }
     }

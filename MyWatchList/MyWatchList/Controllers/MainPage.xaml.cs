@@ -36,33 +36,31 @@ namespace MyWatchList.Controllers
 
     public sealed partial class MainPage : Page
     {
+        //Fields
         private RetrieveShowC _retrieveC;
         private DeleteC _deleteC;
         private DeleteCategoryC _deleteCategoryC;
         private EditC _editC;
 
+        //Fields
         //declared outside MainWindow so it can be used as a binding
         public ObservableCollection<GroupedWatchables> GroupedItemsCollection { get; set; }
         public List<IWatchable> Watchables { get; set; }
         public Publisher publisher { get; set; }
 
+        //Constructor
         public MainPage()
         {
             this.InitializeComponent();
-            InitializeFirestore();
-
+            this._retrieveC = new RetrieveShowC(dataReceived);
+            this._retrieveC.execute();
+            this._deleteC = new DeleteC();
+            this._deleteCategoryC = new DeleteCategoryC();
+            this._editC = new EditC();
             publisher = new Publisher();
         }
 
-        private void InitializeFirestore()
-        {
-            _retrieveC = new RetrieveShowC(dataReceived);
-            _retrieveC.execute();
-            _deleteC = new DeleteC();
-            _deleteCategoryC = new DeleteCategoryC();
-            _editC = new EditC();
-        }
-
+        //Populate the ListView with the watchables
         private void dataReceived(List<IWatchable> dataList)
         {
             populateLv(dataList);
@@ -79,20 +77,21 @@ namespace MyWatchList.Controllers
             CategoryListView.ItemsSource = GroupedItemsCollection;
         }
 
+        //Create Category 
         private void CreateCategory_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-            // Use the Frame to navigate to the CreateCategory page
             MainFrame.Navigate(typeof(CreateCategory));
         }
 
+        //Delete Category
         private async void DeleteCategory(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is GroupedWatchables grpWatchable)
             {
-                //notify the watchables about the sacking of the category
+                //notify the watchables about the removal of the _category
                 publisher.NotifySubscribers(grpWatchable.Category);
 
-                //remove the category from the category list
+                //remove the _category from the _category list
                 GroupedItemsCollection.Remove(grpWatchable);
 
                 _deleteCategoryC.setName(grpWatchable.Category);
@@ -100,16 +99,13 @@ namespace MyWatchList.Controllers
             }
         }
 
+        //Add Show
         private void AddShow_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(AddShow));
         }
 
-        /*private void InfoPage_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-        {
-            MainFrame.Navigate(typeof(InfoPage));
-        }*/
-
+        //Delete Show (we want to check if it is a watchable and then delete it based on the _docRef)
         private async void DeleteShow_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is IWatchable watchable)
@@ -125,15 +121,17 @@ namespace MyWatchList.Controllers
             }
         }
 
+        //Edit Show (we want to check if it is a watchable and then send us to the editPage alongside with it to grab the doc ref)
         private async void EditShow_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button button && button.DataContext is IWatchable watchable)
             {
                 //_editC.SetDocRef(actionItem.Title);
-                MainFrame.Navigate(typeof(EditShow), watchable.Name); // Pass the docRef to EditShow
+                MainFrame.Navigate(typeof(EditShow), watchable.Name); // Pass the _docRef to EditShow
             }
         }
 
+        //Action Item (it is the watchable, we want to check if it is a watchable and then send us to the infoPage alongside with it to grab the doc ref)
         private void ActionItem_Click(object sender, ItemClickEventArgs e)
         {
             if (e.ClickedItem is IWatchable watchableItem)
@@ -154,10 +152,10 @@ namespace MyWatchList.Controllers
                 //loops all categories within an item
                 foreach (String category in item.Category)
                 {
-                    //if the category list is not null and the list does not contain the category already
+                    //if the _category list is not null and the list does not contain the _category already
                     if (item.Category != null && !categories.Contains(category))
                     {
-                        //add the category to the list
+                        //add the _category to the list
                         categories.Add(category);
                     }
                     else
@@ -172,7 +170,7 @@ namespace MyWatchList.Controllers
             return categories;
         }
 
-        //takes list of categories and adds all shows with that category to a list
+        //takes list of categories and adds all shows with that _category to a list
         public List<GroupedWatchables> OrderItemsByCategory(List<string> categories, List<IWatchable> watchable)
         {
             //create grouped item list
@@ -184,13 +182,13 @@ namespace MyWatchList.Controllers
                 //create grouped item
                 var groupedItem = new GroupedWatchables(category);
 
-                //loop through all items and check if they belong to that category
+                //loop through all items and check if they belong to that _category
                 foreach (IWatchable watchables in watchable)
                 {
                     //loop through all items categories
                     foreach (string itemCategory in watchables.Category)
                     {
-                        //if in category add to list and end iterations
+                        //if in _category add to list and end iterations
                         if (itemCategory == category)
                         {
                             groupedItem.addWatchable(watchables);
@@ -199,7 +197,7 @@ namespace MyWatchList.Controllers
                         }
                     }
                 }
-                //display category only if it actually has contents
+                //display _category only if it actually has contents
                 if (groupedItem.Watchables.Count > 0)
                 {
                     WatchablesByCat.Add(groupedItem);

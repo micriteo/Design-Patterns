@@ -12,21 +12,19 @@ namespace MyWatchList.Model.Commands
     //Change of plans. New categories collection with an updateed file of categories inside.
     internal class DeleteCategoryC : DBCommand
     {
-        public string _name; //in this case the category name
+        //Fields
+        private string _categoryName;
 
-        public DeleteCategoryC()
-        {
-            
-        }
-
+        //Setter for _categoryName
         public void setName(string name)
         {
-            this._name = name;
+            this._categoryName = name;
         }
 
+        //Delete Category in Watchables table 
         public async void deleteCategoryWatchables()
         {
-            Query query = _db.Collection("watchables").WhereArrayContains("Category", this._name);
+            Query query = _db.Collection("watchables").WhereArrayContains("Category", this._categoryName);
             QuerySnapshot querySnapshot = await query.GetSnapshotAsync();
 
             if (querySnapshot.Documents.Count > 0)
@@ -42,9 +40,9 @@ namespace MyWatchList.Model.Commands
                         arrayEntries = ((List<object>)documentSnapshot.GetValue<List<object>>("Category")).Select(x => x.ToString()).ToList();
 
                         // Add the new categories to th elist
-                        arrayEntries.Remove(this._name);
+                        arrayEntries.Remove(this._categoryName);
 
-                        // Update the category field
+                        // Update the _category field
                         data["Category"] = arrayEntries;
 
                         DocumentReference delRef = documentSnapshot.Reference;
@@ -55,6 +53,7 @@ namespace MyWatchList.Model.Commands
             }
         }
 
+        //Execite method inherited from DBCommand
         public override async void execute()
         {
             DocumentReference docRef = _db.Collection("categories").Document("Categories");
@@ -69,15 +68,11 @@ namespace MyWatchList.Model.Commands
                 // Retrieve  current categories
                 arrayEntries = ((List<object>)snapshot.GetValue<List<object>>("Categories")).Select(x => x.ToString()).ToList();
 
-                // Add the new categories to th elist
-                arrayEntries.Remove(this._name);
+                // Add the new categories to the list
+                arrayEntries.Remove(this._categoryName);
 
-                // Update the category field
+                // Update the _category field
                 data["Categories"] = arrayEntries;
-
-
-
-                //ADD NULL CHECK
                 await docRef.UpdateAsync(data);
                 deleteCategoryWatchables();
             }

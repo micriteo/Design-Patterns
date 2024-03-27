@@ -30,3 +30,26 @@ This project was made by the following students
 Teodor Folea - teodor.folea@student.nhlstenden.com<br>
 Arian Atapour - arian.atapour@student.nhlstenden.com<br>
 Dimitri Vastenhout - dimitri.vastenhout@student.nhlstenden.com<br>
+
+</h3>Installation/Launch Requirements</h3>
+
+- Windows OS
+- Visual Studio 2019 and above
+- C# & .NET Framework
+- Winui3 Library
+
+</h2>WINUI install</h2>
+
+winui can be installed by following the microsoft guide here
+https://learn.microsoft.com/en-us/windows/apps/winui/winui3/create-your-first-winui3-app
+
+with all the requirements met, the project solution can be ran using visual studio.
+The project should be ran using windows mode (not android or ios).
+
+If the program succesfully launches, there should be a bar on the top that says WatchList, to the far right of the bar you will see
+Create category and Add show. It is first recommended to create a category by clicking on the button.
+When a category is succesfully created you may click back to return to the main page.
+A show can now be created and placed in all made categories. When returning to the main page via the back button you will see your show in the list under each category it was placed under.
+You can click on the watchable to see all information regarding the item. On top of the item there is a 'x' button which deletes show from all categories.
+On the bottom of the show you can click "edit" to change the data from the show. Not all fields need to be filled in when editing.
+Lastly, you can delete a category by clicking on the delete category button at the bottom of the category.

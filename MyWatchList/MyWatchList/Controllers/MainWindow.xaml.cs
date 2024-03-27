@@ -15,16 +15,9 @@ using Windows.Foundation.Collections;
 using System.Windows;
 using Microsoft.UI.Xaml.Media.Imaging;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace MyWatchList.Controllers
 {
-    /// <summary>
-    /// An empty window that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    /// 
-
+    //Main Window
     public sealed partial class MainWindow : Window
     {
         public MainWindow()

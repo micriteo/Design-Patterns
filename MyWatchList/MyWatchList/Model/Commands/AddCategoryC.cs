@@ -7,21 +7,24 @@ using System.Threading.Tasks;
 
 namespace MyWatchList.Model.Commands
 {
-    //Change of plans. New categories collection with an updateed file of categories inside.
     internal class AddCategoryC : DBCommand
     {
-        public string _name; //in this case the category name
+        //Fields
+        private string _name;
 
+        //Constructor
         public AddCategoryC(string name)
         {
             setName(name);
         }
 
+        //Setter for _categoryName
         public void setName(string name)
         {
             this._name = name;
         }
 
+        //Execute method extended from DBCommand
         public override async void execute()
         {
             DocumentReference docRef = _db.Collection("categories").Document("Categories");

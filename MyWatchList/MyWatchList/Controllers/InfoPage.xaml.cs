@@ -20,14 +20,17 @@ namespace MyWatchList.Views
 {
     public sealed partial class InfoPage : Page
     {
+        //Fields
+        public IWatchable Watchable { get; set; }
+
+        //Constructor
         public InfoPage()
         {
             this.InitializeComponent();
             this.DataContext = Watchable;
         }
 
-        public IWatchable Watchable { get; set; }
-
+        //Get the document reference upon clicking on the watchable from the MainPage
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -35,12 +38,13 @@ namespace MyWatchList.Views
             if (e.Parameter is IWatchable watchableItem)
             {
                 Watchable = watchableItem;
-                //Converting the list of categories into a string (yay that's cool) and also splitting them with ,
+                //Converting the list of categories into a string and also splitting them with "," character
                 var categoriesString = string.Join(", ", Watchable.Category);
                 WatchableCategoryTextBlock.Text = categoriesString;
             }
         }
 
+        //Back button
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));

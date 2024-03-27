@@ -13,14 +13,16 @@ namespace MyWatchList.Model.Commands
 {
     internal class RetrieveShowC : DBCommand
     {
+        //Fields
         private Action<List<IWatchable>> _watchablesReceived;
 
+        //Constructor
         public RetrieveShowC(Action<List<IWatchable>> onDataReceived)
         {
             _watchablesReceived = onDataReceived;
         }
 
-        //Retrieve Shows
+        //Retrieve Watchables method
         public async Task<List<IWatchable>> RetrieveWatchables()
         {
             List<IWatchable> dataList = new List<IWatchable>();
@@ -61,6 +63,7 @@ namespace MyWatchList.Model.Commands
             return dataList;
         }
 
+        //Execute method inherited from DBCommand
         public override async void execute()
         {
             var dataList = await RetrieveWatchables();

@@ -13,19 +13,22 @@ namespace MyWatchList.Model.Commands
 {
     internal class EditC : DBCommand
     {
+        //Fields
         public string Name { get; set; }
         public string Description { get; set; }
         public List<string> Categories { get; set; }
         public string Type { get; set; }
         public string FilePath { get; set; }
-        public string ImageName {get; set; }
+        public string ImageName { get; set; }
         public string DocRef { get; set; }
 
+        //Constructor
         public EditC()
         {
             this.Categories = new List<string>();
         }
 
+        //Execute method inherited from DBCommand
         public override async void execute()
         {
             Query query = _db.Collection("watchables").WhereEqualTo("Name", this.DocRef);
@@ -62,11 +65,9 @@ namespace MyWatchList.Model.Commands
                     // Add the new categories to th elist
                     arrayEntries.AddRange(this.Categories);
 
-                    // Update the category field
+                    // Update the _category field
                     data["Category"] = arrayEntries;
 
-
-                    //ADD NULL CHECK
                     await docRef.UpdateAsync(data);
                 }
             }

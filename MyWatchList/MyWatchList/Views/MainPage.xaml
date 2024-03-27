@@ -59,7 +59,7 @@
                                     <DataTemplate x:DataType="local:GroupedWatchables">
                                         <StackPanel>
                                             <StackPanel Orientation="Horizontal">
-                                                <TextBlock Text="{x:Bind Category}"  FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                                                <TextBlock x:Name="Category" Text="{x:Bind Category}"  FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                                             </StackPanel>
                                             <Rectangle Width="2000" Height="4" Fill="White"/>
                                             <!-- Watchable items -->
@@ -97,7 +97,7 @@
                                             </ListView>
                                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                                 <!-- "Delete" button -->
-                                                <Button Content="Delete Category" Click="DeleteCategory" Margin="10,0,0,15" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
+                                                <Button x:Name="DeleteCategoryBtn" Content="Delete Category" Click="DeleteCategory" Margin="10,0,0,15" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>

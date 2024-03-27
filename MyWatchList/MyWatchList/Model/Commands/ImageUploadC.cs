@@ -13,9 +13,11 @@ namespace MyWatchList.Model.Commands
 {
     internal class ImageUploadC : DBCommand
     {
-        public string filePath;
-        public string imageName;
+        //Fields
+        public string _filePath;
+        public string _imageName;
 
+        //Image Upload method (FilePicker)
         public async Task<(string, string)> imgUpload()
         {
             var picker = new FileOpenPicker();
@@ -34,60 +36,63 @@ namespace MyWatchList.Model.Commands
             if (file != null)
             {
                 string imgName = Path.GetFileName(file.Path);
-                //this._imageName = imgName;
-                this.imageName = imgName;
+                this._imageName = imgName;
 
                 // Copy the selected file to the images folder
-                string solutionFolderPath = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
+                string solutionFolderPath = Directory.GetParent(_baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
                 string imagesFolderPath = Path.Combine(solutionFolderPath, "images");
 
 
                 StorageFolder imagesFolder = await StorageFolder.GetFolderFromPathAsync(imagesFolderPath);
                 await file.CopyAsync(imagesFolder, imgName, NameCollisionOption.ReplaceExisting);
 
-                string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
+                string solutionDirectory = Directory.GetParent(_baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
                 string filePath = Path.Combine(solutionDirectory, "images/", imgName);
                 var image = filePath;
 
-                using (var fileStream = File.OpenRead(filePath)) //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FS
+                //Otherwise we can't delete the file at the end cause it's still in use by the thread, so it closes the FP
+                using (var fileStream = File.OpenRead(filePath))
                 {
                     await _storage.UploadObjectAsync(this._bucketName, image, null, fileStream);
 
                 }
                 string filePathUrl = Path.Combine(solutionDirectory, "images");
-                //this._imagePath = filePathUrl;
-                this.filePath = filePathUrl;
+                this._filePath = filePathUrl;
 
                 if (!string.IsNullOrEmpty(imgName))
                 {
                     var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(filePathUrl)}%2F{Uri.EscapeDataString(imgName)}?alt=media";
-                    this.bucketLink = url;
+                    this._bucketLink = url;
                     File.Delete(filePath);
                     runCallback();
                 }
             }
 
-            return (filePath, imageName);
+            return (_filePath, _imageName);
         }
 
+        //Execute method inherited from DBCommand
         public override async void execute()
         {
-            (filePath, imageName) = await imgUpload();
+            (_filePath, _imageName) = await imgUpload();
         }
 
+        //Callback setter 
         public void setCallback(Action callback)
         {
-            this.callback = callback;
+            this._callback = callback;
         }
 
+        //Run the _callback
         public void runCallback()
         {
-            this.callback();
+            this._callback();
         }
 
+        //DBCommand _bucketLink
         public string getBucketLink()
         {
-            return this.bucketLink;
+            return this._bucketLink;
         }
     }
 }

@@ -86,23 +86,24 @@ namespace MyWatchList.Controllers
         {
             if (string.IsNullOrEmpty(sName.Text) || string.IsNullOrEmpty(sDescription.Text))
             {
-                submitStatus.Text = "ERROR Make sure to complete name and description ! ";
+                submitStatus.Text = "ERROR Make sure to complete _name and _description ! ";
             }
             else if (_selectedCategories.Count == 0 || cBType.SelectedItem == null)
             {
-                submitStatus.Text = "ERROR Make sure fill check the categories and select the type ! ";
+                submitStatus.Text = "ERROR Make sure fill check the categories and select the _type ! ";
             }
             else if (!_uploaded)
             {
-                submitStatus.Text = "ERROR Upload an image of type jpg or png !";
+                submitStatus.Text = "ERROR Upload an image of _type jpg or png !";
             }
-            else if (string.IsNullOrEmpty(this._imageUpload.filePath) || string.IsNullOrEmpty(this._imageUpload.imageName))
+            else if (string.IsNullOrEmpty(this._imageUpload._filePath) || string.IsNullOrEmpty(this._imageUpload._imageName))
             {
                 submitStatus.Text = "ERROR Image picker canceled selection ! Select the image again !";
             }
             else
             {
-                var addShowCommand = new AddShowC(sName.Text, sDescription.Text, _selectedCategories, ((ComboBoxItem)cBType.SelectedItem).Content.ToString(), this._imageUpload.filePath, this._imageUpload.imageName);
+                this._selectedCategories.Add("All Shows");
+                var addShowCommand = new AddWatchable(sName.Text, sDescription.Text, _selectedCategories, ((ComboBoxItem)cBType.SelectedItem).Content.ToString(), this._imageUpload._filePath, this._imageUpload._imageName);
                 addShowCommand.execute();
                 submitStatus.Text = "Show added!";
             }
