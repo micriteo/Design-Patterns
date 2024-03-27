@@ -22,7 +22,7 @@
                 <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="40,0,0,0"/>
 
                 <!-- CREATE CATEGORY BUTTON-->
-                <Button Content="Create Category" Click="CreateCategory_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="10,0,150,0" HorizontalAlignment="Right" FontSize="30" Foreground ="White">
+                <Button Content="Create Category" Click="CreateCategory_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="10,0,200,0" HorizontalAlignment="Right" FontSize="30" Foreground ="White">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background">

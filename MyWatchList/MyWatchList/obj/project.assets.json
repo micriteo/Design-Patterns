@@ -13896,23 +13896,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\arian\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Users\\User\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "projectUniqueName": "C:\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
       "projectName": "MyWatchList",
-      "projectPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
-      "packagesPath": "C:\\Users\\arian\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
+      "projectPath": "C:\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
+        "C:\\Users\\User\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\arian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

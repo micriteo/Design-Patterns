@@ -541,7 +541,6 @@ C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.1904
 C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\hostfxr.dll
 C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\hostpolicy.dll
 C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\mscordaccore.dll
-C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\mscordaccore_x86_x86_6.0.1623.17311.dll
 C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\mscordbi.dll
 C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\mscorrc.dll
 C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\msquic.dll
@@ -571,7 +570,6 @@ C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.1904
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.AssemblyInfoInputs.cache
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.AssemblyInfo.cs
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.csproj.CoreCompileInputs.cache
-C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.csproj.CopyComplete
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.dll
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\refint\MyWatchList.dll
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.pdb
@@ -635,3 +633,6 @@ C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.1904
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\InfoPage.g.cs
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\InfoPage.xaml
 C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\Views\InfoPage.xbf
+C:\Design-Patterns\MyWatchList\MyWatchList\bin\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\mscordaccore_x86_x86_6.0.2824.12007.dll
+C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchList.sourcelink.json
+C:\Design-Patterns\MyWatchList\MyWatchList\obj\x86\Debug\net6.0-windows10.0.19041.0\win10-x86\MyWatchL.CF6CD68C.Up2Date

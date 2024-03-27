@@ -35,8 +35,11 @@
 
             <StackPanel Orientation="Horizontal" Margin="0,100,0,0" HorizontalAlignment="Center">
                 <Button Content="Back" Click="backButton_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="40,0,0,0" HorizontalAlignment="Left" Foreground="White"/>
-                <Button Click="submitBtn"  Content="Submit" Margin="40,0,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
-                <TextBlock x:Name="Status" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
+                <Button Click="submitBtn"  Content="Submit" Margin="100,0,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0,50,0,0" HorizontalAlignment="Center">
+                <TextBlock x:Name="Status" FontSize="25" Margin="50,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground ="White"/>
             </StackPanel>
 
         </StackPanel>
