@@ -24,7 +24,7 @@ namespace MyWatchList.Model.Commands
         {
             this.name = name;
             this.description = description;
-            this.categories = categories; 
+            this.categories = categories;
             this.type = type;
             this.filePath = filePath;
             this.imageName = imageName;
@@ -33,17 +33,17 @@ namespace MyWatchList.Model.Commands
         public override async void execute()
         {
             CollectionReference watchableNode = _db.Collection("watchables");
-            var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(this.filePath)}%2F{Uri.EscapeDataString(this.imageName)}?alt=media"; 
+            var url = $"https://firebasestorage.googleapis.com/v0/b/{this._bucketName}/o/{Uri.EscapeDataString(this.filePath)}%2F{Uri.EscapeDataString(this.imageName)}?alt=media";
 
             if (this.type == "Show")
             {
-                Show show = new Show { Name = this.name, Description = this.description, ImageUrl = url, Category = this.categories }; 
+                Show show = new Show { Name = this.name, Description = this.description, ImageUrl = url, Category = this.categories };
                 DocumentReference showRef = watchableNode.Document(show.Name);
                 await showRef.SetAsync(new Converter<Show>().ToFirestore(show));
             }
             else if (this.type == "Anime")
             {
-                Anime anime = new Anime { Name = this.name, Description = this.description, ImageUrl = url, Category = this.categories }; 
+                Anime anime = new Anime { Name = this.name, Description = this.description, ImageUrl = url, Category = this.categories };
                 DocumentReference animeRef = watchableNode.Document(anime.Name);
                 await animeRef.SetAsync(new Converter<Anime>().ToFirestore(anime));
             }

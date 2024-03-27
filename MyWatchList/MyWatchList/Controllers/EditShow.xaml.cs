@@ -12,30 +12,40 @@ namespace MyWatchList.Controllers
 {
     public sealed partial class EditShow : Page
     {
-        private RetrieveCategoryC retrieveCategoryC;
-        private ImageUploadC imageUpload;
-        private bool uploaded = false;
-        private List<string> selectedCategories = new List<string>();
+        //Instance fields
+        private RetrieveCategoryC _retrieveCategoryC;
+        private ImageUploadC _imageUpload;
+        private bool _uploaded = false;
+        private List<string> _selectedCategories = new List<string>();
         private string _docRef;
 
+        //Constructor
         public EditShow()
         {
             this.InitializeComponent();
-            this.imageUpload = new ImageUploadC();
-            this.retrieveCategoryC = new RetrieveCategoryC();
+            this._imageUpload = new ImageUploadC();
+            this._retrieveCategoryC = new RetrieveCategoryC();
             SubscribeToCheckBoxEvents();
             PopulateCategoriesComboBox();
         }
 
+        /* 
+         * This is to grab the docRef from the MainPage when you press on the watchable.
+         * We need the document reference (an ID) to know which watchable we want to edit.
+         */
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             if (e.Parameter != null && e.Parameter is string docRef)
             {
-                _docRef = docRef;
+                this._docRef = docRef;
             }
         }
 
+        /*
+          * Method to subscribe to checkbox events (Categories combobx)
+          * If the item is a combobox item subscribe it respectively to Checked and Unchecked events
+         */
         private void SubscribeToCheckBoxEvents()
         {
             foreach (var item in cBCat.Items)
@@ -51,14 +61,15 @@ namespace MyWatchList.Controllers
             }
         }
 
+        //Populate the combobox of categories with the one from the FirestoreDB(categories table)
         private async void PopulateCategoriesComboBox()
         {
-            List<string> categories = await retrieveCategoryC.GetCategories();
+            List<string> categories = await this._retrieveCategoryC.GetCategories();
 
-            // Clear existing items in ComboBox
+            //Clear combobox items
             cBCat.Items.Clear();
 
-            // Add categories to the ComboBox with checkboxes
+            //Add the categories with checkboxes in the combobox 
             foreach (var category in categories)
             {
                 var checkBox = new CheckBox { Content = category, Tag = category };
@@ -68,32 +79,37 @@ namespace MyWatchList.Controllers
             }
         }
 
-
+        //Event handler if the checkbox is checked
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is CheckBox checkBox)
             {
-                selectedCategories.Add(checkBox.Tag.ToString());
+                this._selectedCategories.Add(checkBox.Tag.ToString());
             }
         }
 
+        //Event handler if the checkbox is unchecked
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (sender is CheckBox checkBox)
             {
-                selectedCategories.Remove(checkBox.Tag.ToString());
+                this._selectedCategories.Remove(checkBox.Tag.ToString());
             }
         }
 
-            private async void submitBtn(object sender, RoutedEventArgs e)
+        //Submit button
+        private async void submitBtn(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(this._docRef))
             {
-                // Use _docRef as needed
-                if (!string.IsNullOrEmpty(_docRef))
+                submitStatus.Text = "ERROR The document reference is missing !";
+            } 
+            else
+            {
+                if (!string.IsNullOrEmpty(this._docRef))
                 {
-                    Debug.WriteLine($"Submitting with docRef: {_docRef}");
-
                     var editCommand = new EditC();
-                    editCommand.DocRef = _docRef;
+                    editCommand.DocRef = this._docRef;
 
                     if (!string.IsNullOrEmpty(sName.Text))
                     {
@@ -105,9 +121,9 @@ namespace MyWatchList.Controllers
                         editCommand.Description = sDescription.Text;
                     }
 
-                    if (this.selectedCategories.Count > 0)
+                    if (this._selectedCategories.Count > 0)
                     {
-                        editCommand.Categories.AddRange(selectedCategories);
+                        editCommand.Categories.AddRange(_selectedCategories);
                     }
 
                     if (cBType.SelectedItem != null)
@@ -115,40 +131,49 @@ namespace MyWatchList.Controllers
                         editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
                     }
 
-                    if (!string.IsNullOrEmpty(imageUpload.filePath) && !string.IsNullOrEmpty(imageUpload.imageName))
+                    if (!string.IsNullOrEmpty(_imageUpload.filePath) && !string.IsNullOrEmpty(_imageUpload.imageName))
                     {
-                        editCommand.FilePath = imageUpload.filePath;
-                        editCommand.ImageName = imageUpload.imageName;
+                        editCommand.FilePath = _imageUpload.filePath;
+                        editCommand.ImageName = _imageUpload.imageName;
                     }
+                    else
+                    {
+                        submitStatus.Text = "ERROR Image picker canceled selection ! Select the image again !";
+                    }
+                    
 
                     editCommand.execute();
                 }
-                else
-                {
-                    Debug.WriteLine("No docRef received!");
-                }
-            }
-            
 
-        private async void imageBtn(object sender, RoutedEventArgs e)
-        {
-            if (uploaded)
-            {
-                uploaded = false;
+                submitStatus.Text = "Edits made !";
             }
-            this.imageUpload.setCallback(imgConverter);
-            await this.imageUpload.imgUpload();
-            uploaded = true;
+
         }
 
+        //Image button (aka Filepicker button)
+        private async void imageBtn(object sender, RoutedEventArgs e)
+        {
+            if (this._uploaded)
+            {
+                this._uploaded = false;
+            }
+            this._imageUpload.setCallback(imgConverter);
+            await this._imageUpload.imgUpload();
+            this._uploaded = true;
+        }
+
+        //Back button
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
         }
 
+        /*
+         * Image converter to update the preview panel (cover image) on the page and converting it to a BitmapIamge.
+         */
         private void imgConverter()
         {
-            string imageUrl = this.imageUpload.getBucketLink();
+            string imageUrl = this._imageUpload.getBucketLink();
             BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.UriSource = new Uri(imageUrl, UriKind.Absolute);
             CoverImage.Source = bitmapImage;

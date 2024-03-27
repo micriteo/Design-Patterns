@@ -12,36 +12,36 @@
     <Frame x:Name="AddFrame" x:FieldModifier="public">
         <Grid Background="#990505">
             <Grid.RowDefinitions>
-                <!-- Define the top row to be auto-sized (fits content) -->
                 <RowDefinition Height="Auto"/>
-                <!-- Define the bottom row to take up the remaining space -->
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Display the title "WatchList" with custom styling -->
+            <!-- App Title -->
             <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One" Foreground ="White"/>
-
-            <!-- Adding Horizontal Line-->
+            
             <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
 
             <StackPanel Grid.Row="1" Margin="30">
-
+                
+                <!-- Page Title -->
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Edit Show" FontSize="30" Margin="40,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                 </StackPanel>
                 <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="40,0,0,0"/>
-
+                
+                <!-- Show Name -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Name" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                     <TextBox x:Name="sName" PlaceholderText="Enter show name" Height="40" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"/>
                 </StackPanel>
 
+                <!-- Show Description -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Description" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                     <TextBox x:Name="sDescription" PlaceholderText="Enter show description" Height="100" Width="400" Margin="0,10,0,0" HorizontalAlignment="Left"/>
                 </StackPanel>
 
-                <!-- Add Type -->
+                <!-- Show Type (to not be confused with category) -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Type" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                     <ComboBox x:Name="cBType" Width="400" Margin="0,10,0,0">
@@ -51,19 +51,27 @@
                     </ComboBox>
                 </StackPanel>
 
-                <!-- Add Category -->
+                <!-- Show Category -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Add to Category" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                     <ComboBox x:Name="cBCat" Width="400" Margin="0,10,0,0">
-                        <!-- Add more categories as needed -->
                     </ComboBox>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Margin="0,115,0,0" HorizontalAlignment="Center">
-                    <Button Content="Back" Click="backButton_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="0,-180,0,0" HorizontalAlignment="Left" Foreground="White"/>
-                    <Button Click="submitBtn" Content="Submit" Margin="40,-180,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
+                <!-- 
+                    Submit button,
+                    Back button,
+                    Submit Status textblock
+                -->
+                <StackPanel Margin="0,100,0,0" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Button Content="Back" Click="backButton_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="0,0,40,0" HorizontalAlignment="Left" Foreground="White"/>
+                        <Button Click="submitBtn" Content="Submit" Margin="0,0,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
+                    </StackPanel>
+                    <TextBlock x:Name="submitStatus" Margin="0,10,0,0" FontSize="25" FontFamily="Assets/Fonts/#Jockey One" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center"/>
                 </StackPanel>
 
+                <!-- Image button (AKA FilePicker button) -->
                 <StackPanel Margin="0,-600,0,0" HorizontalAlignment="Right">
                     <Border Width="400" Height="400" BorderBrush="Black" BorderThickness="1">
                         <Image Margin="0,0,0,0" Width="400" Height="200"  x:Name="CoverImage" Stretch="UniformToFill" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>

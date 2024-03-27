@@ -10,20 +10,26 @@ namespace MyWatchList.Controllers
 {
     public sealed partial class AddShow : Page
     {
-        private RetrieveCategoryC retrieveCategoryC;
-        private ImageUploadC imageUpload;
-        private bool uploaded = false;
-        private List<string> selectedCategories = new List<string>();
+        //Instance fields
+        private RetrieveCategoryC _retrieveCategoryC;
+        private ImageUploadC _imageUpload;
+        private bool _uploaded = false;
+        private List<string> _selectedCategories = new List<string>();
 
+        //Constructor
         public AddShow()
         {
             this.InitializeComponent();
-            this.imageUpload = new ImageUploadC();
-            this.retrieveCategoryC = new RetrieveCategoryC();
+            this._imageUpload = new ImageUploadC();
+            this._retrieveCategoryC = new RetrieveCategoryC();
             SubscribeToCheckBoxEvents();
             PopulateCategoriesComboBox();
         }
 
+        /*
+         * Method to subscribe to checkbox events (Categories combobx)
+         * If the item is a combobox item subscribe it respectively to Checked and Unchecked events
+         */
         private void SubscribeToCheckBoxEvents()
         {
             foreach (var item in cBCat.Items)
@@ -39,14 +45,15 @@ namespace MyWatchList.Controllers
             }
         }
 
+        //Populate the combobox of categories with the one from the FirestoreDB(categories table)
         private async void PopulateCategoriesComboBox()
         {
-            List<string> categories = await retrieveCategoryC.GetCategories();
+            List<string> categories = await this._retrieveCategoryC.GetCategories();
 
-            // Clear existing items in ComboBox
+            //Clear combobox items
             cBCat.Items.Clear();
 
-            // Add categories to the ComboBox with checkboxes
+            //Add the categories with checkboxes in the combobox 
             foreach (var category in categories)
             {
                 var checkBox = new CheckBox { Content = category, Tag = category };
@@ -56,54 +63,76 @@ namespace MyWatchList.Controllers
             }
         }
 
-
+        //Event handler if the checkbox is checked
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             if (sender is CheckBox checkBox)
             {
-                selectedCategories.Add(checkBox.Tag.ToString());
+                this._selectedCategories.Add(checkBox.Tag.ToString());
             }
         }
 
+        //Event handler if the checkbox is unchecked
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             if (sender is CheckBox checkBox)
             {
-                selectedCategories.Remove(checkBox.Tag.ToString());
+                this._selectedCategories.Remove(checkBox.Tag.ToString());
             }
         }
 
+        //Submit button
         private async void submitBtn(object sender, RoutedEventArgs e)
         {
-            if (!uploaded)
+            if (string.IsNullOrEmpty(sName.Text) || string.IsNullOrEmpty(sDescription.Text))
             {
-                return;
+                submitStatus.Text = "ERROR Make sure to complete name and description ! ";
             }
-
-            var addShowCommand = new AddShowC(sName.Text, sDescription.Text, selectedCategories, ((ComboBoxItem)cBType.SelectedItem).Content.ToString(), imageUpload.filePath, imageUpload.imageName);
-            addShowCommand.execute();
-            submitStatus.Text = "Show added!";
+            else if (_selectedCategories.Count == 0 || cBType.SelectedItem == null)
+            {
+                submitStatus.Text = "ERROR Make sure fill check the categories and select the type ! ";
+            }
+            else if (!_uploaded)
+            {
+                submitStatus.Text = "ERROR Upload an image of type jpg or png !";
+            }
+            else if (string.IsNullOrEmpty(this._imageUpload.filePath) || string.IsNullOrEmpty(this._imageUpload.imageName))
+            {
+                submitStatus.Text = "ERROR Image picker canceled selection ! Select the image again !";
+            }
+            else
+            {
+                var addShowCommand = new AddShowC(sName.Text, sDescription.Text, _selectedCategories, ((ComboBoxItem)cBType.SelectedItem).Content.ToString(), this._imageUpload.filePath, this._imageUpload.imageName);
+                addShowCommand.execute();
+                submitStatus.Text = "Show added!";
+            }
         }
 
+        //Image button (aka Filepicker button)
         private async void imageBtn(object sender, RoutedEventArgs e)
         {
-            if (uploaded)
+            if (this._uploaded)
             {
-                uploaded = false;
+                this._uploaded = false;
             }
-            this.imageUpload.setCallback(imgConverter);
-            await this.imageUpload.imgUpload();
-            uploaded = true; 
+
+            this._imageUpload.setCallback(imgConverter);
+            await this._imageUpload.imgUpload();
+            this._uploaded = true;
         }
 
+        //Back button
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
         }
 
+        /*
+         * Image converter to update the preview panel (cover image) on the page and converting it to a BitmapIamge.
+         */
         private void imgConverter()
         {
-            string imageUrl = this.imageUpload.getBucketLink();
+            string imageUrl = this._imageUpload.getBucketLink();
             BitmapImage bitmapImage = new BitmapImage();
             bitmapImage.UriSource = new Uri(imageUrl, UriKind.Absolute);
             CoverImage.Source = bitmapImage;

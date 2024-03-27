@@ -9,18 +9,16 @@
 
     <Grid Background="#990505">
         <Grid.RowDefinitions>
-            <!-- Define the top row to be auto-sized (fits content) -->
             <RowDefinition Height="Auto"/>
-            <!-- Define the bottom row to take up the remaining space -->
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Display the title "WatchList" with custom styling -->
+        <!-- App Title -->
         <TextBlock Text="WatchList" FontSize="50" Margin="40,0,0,0" FontFamily="Assets/Fonts/#Jockey One" Foreground="White"/>
 
-        <!-- Adding Horizontal Line-->
         <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
-
+        
+        <!-- Page Title -->
         <StackPanel Grid.Row="1" Margin="50">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Add Category" FontSize="30" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground="White"/>
@@ -28,16 +26,22 @@
             
             <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
 
+            <!-- Category Name -->
             <StackPanel Orientation="Vertical" Margin="0,200,0,0" HorizontalAlignment="Center">
                 <TextBlock Text="Category Name" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
                 <TextBox x:Name="CategoryName" PlaceholderText="Enter category name" Height="40" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"/>
             </StackPanel>
 
+            <!-- 
+                Submit button,
+                Back button
+            -->
             <StackPanel Orientation="Horizontal" Margin="0,100,0,0" HorizontalAlignment="Center">
                 <Button Content="Back" Click="backButton_Click" FontFamily="Assets/Fonts/#Jockey One" Margin="40,0,0,0" HorizontalAlignment="Left" Foreground="White"/>
                 <Button Click="submitBtn"  Content="Submit" Margin="100,0,0,0"  FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground="White"/>
             </StackPanel>
 
+            <!-- Status Textblock -->
             <StackPanel Orientation="Horizontal" Margin="0,50,0,0" HorizontalAlignment="Center">
                 <TextBlock x:Name="Status" FontSize="25" Margin="50,0,0,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Right" Foreground ="White"/>
             </StackPanel>

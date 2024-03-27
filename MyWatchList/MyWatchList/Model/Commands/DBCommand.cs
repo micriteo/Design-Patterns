@@ -36,7 +36,7 @@ namespace MyWatchList.Model.Commands
             string solutionDirectory = Directory.GetParent(baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
             //We need the JSON file to authenticate the app with the Firestore and the bucket
             string filePath = Path.Combine(solutionDirectory, "designpatterns-98314-firebase-adminsdk-z4r47-f1741e07bf.json");
-            //We need the images folder to store the images in the bucket, they are deleted once they are uploaded
+            //We need the images folder to store the images in the bucket, they are deleted once they are _uploaded
             string imagesPath = Path.Combine(solutionDirectory, "images");
             //If the images folder is created already we don't need to create it again
             if (!Directory.Exists(imagesPath))

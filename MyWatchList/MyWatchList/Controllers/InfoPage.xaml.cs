@@ -37,6 +37,7 @@ namespace MyWatchList.Views
                 Watchable = watchableItem;
                 //Converting the list of categories into a string (yay that's cool) and also splitting them with ,
                 var categoriesString = string.Join(", ", Watchable.Category);
+                WatchableCategoryTextBlock.Text = categoriesString;
             }
         }
 

@@ -20,19 +20,28 @@ namespace MyWatchList.Controllers
 {
     public sealed partial class CreateCategory : Page
     {
+        //Constructor
         public CreateCategory()
         {
             this.InitializeComponent();
         }
 
+        //Submit Button
         private async void submitBtn(object sender, RoutedEventArgs e)
         {
-            var addCategoryCommand = new AddCategoryC(CategoryName.Text);
-            //addCategoryCommand.Name = CategoryName.Text;
-            addCategoryCommand.execute();
-            Status.Text = "Category Added !";
+            if (string.IsNullOrEmpty(CategoryName.Text))
+            {
+                Status.Text = "ERROR Add Category Name !";
+            }
+            else
+            {
+                var addCategoryCommand = new AddCategoryC(CategoryName.Text);
+                addCategoryCommand.execute();
+                Status.Text = "Category Added !";
+            }
         }
 
+        //Back button
         private void backButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
