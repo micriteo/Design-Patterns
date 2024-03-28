@@ -92,6 +92,7 @@ namespace MyWatchList.Controllers
                 //remove the _category from the _category list
                 GroupedItemsCollection.Remove(grpWatchable);
 
+                //remove them from the firestore database aswell
                 _deleteCategoryC.setName(grpWatchable.Category);
                 _deleteCategoryC.execute();
             }

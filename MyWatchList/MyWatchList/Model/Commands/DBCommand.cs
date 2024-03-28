@@ -36,10 +36,13 @@ namespace MyWatchList.Model.Commands
 
             //Get the soluton directory(the actual directory of the project with all the files)
             string solutionDirectory = Directory.GetParent(_baseDir).Parent.Parent.Parent.Parent.Parent.Parent.FullName;
+
             //We need the JSON file to authenticate the app with the Firestore and the bucket
             string filePath = Path.Combine(solutionDirectory, "designpatterns-98314-firebase-adminsdk-z4r47-f1741e07bf.json");
+            
             //We need the images folder to store the images in the bucket, they are deleted once they are _uploaded
             string imagesPath = Path.Combine(solutionDirectory, "images");
+
             //If the images folder is created already we don't need to create it again
             if (!Directory.Exists(imagesPath))
             {
@@ -47,14 +50,11 @@ namespace MyWatchList.Model.Commands
             }
             //The credentials are set to this for the Firestore, _filePath variable in this case is tied to our json authentication file
             System.Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", filePath);
+
             //Bucket storage in Firebase
             this._storage = StorageClient.Create();
-            //Firebase bucket _name
-            /*
-             * ! IMPORTANT !
-             * Remove gs:// from the link (bucket _name) once for the bucket _name and twice for the files in the bucket.
-             */
             this._bucketName = "designpatterns-98314.appspot.com";
+
             //Firestore database (Project ID, you find it in the settings of Firebase)
             this._db = FirestoreDb.Create("designpatterns-98314");
         }

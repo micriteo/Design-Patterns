@@ -47,9 +47,7 @@
                     </Button.Style>
                 </Button>
 
-                <StackPanel Grid.Row="1" Margin="50">
-
-                    <Rectangle Grid.Row="1" Width="2000" Height="4" Fill="White" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,0,0"/>
+                <StackPanel Grid.Row="1" Margin="5">
 
                     <!-- Stackpanel for categories that wraps the items -->
                     <StackPanel Grid.Row="1" Margin="50">

@@ -29,13 +29,13 @@
                 <!-- Show Name -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Name" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
-                    <TextBox x:Name="sName" PlaceholderText="Enter show name" Height="40" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="sName" PlaceholderText="Enter Name" Height="40" Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"/>
                 </StackPanel>
 
                 <!-- Dsecription -->
                 <StackPanel Orientation="Vertical" Margin="50,30,0,0">
                     <TextBlock Text="Description" FontSize="25" Margin="0,0,30,0" FontFamily="Assets/Fonts/#Jockey One" HorizontalAlignment="Left" Foreground ="White"/>
-                    <TextBox x:Name="sDescription" PlaceholderText="Enter show description" Height="100" Width="400" Margin="0,10,0,0" HorizontalAlignment="Left"/>
+                    <TextBox x:Name="sDescription" PlaceholderText="Enter Description" Height="100" Width="400" Margin="0,10,0,0" HorizontalAlignment="Left"/>
                 </StackPanel>
 
                 <!-- Type (to not be confused with category) -->
