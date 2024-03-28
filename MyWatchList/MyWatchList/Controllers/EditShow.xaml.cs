@@ -13,7 +13,6 @@ namespace MyWatchList.Controllers
     public sealed partial class EditShow : Page
     {
         //Instance fields
-        private RetrieveCategoryC _retrieveCategoryC;
         private ImageUploadC _imageUpload;
         private bool _uploaded = false;
         private List<string> _selectedCategories = new List<string>();
@@ -24,7 +23,6 @@ namespace MyWatchList.Controllers
         {
             this.InitializeComponent();
             this._imageUpload = new ImageUploadC();
-            this._retrieveCategoryC = new RetrieveCategoryC();
             SubscribeToCheckBoxEvents();
             PopulateCategoriesComboBox();
         }
@@ -64,7 +62,7 @@ namespace MyWatchList.Controllers
         //Populate the combobox of categories with the one from the FirestoreDB(categories table)
         private async void PopulateCategoriesComboBox()
         {
-            List<string> categories = await this._retrieveCategoryC.GetCategories();
+            List<string> categories = await DBCommand.executeRetrieveCategoriesCommand();
 
             //Clear combobox items
             cBCat.Items.Clear();

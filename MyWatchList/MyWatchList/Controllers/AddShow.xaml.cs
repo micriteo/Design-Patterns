@@ -11,7 +11,6 @@ namespace MyWatchList.Controllers
     public sealed partial class AddShow : Page
     {
         //Instance fields
-        private RetrieveCategoryC _retrieveCategoryC;
         private ImageUploadC _imageUpload;
         private bool _uploaded = false;
         private List<string> _selectedCategories = new List<string>();
@@ -21,7 +20,6 @@ namespace MyWatchList.Controllers
         {
             this.InitializeComponent();
             this._imageUpload = new ImageUploadC();
-            this._retrieveCategoryC = new RetrieveCategoryC();
             SubscribeToCheckBoxEvents();
             PopulateCategoriesComboBox();
         }
@@ -48,7 +46,7 @@ namespace MyWatchList.Controllers
         //Populate the combobox of categories with the one from the FirestoreDB(categories table)
         private async void PopulateCategoriesComboBox()
         {
-            List<string> categories = await this._retrieveCategoryC.GetCategories();
+            List<string> categories = await DBCommand.executeRetrieveCategoriesCommand();
 
             //Clear combobox items
             cBCat.Items.Clear();
@@ -103,8 +101,7 @@ namespace MyWatchList.Controllers
             else
             {
                 this._selectedCategories.Add("All Shows");
-                var addShowCommand = new AddWatchable(sName.Text, sDescription.Text, _selectedCategories, ((ComboBoxItem)cBType.SelectedItem).Content.ToString(), this._imageUpload._filePath, this._imageUpload._imageName);
-                addShowCommand.execute();
+                DBCommand.executeAddWatchableCommand(sName.Text, sDescription.Text, _selectedCategories, ((ComboBoxItem)cBType.SelectedItem).Content.ToString(), this._imageUpload._filePath, this._imageUpload._imageName);
                 submitStatus.Text = "Show added!";
             }
         }

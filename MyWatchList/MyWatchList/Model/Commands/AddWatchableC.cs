@@ -14,7 +14,7 @@ using WinRT.Interop;
 
 namespace MyWatchList.Model.Commands
 {
-    internal class AddWatchable : DBCommand
+    internal class AddWatchableC : DBCommand
     {
         //Fields
         private string filePath;
@@ -22,7 +22,7 @@ namespace MyWatchList.Model.Commands
         private List<string> categories;
 
         //Constructor
-        public AddWatchable(string name, string description, List<string> categories, string type, string filePath, string imageName)
+        public AddWatchableC(string name, string description, List<string> categories, string type, string filePath, string imageName)
         {
             this._name = name;
             this._description = description;

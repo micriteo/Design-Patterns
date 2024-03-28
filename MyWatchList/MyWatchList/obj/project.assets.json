@@ -13896,26 +13896,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\dimit\\.nuget\\packages\\": {},
-    "C:\\Users\\dimit\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
+    "C:\\Users\\arian\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "projectUniqueName": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
       "projectName": "MyWatchList",
-      "projectPath": "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
-      "packagesPath": "C:\\Users\\dimit\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dimit\\Source\\Repos\\micriteo\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
+      "projectPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\MyWatchList.csproj",
+      "packagesPath": "C:\\Users\\arian\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\arian\\Desktop\\Repos\\Design-Patterns\\MyWatchList\\MyWatchList\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Users\\dimit\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\dimit\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Users\\dimit\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
+        "C:\\Users\\arian\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -13983,27 +13980,27 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-arm64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-arm64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.NETCore.App.Runtime.win-x86",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -14011,15 +14008,15 @@
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-arm64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           },
           {
             "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-            "version": "[6.0.27, 6.0.27]"
+            "version": "[6.0.28, 6.0.28]"
           }
         ],
         "frameworkReferences": {
@@ -14030,7 +14027,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

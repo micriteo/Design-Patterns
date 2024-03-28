@@ -39,7 +39,7 @@ namespace MyWatchList.Model.Commands
 
             //We need the JSON file to authenticate the app with the Firestore and the bucket
             string filePath = Path.Combine(solutionDirectory, "designpatterns-98314-firebase-adminsdk-z4r47-f1741e07bf.json");
-            
+
             //We need the images folder to store the images in the bucket, they are deleted once they are _uploaded
             string imagesPath = Path.Combine(solutionDirectory, "images");
 
@@ -61,5 +61,21 @@ namespace MyWatchList.Model.Commands
 
         //Execute method
         public abstract void execute();
+
+        //Add watchable command
+        public static void executeAddWatchableCommand(string name, string description, List<string> categories, string type, string filePath, string imageName)
+        {
+            var command = new AddWatchableC(name, description, categories, type, filePath, imageName);
+            command.execute();
+        }
+
+        //Retrieve categories command
+        public static async Task<List<string>> executeRetrieveCategoriesCommand()
+        {
+            var command = new RetrieveCategoryC();
+            command.execute();
+            return command.GetCategories();
+        }
+
     }
 }

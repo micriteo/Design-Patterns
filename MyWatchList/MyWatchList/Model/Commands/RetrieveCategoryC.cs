@@ -10,15 +10,15 @@ namespace MyWatchList.Model.Commands
 {
     internal class RetrieveCategoryC : DBCommand
     {
-        //GetCategories method
-        public async Task<List<string>> GetCategories()
+        // GetCategories method
+        public List<string> GetCategories()
         {
             List<string> categories = new List<string>();
 
             try
             {
                 DocumentReference docRef = _db.Collection("categories").Document("Categories");
-                DocumentSnapshot snapshot = await docRef.GetSnapshotAsync();
+                DocumentSnapshot snapshot = docRef.GetSnapshotAsync().Result; // Synchronously wait for the result
 
                 if (snapshot.Exists)
                 {
@@ -37,7 +37,7 @@ namespace MyWatchList.Model.Commands
             return categories;
         }
 
-        //Execute method inherited from DBCommand
+        // Execute method inherited from DBCommand
         public override void execute()
         {
             GetCategories();
