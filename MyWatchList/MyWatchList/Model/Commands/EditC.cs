@@ -62,7 +62,7 @@ namespace MyWatchList.Model.Commands
                     // Retrieve  current categories
                     arrayEntries = ((List<object>)documentSnapshot.GetValue<List<object>>("Category")).Select(x => x.ToString()).ToList();
 
-                    // Add the new categories to th elist
+                    // Add the new categories to the list
                     arrayEntries.AddRange(this.Categories);
 
                     // Update the _category field

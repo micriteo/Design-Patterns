@@ -12,6 +12,7 @@ using Windows.Storage.Pickers;
 using Windows.Storage;
 using WinRT.Interop;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 namespace MyWatchList.Model.Commands
 {
@@ -81,6 +82,41 @@ namespace MyWatchList.Model.Commands
         public static void executeAddCategoryCommand(string name)
         {
             var command = new AddCategoryC(name);
+            command.execute();
+        }
+
+        //Edit show command
+        public static void executeEditCommand(string docRef, string name, string description, List<string> categories, string type, string filePath, string imageName)
+        {
+            var command = new EditC();
+            command.DocRef = docRef;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                command.Name = name;
+            }
+
+            if (!string.IsNullOrEmpty(description))
+            {
+                command.Description = description;
+            }
+
+            if (categories != null && categories.Any())
+            {
+                command.Categories.AddRange(categories);
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                command.Type = type;
+            }
+
+            if (!string.IsNullOrEmpty(filePath) && !string.IsNullOrEmpty(imageName))
+            {
+                command.FilePath = filePath;
+                command.ImageName = imageName;
+            }
+
             command.execute();
         }
     }

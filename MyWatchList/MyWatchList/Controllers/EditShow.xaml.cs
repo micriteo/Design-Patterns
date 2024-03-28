@@ -104,49 +104,19 @@ namespace MyWatchList.Controllers
             }
             else
             {
-                if (!string.IsNullOrEmpty(this._docRef))
-                {
-                    var editCommand = new EditC();
-                    editCommand.DocRef = this._docRef;
-
-                    if (!string.IsNullOrEmpty(sName.Text))
-                    {
-                        editCommand.Name = sName.Text;
-                    }
-
-                    if (!string.IsNullOrEmpty(sDescription.Text))
-                    {
-                        editCommand.Description = sDescription.Text;
-                    }
-
-                    if (this._selectedCategories.Count > 0)
-                    {
-                        editCommand.Categories.AddRange(_selectedCategories);
-                    }
-
-                    if (cBType.SelectedItem != null)
-                    {
-                        editCommand.Type = ((ComboBoxItem)cBType.SelectedItem).Content.ToString();
-                    }
-
-                    if (!string.IsNullOrEmpty(_imageUpload._filePath) && !string.IsNullOrEmpty(_imageUpload._imageName))
-                    {
-                        editCommand.FilePath = _imageUpload._filePath;
-                        editCommand.ImageName = _imageUpload._imageName;
-                    }
-                    else
-                    {
-                        submitStatus.Text = "ERROR Image picker canceled selection ! Select the image again !";
-                    }
-
-
-                    editCommand.execute();
-                }
+                DBCommand.executeEditCommand(
+                    this._docRef,
+                    sName.Text,
+                    sDescription.Text,
+                    _selectedCategories,
+                    cBType.SelectedItem != null ? ((ComboBoxItem)cBType.SelectedItem).Content.ToString() : null,
+                    _imageUpload._filePath,
+                    _imageUpload._imageName);
 
                 submitStatus.Text = "Edits made !";
             }
-
         }
+
 
         //Image button (aka Filepicker button)
         private async void imageBtn(object sender, RoutedEventArgs e)
