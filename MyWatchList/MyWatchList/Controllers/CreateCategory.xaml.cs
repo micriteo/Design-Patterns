@@ -35,8 +35,7 @@ namespace MyWatchList.Controllers
             }
             else
             {
-                var addCategoryCommand = new AddCategoryC(CategoryName.Text);
-                addCategoryCommand.execute();
+                DBCommand.executeAddCategoryCommand(CategoryName.Text);
                 Status.Text = "Category Added !";
             }
         }

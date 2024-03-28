@@ -77,5 +77,11 @@ namespace MyWatchList.Model.Commands
             return command.GetCategories();
         }
 
+        //Add category command
+        public static void executeAddCategoryCommand(string name)
+        {
+            var command = new AddCategoryC(name);
+            command.execute();
+        }
     }
 }
